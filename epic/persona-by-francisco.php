@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>Restaurant Tinder Persona</h1>
+    <img src="Average Joe & Jane Doe.jpg" alt="Picture of Average Joe & Jane Doe"
+    class="center">
+    <div class="center">
         <ul>
             <li>Name: Average Joe & Jane Doe</li>
             <li>Age: 29 & 25</li>
@@ -13,6 +16,7 @@
             <li>Occupation: Architect & Project Manager</li>
             <li>Technology: Laptop, smartphone, tablet </li>
         </ul>
+    </div>
     <h2>Needs/Wants</h2>
         <ul>
             <li>Would like help in choosing a place to eat on a consistent basis.</li>
