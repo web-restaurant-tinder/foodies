@@ -5,7 +5,7 @@
 	<title>Persona</title>
 </head>
 <body>
-<h1>Corrigan's Persona</h1>
+<h1>Persona</h1>
 <img src="Electrician Jacob.jpg" height="192" width="263" alt="Makenzie Smith"/>
 
 <ul>
