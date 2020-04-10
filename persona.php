@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Corrigan's Persona</h1>
-<div><img src="Electrician Jacob.jpg" height="390" width="600" alt="Makenzie Smith"/></div>
+<img src="Electrician Jacob.jpg" height="192" width="263" alt="Makenzie Smith"/>
 
 <ul>
 	<li>Name: Jacob</li>
