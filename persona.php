@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Corrigan Persona</title>
+	<title>Persona</title>
 </head>
 <body>
 <h1>Corrigan's Persona</h1>
