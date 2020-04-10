@@ -9,12 +9,17 @@
     <img src="Average Joe & Jane Doe.jpg" alt="Picture of Average Joe & Jane Doe"
     class="center">
     <div class="center">
+        <h2>User Story</h2>
+        <ul>
+            <li>As a user I would like an efficient way of choosing a restaurant.</li>
+        </ul>
         <ul>
             <li>Name: Average Joe & Jane Doe</li>
             <li>Age: 29 & 25</li>
             <li>Gender: Male & Female</li>
             <li>Occupation: Architect & Project Manager</li>
             <li>Technology: Laptop, smartphone, tablet</li>
+            <li>Browser: Google Chrome</li>
         </ul>
     </div>
     <h2>Needs/Wants</h2>
@@ -36,11 +41,11 @@
     <p><b>Usage post-conditions:</b>A restaurant is chosen and is either liked or disliked.</p>
     <h2>Interaction Flow:</h2>
     <ul>
-        <li>First Jane & Joe select the app on their device</li>
-        <li>Then they add each other to a group</li>
-        <li>They begin swiping on a variety of different restaurants</li>
-        <li>The results are tallied</li>
-        <li>A mutual interest is selected</li>
+        <li>First the web page is clicked on</li>
+        <li>Then the web page opens</li>
+        <li>Then the user enters login information</li>
+        <li>Then the system loads up the users page</li>
+        <li>Then the user begins using the application</li>
     </ul>
     <p><b>Frequency of Use:</b> Friday nights and weekends. </p>
 
