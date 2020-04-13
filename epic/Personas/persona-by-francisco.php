@@ -41,11 +41,21 @@
     <p><b>Usage post-conditions:</b>A restaurant is chosen and is either liked or disliked.</p>
     <h2>Interaction Flow:</h2>
     <ul>
-        <li>First the web page is clicked on</li>
-        <li>Then the web page opens</li>
-        <li>Then the user enters login information</li>
-        <li>Then the system loads up the users page</li>
-        <li>Then the user begins using the application</li>
+        <li>User opens up their iPad pro 2nd Generation </li>
+        <li>The iPad activates</li>
+        <li>User navigates to the Safari web browser and searches for "Restaurant Tinder"</li>
+        <li>The "Restaurant Tinder" web page opens up to the sign in page</li>
+        <li>User enters their username and password</li>
+        <li>The application loads up users homepage</li>
+        <li>User swipes left and right on restaurants presented on the homepage</li>
+        <li>Applications saves inputted data to users profile Id</li>
+        <li>User searches for friend on the search bar located on every page</li>
+        <li>Application takes user to searched friends page</li>
+        <li>User clicks on the follow button located on the top right hand corner of every other users page</li>
+        <li>Application sends a confirm notification to both users and links the two</li>
+        <li>User navigates back to their own home page</li>
+        <li>Application creates a feed on the users home page showing mutual restaurant likes</li>
+        <li>User happy with new knowledge logs out of application</li>
     </ul>
     <p><b>Frequency of Use:</b> Friday nights and weekends. </p>
 
