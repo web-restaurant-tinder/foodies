@@ -24,5 +24,14 @@
 <h2>Use Case: </h2>
 <p><b>Title:</b>Trying to find a restaurant with good reviews.</p>
 <p><b>Description:</b>Jacob wants to take his date out and finally agree on a place.</p>
+<p><b>Name of User:</b>Jacob.</p>
+<h2>Interaction Flow:</h2>
+<ul>
+	<li>First the app has to be open.</li>
+	<li>Then a link shows up to sign up.</li>
+	<li>Then the user has to enter their information.</li>
+	<li>At that point the user has access to his/her own webpage.</li>
+	<li>At last the user is now allowed to access the webpage.</li>
+</ul>
 </body>
 </html>
