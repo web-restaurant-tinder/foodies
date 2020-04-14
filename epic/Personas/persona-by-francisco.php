@@ -41,8 +41,6 @@
     <p><b>Usage post-conditions:</b>A restaurant is chosen and is either liked or disliked.</p>
     <h2>Interaction Flow:</h2>
     <ul>
-        <li>User opens up their iPad pro 2nd Generation </li>
-        <li>The iPad activates</li>
         <li>User navigates to the Safari web browser and searches for "Restaurant Tinder"</li>
         <li>The "Restaurant Tinder" web page opens up to the sign in page</li>
         <li>User enters their username and password</li>
