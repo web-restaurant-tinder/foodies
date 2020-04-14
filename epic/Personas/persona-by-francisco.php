@@ -53,7 +53,7 @@
         <li>Application sends a confirm notification to both users and links the two</li>
         <li>User navigates back to their own home page</li>
         <li>Application creates a feed on the users home page showing mutual restaurant likes</li>
-        <li>User happy with new knowledge logs out of application</li>
+        <li>User happy with new knowledge logs out of application and closes web browser</li>
     </ul>
     <p><b>Frequency of Use:</b> Friday nights and weekends. </p>
 
