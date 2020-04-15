@@ -27,11 +27,25 @@
 <p><b>Name of User:</b>Jacob.</p>
 <h2>Interaction Flow:</h2>
 <ul>
-	<li>First the app has to be open.</li>
-	<li>Then a link shows up to sign up.</li>
-	<li>Then the user has to enter their information.</li>
-	<li>At that point the user has access to his/her own webpage.</li>
-	<li>At last the user is now allowed to access the webpage.</li>
+	<li>User opens webpage on his Iphone.</li>
+	<li>User searches for the Tinder restaurant webpage.</li>
+	<li>User opens the webpage.</li>
+	<li>User signs up with his email, username, phone number, and password.</li>
+	<li>User uploads picture.</li>
+	<li>User goes to his email and confirms account.</li>
+	<li>User signs in.</li>
+	<li>User sees a picture of a restaurant with an caption to swipe left or right.</li>
+	<li>User starts swiping left on a restaurant he doesnt care for.</li>
+	<li>The webpage stores all the dislikes to not show again.</li>
+	<li>User swipes right on the second restaurant that he liked.</li>
+	<li>The webpage stores the liked restaurants and shows more like it</li>
+	<li>User searches for friends with the search bar.</li>
+	<li>The app brings up many pages.</li>
+	<li>User clicks follow to follow friends.</li>
+	<li>User gets a notification telling him he has a new followers.</li>
+	<li>User checks out the page and notices its his friends accepting his invite.</li>
+	<li>User sees his matches with his friends.</li>
+	<li>User logs out.</li>
 </ul>
 </body>
 </html>
