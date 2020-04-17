@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Restaurant Tinder Persona</h1>
-    <img src="../Images/Average%20Joe%20&%20Jane%20Doe.jpg" alt="Picture of Average Joe & Jane Doe"
+    <img src="Average Joe & Jane Doe.jpg" alt="Picture of Average Joe & Jane Doe"
          class="center">
     <div class="center">
         <h2>User Story</h2>
