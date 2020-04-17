@@ -31,13 +31,14 @@
 		<li>The browser then opens up a set of results for the search.</li>
 		<li>Jeremy will then click the Restaurant Tinder link, which will bring him to the homepage of Restaurant Tinder.</li>
 		<li>Jeremy will then be brought to a login screen, Jeremy will put in his Username and Password and click the submit button.</li>
-		<li>A new screen will appear and it will be a screen that has a restaurant and two buttons on the bottom, Jeremy can click one of the two buttons on the bottom to indicate if he likes that restaurant or not.</li>
-		<li>Jeremy will then begin clicking on the like button or the no thanks button depending on his preferences.</li>
-		<li>After a few minutes of swiping, Jeremy will click an icon on top left of his current page.</li>
-		<li>A new screen will appear that lists the restaurant names that Jeremy indicated that he liked.</li>
-		<li>Meanwhile his friend would be doing the exact same thing.</li>
-		<li>They would compare lists and find a restaurant that they both like, and go to the restaurant that they mututally like.</li>
-		<li>Jeremy would then log out of the website and go to the restaurant with his friend.</li>
+		<li>A new screen will appear and it will be a screen that has a restaurant and two buttons on the bottom, Jeremy can click one of the two buttons on the bottom to indicate if he likes that restaurant, he can also swipe the picture left or right.</li>
+		<li>Jeremy will then begin clicking on the like button (or swipe right) or the no thanks (swipe left) button depending on his preferences.</li>
+		<li>After a few minutes of swiping, Jeremy will then go to the search bar and type in his friends name and click submit.</li>
+		<li>A new screen will appear which will list all the people with that name. Jeremy will scroll to his friend and click his name.</li>
+		<li>A new screen will appear which shows information about that particular user, as well as have a follow button under his name. Jeremy will hit follow.</li>
+		<li>Once the two are following each other then there will be a button on the page that reads "Restaurants in common," they will click that button.</li>
+		<li>A new screen will appear that shows all of the restaurants that the two have in common.</li>
+		<li>The two will look at the list of restaurants and make a decision as to where to eat.</li>
 	</ul>
 
 </body>
