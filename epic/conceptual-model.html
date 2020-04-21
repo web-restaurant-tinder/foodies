@@ -8,38 +8,40 @@
     <h1>Restaurant Tinder Conceptual Model</h1>
     <h2>Profile</h2>
         <ul>
-            <li>Profile Id (PK)</li>
-            <li>Profile Activation Token</li>
-            <li>Profile Email</li>
-            <li>Profile Hash</li>
-            <li>Profile Avatar</li>
-            <li>Profile Username</li>
-            <li>Profile First Name</li>
-            <li>Profile Last Name</li>
+            <li>profileId (PK)</li>
+            <li>profileActivationToken</li>
+            <li>profileAvatar</li>
+            <li>profileEmail</li>
+            <li>profileFirstName</li>
+            <li>profileHash</li>
+            <li>profileLastName</li>
+            <li>profileUsername</li>
         </ul>
     <h2>Follow</h2>
         <ul>
-            <li>Follow Profile Id (FK)</li>
-            <li>Follow Profile Id 2 (FK)</li>
+            <li>followProfileId (FK)</li>
+            <li>followProfileId2 (FK)</li>
+            <li>followDate</li>
         </ul>
     <h2>Restaurant</h2>
         <ul>
-            <li>Restaurant Id (PK)</li>
-            <li>Restaurant Food Type</li>
-            <li>Restaurant Avatar</li>
-            <li>Restaurant Star Rating</li>
-            <li>Restaurant Name</li>
-            <li>Restaurant Address</li>
-            <li>Restaurant Latitude</li>
-            <li>Restaurant Longitude</li>
-            <li>Restaurant Phone</li>
-            <li>Restaurant Url</li>
+            <li>restaurantId (PK)</li>
+            <li>restaurantAddress</li>
+            <li>restaurantAvatar</li>
+            <li>restaurantFoodType</li>
+            <li>restaurantLat</li>
+            <li>restaurantLng</li>
+            <li>restaurantName</li>
+            <li>restaurantPhone</li>
+            <li>restaurantStarRating</li>
+            <li>restaurantUrl</li>
         </ul>
     <h2>Swipe</h2>
         <ul>
-            <li>Swipe Profile Id (FK)</li>
-            <li>SwipeRestaurantId (FK)</li>
-            <li>Swipe Yes or No</li>
+            <li>swipeProfileId (FK)</li>
+            <li>swipeRestaurantId (FK)</li>
+            <li>swipeDate</li>
+            <li>swipeYesNo</li>
         </ul>
     <h2>Relationship</h2>
         <ul>
