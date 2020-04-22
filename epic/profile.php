@@ -23,7 +23,9 @@ class Profile {
 
 	private $profileActivationToken;
 
-	private $profileAvatar;
+	private $profileAvatarCloudinaryId;
+
+	private $profileAvatarUrl;
 
 	private $profileEmail;
 
@@ -39,10 +41,11 @@ class Profile {
 
 	//constructor method
 
-	public function __construct($newProfileActivationToken, $newProfileAvatar, $newProfileEmail, $newProfileFirstName, $newProfileHash, $newProfileId, $newProfileLastName, $newProfileUsername) {
+	public function __construct($newProfileActivationToken, $newProfileAvatarCloudinaryId, $newProfileAvatarUrl, $newProfileEmail, $newProfileFirstName, $newProfileHash, $newProfileId, $newProfileLastName, $newProfileUsername) {
 		try {
 			$this->setProfileActivationToken($newProfileActivationToken);
-			$this->setProfileAvatar($newProfileAvatar);
+			$this->setprofileAvatarCloudinaryId($newProfileAvatarCloudinaryId);
+			$this->setProfileAvatarUrl($newProfileAvatarUrl);
 			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileFirstName($newProfileFirstName);
 			$this->setProfileHash($newProfileHash);
@@ -56,26 +59,8 @@ class Profile {
 		}
 	}
 
-	//accessor method for author id
 
-	public function getProfileId(): Uuid {
-		return ($this->profileId);
-	}
-
-	//mutator method for author id
-
-	public function setProfileId(string $newProfileId): void {
-		try {
-			$uuid = self::validateUuid($newProfileId);
-		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
-			$exceptionType = get_class($exception);
-			throw(new $exceptionType($exception->getMessage(), 0, $exception));
-		}
-
-		$this->profileId = $uuid;
-	}
-
-	//accessor method
+	//accessor method for ProfileActivationToken
 
 	public function getProfileActivationToken($newProfileActivationToken) {
 		return ($this->profileActivationToken);
@@ -103,6 +88,55 @@ class Profile {
 
 	}
 
+	public function getProfileAvatarCloudinaryId(): string {
+		return ($this->profileAvatarCloudinaryId);
+	}
+
+	/**
+	 * mutator method for image cloudinary token
+	 *
+	 * @param string $newProfileAvatarCloudinaryId new value of image cloudinary token
+	 * @throws \InvalidArgumentException if $newProfileAvatarCloudinaryId is not a string or insecure
+	 * @throws \TypeError if $newProfileAvatarCloudinaryId is not a string
+	 **/
+	public function setProfileAvatarCloudinaryId(string $newProfileAvatarCloudinaryId): void {
+		// verify the image cloudinary token content is secure
+		$newProfileAvatarCloudinaryId = filter_var($newProfileAvatarCloudinaryId, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newProfileAvatarCloudinaryId) === true) {
+			throw(new \InvalidArgumentException("image cloudinary id is empty or insecure"));
+		}
+
+		// store the image cloudinary token
+		$this->profileAvatarCloudinaryId = $newProfileAvatarCloudinaryId;
+	}
+
+
+	public function getProfileAvatarCloudinaryIdl(): string {
+		return ($this->profileAvatarCloudinaryId);
+	}
+
+	/**
+	 * mutator method for at handle
+	 *
+	 * @param string $newProfileAvatarUrl new value of profile avatar URL
+	 * @throws \InvalidArgumentException if $newProfileAvatarUrl is not a string or insecure
+	 * @throws \RangeException if $newProfileAvatarUrl is > 255 characters
+	 * @throws \TypeError if $newAtHandle is not a string
+	 **/
+	public function setProfileAvatarUrl(string $newProfileAvatarUrl): void {
+
+		$newProfileAvatarUrl = trim($newProfileAvatarUrl);
+		$newProfileAvatarUrl = filter_var($newProfileAvatarUrl, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+
+		// verify the avatar URL will fit in the database
+		if(strlen($newProfileAvatarUrl) > 255) {
+			throw(new \RangeException("image cloudinary content too large"));
+		}
+		// store the image cloudinary content
+		$this->profileAvatarUrl = $newProfileAvatarUrl;
+	}
+
+
 	//accessor method
 
 	public function getProfileEmail(): string {
@@ -129,6 +163,8 @@ class Profile {
 		// store the email
 		$this->profileEmail = $newProfileEmail;
 	}
+
+
 
 	public function getProfileHash(): string {
 		return $this->profileHash;
@@ -162,31 +198,25 @@ class Profile {
 		$this->profileHash = $newProfileHash;
 	}
 
+	//accessor method for profile id
 
-	public function getProfileAvatar(): string {
-		return ($this->profileAvatar);
+	public function getProfileId(): Uuid {
+		return ($this->profileId);
 	}
 
-	/**
-	 * mutator method for at handle
-	 *
-	 * @param string $newAuthorAvatarUrl new value of profile avatar URL
-	 * @throws \InvalidArgumentException if $newProfileAvatarUrl is not a string or insecure
-	 * @throws \RangeException if $newProfileAvatarUrl is > 255 characters
-	 * @throws \TypeError if $newAtHandle is not a string
-	 **/
-	public function setProfileAvatar(string $newProfileAvatar): void {
+	//mutator method for author id
 
-		$newProfileAvatar = trim($newProfileAvatar);
-		$newProfileAvatar = filter_var($newProfileAvatar, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-
-		// verify the avatar URL will fit in the database
-		if(strlen($newProfileAvatar) > 255) {
-			throw(new \RangeException("image cloudinary content too large"));
+	public function setProfileId(string $newProfileId): void {
+		try {
+			$uuid = self::validateUuid($newProfileId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
-		// store the image cloudinary content
-		$this->profileAvatar = $newProfileAvatar;
+
+		$this->profileId = $uuid;
 	}
+
 
 	public function getProfileUsername(): string {
 		return ($this->profileUserName);
