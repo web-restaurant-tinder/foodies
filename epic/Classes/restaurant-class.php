@@ -15,6 +15,8 @@ use Ramsey\Uuid\Uuid;
 class Restaurant {
 	use ValidateUuid;
 	use ValidateDate;
+
+
 	/**
 	 * id for this Restaurant; this is the Primary Key
 	 * @var Uuid $restaurantId
@@ -344,5 +346,21 @@ class Restaurant {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		$this->restaurantUrl = $newRestaurantUrl;
+	}
+
+	/**
+	 * inserts this author into SQL
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+
+	public function insert(\PDO $pdo) : void {
+		//create query template
+		$query = "INSERT INTO restaurant"
+		$statement = $pdo->prepare($query);
+		//bind the member variables to the place holders in the template
+		$parameters = ["authorId"=>$this->authorId->getBytes(), "authorActivationToken"=> $this->authorActivationToken, "authorAvatarUrl"=> $this->authorAvatarUrl, "authorEmail"=> $this->authorEmail, "authorHash"=> $this->authorHash, "authorUsername"=> $this->authorUsername];
+		$statement->execute($parameters);
 	}
 }
