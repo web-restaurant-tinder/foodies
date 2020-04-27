@@ -374,4 +374,27 @@ class Restaurant {
 		$parameters = ["restaurantId" => $this->restaurantId()->getBytes()];
 		$statement->execute($parameters);
 	}
+
+	public function update(\PDO $pdo) : void {
+		//create query template
+		$query = "UPDATE restaurant SET restaurantAddress = :restaurantAddress, 
+    restaurantAvatar = :restaurantAvatar, restaurantFoodType = :restaurantFoodType, restaurantLat = :restaurantLat, restaurantLng = :restaurantLng, 
+    restaurantName = :restaurantName, restaurantPhone = :restaurantPhone, restaurantStarRating = :restaurantStarRating, restaurantUrl = :restaurantUrl";
+
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holders in the template
+		$parameters = ["restaurantId"=>$this->restaurantId->getBytes(),
+			"restaurantAddress"=> $this->restaurantAddress,
+			"restaurantAvatar"=> $this->restaurantAvatar,
+			"restaurantFoodType"=> $this->restaurantFoodType,
+			"restaurantLat"=> $this->restaurantLat,
+			"restaurantLng"=> $this->restaurantLng,
+			"restaurantName"=> $this->restaurantName,
+			"restaurantPhone"=> $this->restaurantPhone,
+			"restaurantStarRating"=> $this->restaurantStarRating,
+			"restaurantUrl"=> $this->restaurantUrl];
+
+		$statement->execute($parameters);
+	}
 }
