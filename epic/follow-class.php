@@ -1,0 +1,179 @@
+<?php
+namespace fgallegos8\Foodies;
+
+require_once("autoload.php");
+require_once (dirname(__DIR__) . "/vendor/autoload.php");
+
+
+use Ramsey\Uuid\Uuid;
+
+/**
+ * This class was created to allow profiles to follow each other
+ * @author Francisco Gallegos <fgallegos59@cnm.edu>
+ */
+
+class Follow implements \JsonSerializable {
+    use ValidateDate;
+    use ValidateUuid;
+
+    /**
+     * Id for the followed profile; this is the foreign key
+     * @var Uuid $followFollowedProfileId
+     */
+
+    private $followFollowedProfileId;
+
+    /**
+     * Id for the profile following another profile; this is a foreign key
+     * @var Uuid $followProfileId
+     */
+
+    private $followProfileId;
+
+    /**
+     * Date that the profile was followed
+     *  @var \DateTime $newFollowDate
+     */
+
+    private $followDate;
+
+    /**
+     * constructor method for this class
+     *
+     * @param string|Uuid $newFollowFollowedProfileId id of this followed profile
+     * @param string|Uuid $newFollowProfileId id of the profile following other profile
+     * @param \DateTime|string|null $newFollowDate date and time follow occurs
+     */
+    public function __construct($newFollowFollowedProfileId, $newFollowProfileId, $newFollowDate = null)
+    {
+        try {
+            $this->setFollowFollowedProfileId($newFollowFollowedProfileId);
+            $this->setFollowProfileId($newFollowProfileId);
+            $this->setFollowDate($newFollowDate);
+        }
+        catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+            $exceptionType = get_class($exception);
+            throw(new $exceptionType($exception->getMessage(), 0, $exception));
+        }
+    }
+
+    /**
+     * accessor method for follow
+     * @return Uuid value of followed profile id
+     */
+    public function getFollowFollowedProfileId(): Uuid
+    {
+        return ($this->followFollowedProfileId);
+    }
+
+    /**
+     *mutator method for follow followed profile id
+     *
+     * @param mixed $followFollowedProfileId
+     * @throws \RangeException if $newFollowFollowedProfileId is not positive
+     * @throws \TypeError if $newFollowFollowedProfileId is not an integer
+     */
+    public function setFollowFollowedProfileId($followFollowedProfileId): void{
+        try {
+            $uuid = self::validateUuid($newFollowFollowedProfileId);
+        } catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+            $exceptionType = get_class($exception);
+            throw(new $exceptionType($exception->getMessage(), 0, $exception));
+        }
+    }
+
+    /**
+     * accessor method for follow profile id
+     * @return Uuid value of follow profile id
+     */
+    public function getFollowProfileId(): Uuid
+    {
+        return $this->followProfileId;
+    }
+
+    /**
+     * mutator method for follow profile id
+     *
+     * @param Uuid|string $newFollowProfileId new value of follow profile id
+     * @throws \RangeException if $newFollowProfileId is not positive
+     * @throws \TypeError if $newFollowProileId is not uuid or string
+     */
+    public function setFollowProfileId($newFollowProfileId) : void {
+        try {
+            uuid = self::validateUuid($newFollowProfileId);
+        } catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+            $exceptionType = get_class($exception);
+            throw (new $exceptionType($exception->getMessage(), 0, $exception));
+        }
+
+        $this->followProfileId = $uuid;
+
+    }
+
+    /**
+     * accessor method for follow date
+     *
+     * @return \DateTime value of follow date
+     */
+    public function getFollowDate(): \DateTime
+    {
+        return $this->followDate;
+    }
+
+    /**
+     * mutator method for follow date
+     *
+     * @param \DateTime|string|null $newFollowDate follow date as a DateTime object or string
+     * @throws \InvalidArgumentException if $newFollowDate is not a valid object or string
+     * @throws \RangeException of $newFollowDate is date that does not exist
+     * @throws \Exception
+     */
+    public function setFollowDate($newFollowDate = null) : void {
+
+        if ($newFollowDate === null) {
+            $this->followDate = new  \DateTime();
+            return;
+        }
+
+        try {
+            $newFollowDate = self::validateDateTime($newFollowDate);
+        } catch (\InvalidArgumentException | \RangeException $exception) {
+            $exceptionType = get_class($exception);
+            throw(new $exceptionType($exception->getMessage(), 0, $exception));
+        }
+        $this->followDate= $newFollowDate;
+    }
+
+    /**
+     * inserts this Follown class into mySQL
+     *
+     * @param \PDO $pdo PDO connection object
+     * @return array
+     * @throws \PDOException when mySQL related errors occur
+     * @throws \TypeError if $pdo is not a PDO connection object
+     */
+    public function insert(\PDO $pdo) : void {
+        //create query template
+        $query = "INSERT INTO(followFollowedProfileId, followProfileId, followDate) VALUES(:followFollowedProfileId, :followProfileId, :followDate)";
+        $statement = $pdo->prepare($query);
+
+        //bind member variables to the place holders in the template
+        $formattedDate = $this->followDate->format("Y-m-d H:i:s.u");
+    }
+
+    public function jsonSerialize() : array {
+        $fields = get_object_vars($this);
+
+        $fields["followFollowedProfileId"] = $this->followFollowedProfileId->toString();
+        $fields["followProfileId"] = $this->followProfileId->toString();
+
+        //format the date so that the front end can consume it
+        $fields["followDate"] = round(floatval($this->followDate->format("U.u")) * 1000);
+        return($fields);
+    }
+
+
+}
+
+
+
