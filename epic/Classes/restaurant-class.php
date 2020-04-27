@@ -357,10 +357,10 @@ class Restaurant {
 
 	public function insert(\PDO $pdo) : void {
 		//create query template
-		$query = "INSERT INTO restaurant"
+		$query = "INSERT INTO restaurant(restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl) VALUES (:restaurantId, :restaurantAddress, :restaurantAvatar, :restaurantFoodType, :restaurantLat, :restaurantLng, :restaurantName, :restaurantPhone, :restaurantStarRating, :restaurantUrl)";
 		$statement = $pdo->prepare($query);
 		//bind the member variables to the place holders in the template
-		$parameters = ["authorId"=>$this->authorId->getBytes(), "authorActivationToken"=> $this->authorActivationToken, "authorAvatarUrl"=> $this->authorAvatarUrl, "authorEmail"=> $this->authorEmail, "authorHash"=> $this->authorHash, "authorUsername"=> $this->authorUsername];
+		$parameters = ["restaurantId"=>$this->restaurantId->getBytes(), "restaurantAddress"=> $this->restaurantAddress, "restaurantAvatar"=> $this->restaurantAvatar, "restaurantFoodType"=> $this->restaurantFoodType, "restaurantLat"=> $this->restaurantLat, "restaurantLng"=> $this->restaurantLng, "restaurantName"=> $this->restaurantName, "restaurantPhone"=> $this->restaurantPhone, "restaurantStarRating"=> $this->restaurantStarRating, "restaurantUrl"=> $this->restaurantUrl,];
 		$statement->execute($parameters);
 	}
 }
