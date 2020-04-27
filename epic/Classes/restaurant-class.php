@@ -442,6 +442,55 @@ class Restaurant {
 	}
 
 	/**
+	 * get restaurantByRestaurantFoodType from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param Uuid|string $restaurantId
+	 * @param string $restaurantFoodType
+	 * @return Restaurant|null Restaurant found or null if not found
+	 * @throws \PDOException when my SQL related
+	 * @throws \TypeError when a variable are not the correct data type
+	 * @throws \InvalidArgumentException if data types are not valid
+	 * @throws \RangeException if restaurant Id is out of range
+	 */
+
+	public static function getRestaurantByRestaurantFoodType(\PDO $pdo, string $restaurantFoodType) : \SplFixedArray {
+		// sanitize the description before searching
+		$restaurantFoodType = trim($restaurantFoodType);
+		$restaurantFoodType = filter_var($restaurantFoodType, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($restaurantFoodType) === true) {
+			throw(new \PDOException("Restaurant Food Type is invalid"));
+		}
+
+		// escape any mySQL wild cards
+		$restaurantFoodType = str_replace("_", "\\_", str_replace("%", "\\%", $restaurantFoodType));
+
+		// create query template
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantFoodType LIKE :restaurantFoodType";
+		$statement = $pdo->prepare($query);
+
+		// bind the restaurant Food Type to the place holder in the template
+		$res = "%$restaurantFoodType%";
+		$parameters = ["restaurantFoodType" => $restaurantFoodType];
+		$statement->execute($parameters);
+
+		// build an array of restaurants
+		$restaurants = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$restaurant = new Restaurant($row["restaurantId"], $row["restaurantAddress"], $row["restaurantAvatar"], $row["restaurantFoodType"], $row["restaurantLat"], $row["restaurantLng"], $row["restaurantName"], $row["restaurantPhone"], $row["restaurantStarRating"], $row["restaurantUrl"]);
+				$restaurants[$restaurants->key()] = $restaurant;
+				$restaurants->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($restaurants);
+	}
+
+	/**
 	 * get restaurantByRestaurantName from mySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
