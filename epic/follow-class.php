@@ -161,6 +161,43 @@ class Follow implements \JsonSerializable {
         $formattedDate = $this->followDate->format("Y-m-d H:i:s.u");
     }
 
+    /**
+     * deletes this Follow class for mySQL
+     *
+     * @param \PDO $pdo PDO connection object
+     * @return array
+     * @throws \PDOException when mySQL related errors occur
+     * @throws \TypeError if $pdo is not a PDO connection object
+     */
+    public function delete(\PDO $pdo) : void {
+        //create query template
+        $query = "DELETE FROM tweet WHERE followProfileId = :followProfileId";
+        $statement = $pdo->prepare($query);
+
+        //bind the member variables to the place holder in the template
+        $parameters = ["profileId" => $this->followProfileId->getBytes()];
+        $statement->execute($parameters);
+    }
+
+    /**
+     * @return array
+     */
+    public function update(\PDO $pdo) : void {
+        //create query template
+        $query = "UPDATE follow SET followFollowedProfileId = :followFollowedProfileId, followProfileId = :followProfileId, followDate WHERE followProfileId = :followProfileId ";
+        $statement = $pdo->prepare($query);
+
+        $formattedDate = $this->followDate->format("Y-m-d H:i:s.u");
+        $parameters = ["followFollowedProfileId" => $this->followFollowedProfileId->getBytes(), "followProfileId" => $this->followProfileId->getBytes(), "followDate" => $formattedDate];
+        $statement->execute($parameters);
+
+    }
+
+    /**
+     * formats the state variables for JSON serialization
+     *
+     * @return array resulting state variables to serialize
+     */
     public function jsonSerialize() : array {
         $fields = get_object_vars($this);
 
