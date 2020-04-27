@@ -165,7 +165,7 @@ class Restaurant {
 			throw(new \InvalidArgumentException("Address is empty or insecure"));
 		}
 
-		// verify the Todo Author will fit in the database
+		// verify the Todo Restaurant will fit in the database
 		if(strlen($newRestaurantAddress) > 25) {
 			throw(new \RangeException("Address is too large"));
 		}
@@ -265,7 +265,7 @@ class Restaurant {
 			throw(new \InvalidArgumentException("Restaurant Name is empty or insecure"));
 		}
 
-		// verify the Todo Author will fit in the database
+		// verify the Todo Restaurant will fit in the database
 		if(strlen($newRestaurantPhone) > 25) {
 			throw(new \RangeException("Restaurant Name is too large"));
 		}
@@ -293,7 +293,7 @@ class Restaurant {
 			throw(new \InvalidArgumentException("Restaurant Phone is empty or insecure"));
 		}
 
-		// verify the Todo Author will fit in the database
+		// verify the Todo Restaurant will fit in the database
 		if(strlen($newRestaurantPhone) > 14) {
 			throw(new \RangeException("Restaurant Phone Number is too large"));
 		}
@@ -349,7 +349,7 @@ class Restaurant {
 	}
 
 	/**
-	 * inserts this author into SQL
+	 * inserts this restaurant into SQL
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
@@ -399,7 +399,7 @@ class Restaurant {
 	}
 
 	/**
-	 * get authorByAuthorId from mySQL
+	 * get restaurantByRestaurantId from mySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param Uuid|string $restaurantId restaurant Id
@@ -411,9 +411,9 @@ class Restaurant {
 	 */
 
 	public static function getRestaurantByRestaurantId(\PDO $pdo, $restaurantId) : ?Restaurant {
-		// sanitize the authorId before searching
+		// sanitize the restaurantId before searching
 		try {
-			$authorId = self::validateUuid($restaurantId);
+			$restaurantId = self::validateUuid($restaurantId);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
@@ -422,11 +422,11 @@ class Restaurant {
 		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantId = :restaurantId";
 		$statement = $pdo->prepare($query);
 
-		// bind the author id to the place holder in the template
+		// bind the restaurant id to the place holder in the template
 		$parameters = ["restaurantId" => $restaurantId->getBytes()];
 		$statement->execute($parameters);
 
-		// grab the author from mySQL
+		// grab the restaurant from mySQL
 		try {
 			$restaurant = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
@@ -439,5 +439,54 @@ class Restaurant {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		return($restaurant);
+	}
+
+	/**
+	 * get restaurantByRestaurantName from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param Uuid|string $restaurantId
+	 * @param string $restaurantName
+	 * @return Restaurant|null Restaurant found or null if not found
+	 * @throws \PDOException when my SQL related
+	 * @throws \TypeError when a variable are not the correct data type
+	 * @throws \InvalidArgumentException if data types are not valid
+	 * @throws \RangeException if restaurant Id is out of range
+	 */
+
+	public static function getRestaurantByRestaurantName(\PDO $pdo, string $restaurantName) : \SplFixedArray {
+		// sanitize the description before searching
+		$restaurantName = trim($restaurantName);
+		$restaurantName = filter_var($restaurantName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($restaurantName) === true) {
+			throw(new \PDOException("Restaurant Name is invalid"));
+		}
+
+		// escape any mySQL wild cards
+		$restaurantName = str_replace("_", "\\_", str_replace("%", "\\%", $restaurantName));
+
+		// create query template
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantName LIKE :restaurantName";
+		$statement = $pdo->prepare($query);
+
+		// bind the restaurant name to the place holder in the template
+		$res = "%$restaurantName%";
+		$parameters = ["restaurantName" => $restaurantName];
+		$statement->execute($parameters);
+
+		// build an array of restaurants
+		$restaurants = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$restaurant = new Restaurant($row["restaurantId"], $row["restaurantAddress"], $row["restaurantAvatar"], $row["restaurantFoodType"], $row["restaurantLat"], $row["restaurantLng"], $row["restaurantName"], $row["restaurantPhone"], $row["restaurantStarRating"], $row["restaurantUrl"]);
+				$restaurants[$restaurants->key()] = $restaurant;
+				$restaurants->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($restaurants);
 	}
 }
