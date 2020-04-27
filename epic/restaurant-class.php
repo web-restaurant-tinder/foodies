@@ -14,6 +14,7 @@ use Ramsey\Uuid\Uuid;
 
 class Restaurant {
 	use ValidateUuid;
+	use ValidateDate;
 	/**
 	 * id for this Restaurant; this is the Primary Key
 	 * @var Uuid $restaurantId
@@ -93,7 +94,7 @@ class Restaurant {
 	 * @Documentation https://php.net/manual/en/language.oop5.decon.php
 	 */
 
-	//add JONSERILIZABLE to constructor
+
 	public function __construct($newRestaurantId, string $newRestaurantAddress, string $newRestaurantAvatar, string $newRestaurantFoodType, float $newRestaurantLat, float $newRestaurantLng, string $newRestaurantName, string $newRestaurantPhone, float $newRestaurantStarRating, string $newRestaurantUrl) {
 		try {
 			$this->setRestaurantId($newRestaurantId);
@@ -152,10 +153,21 @@ class Restaurant {
 	}
 
 	/**
-	 * @param string $restaurantAddress
+	 * mutator method for restaurantAddress
+	 * @param string $newRestaurantAddress
 	 */
-	public function setRestaurantAddress(string $restaurantAddress): void {
-		$this->restaurantAddress = $restaurantAddress;
+	public function setRestaurantAddress(string $newRestaurantAddress): void {
+		$newRestaurantAddress = trim($newRestaurantAddress);
+		$newRestaurantAddress = filter_var($newRestaurantAddress, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newRestaurantAddress) === true) {
+			throw(new \InvalidArgumentException("Address is empty or insecure"));
+		}
+
+		// verify the Todo Author will fit in the database
+		if(strlen($newRestaurantAddress) > 25) {
+			throw(new \RangeException("Address is too large"));
+		}
+		$this->restaurantAddress = $newRestaurantAddress;
 	}
 
 	/**
@@ -172,7 +184,8 @@ class Restaurant {
 	 *
 	 * @param string $newRestaurantAvatar
 	 */
-	public function setRestaurantAvatar(?string $newRestaurantAvatar): void {
+	public function setRestaurantAvatar(string $newRestaurantAvatar): void {
+
 		$this->restaurantAvatar = $newRestaurantAvatar;
 	}
 
@@ -187,10 +200,10 @@ class Restaurant {
 
 	/**
 	 * mutator method for restaurantFoodType
-	 * @param string $restaurantFoodType
+	 * @param string $newRestaurantFoodType
 	 */
-	public function setRestaurantFoodType(string $restaurantFoodType): void {
-		$this->restaurantFoodType = $restaurantFoodType;
+	public function setRestaurantFoodType(string $newRestaurantFoodType): void {
+		$this->restaurantFoodType = $newRestaurantFoodType;
 	}
 
 	/**
@@ -205,10 +218,10 @@ class Restaurant {
 	/**
 	 * mutator method for restaurantLat
 	 *
-	 * @param float $restaurantLat
+	 * @param float $newRestaurantLat
 	 */
-	public function setRestaurantLat(float $restaurantLat): void {
-		$this->restaurantLat = $restaurantLat;
+	public function setRestaurantLat(float $newRestaurantLat): void {
+		$this->restaurantLat = $newRestaurantLat;
 	}
 
 	/**
@@ -223,10 +236,10 @@ class Restaurant {
 	/**
 	 * mutator method for restaurantLng
 	 *
-	 * @param float $restaurantLng
+	 * @param float $newRestaurantLng
 	 */
-	public function setRestaurantLng(float $restaurantLng): void {
-		$this->restaurantLng = $restaurantLng;
+	public function setRestaurantLng(float $newRestaurantLng): void {
+		$this->restaurantLng = $newRestaurantLng;
 	}
 
 	/**
@@ -241,10 +254,20 @@ class Restaurant {
 	/**
 	 * mutator method for restaurantName
 	 *
-	 * @param string $restaurantName
+	 * @param string $newRestaurantName
 	 */
-	public function setRestaurantName(string $restaurantName): void {
-		$this->restaurantName = $restaurantName;
+	public function setRestaurantName(string $newRestaurantName): void {
+		$newRestaurantPhone = trim($newRestaurantName);
+		$newRestaurantPhone = filter_var($newRestaurantName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newRestaurantName) === true) {
+			throw(new \InvalidArgumentException("Restaurant Name is empty or insecure"));
+		}
+
+		// verify the Todo Author will fit in the database
+		if(strlen($newRestaurantPhone) > 25) {
+			throw(new \RangeException("Restaurant Name is too large"));
+		}
+		$this->restaurantName = $newRestaurantName;
 	}
 
 	/**
@@ -259,10 +282,20 @@ class Restaurant {
 	/**
 	 * mutator method for restaurantPhone
 	 *
-	 * @param string $restaurantPhone
+	 * @param string $newRestaurantPhone
 	 */
-	public function setRestaurantPhone(string $restaurantPhone): void {
-		$this->restaurantPhone = $restaurantPhone;
+	public function setRestaurantPhone(string $newRestaurantPhone): void {
+		$newRestaurantPhone = trim($newRestaurantPhone);
+		$newRestaurantPhone = filter_var($newRestaurantPhone, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newRestaurantPhone) === true) {
+			throw(new \InvalidArgumentException("Restaurant Phone is empty or insecure"));
+		}
+
+		// verify the Todo Author will fit in the database
+		if(strlen($newRestaurantPhone) > 14) {
+			throw(new \RangeException("Restaurant Phone Number is too large"));
+		}
+		$this->restaurantPhone = $newRestaurantPhone;
 	}
 
 	/**
@@ -277,10 +310,10 @@ class Restaurant {
 	/**
 	 * mutator method for restaurantStarRating
 	 *
-	 * @param float $restaurantStarRating
+	 * @param float $newRestaurantStarRating
 	 */
-	public function setRestaurantStarRating(float $restaurantStarRating): void {
-		$this->restaurantStarRating = $restaurantStarRating;
+	public function setRestaurantStarRating(float $newRestaurantStarRating): void {
+		$this->restaurantStarRating = $newRestaurantStarRating;
 	}
 
 	/**
@@ -295,9 +328,21 @@ class Restaurant {
 	/**
 	 * mutator method for restaurantUrl
 	 *
-	 * @param string $restaurantUrl
+	 * @param string $newRestaurantUrl
 	 */
-	public function setRestaurantUrl(string $restaurantUrl): void {
-		$this->restaurantUrl = $restaurantUrl;
+	public function setRestaurantUrl(string $newRestaurantUrl): void {
+
+		$newRestaurantUrl = trim($newRestaurantUrl);
+		$newRestaurantUrl = filter_var($newRestaurantUrl, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		try {
+			// verify the avatar URL will fit in the database
+			if(strlen($newRestaurantUrl) > 255) {
+				throw(new \RangeException("url too long, must be less than 250 characters"));
+			}
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		$this->restaurantUrl = $newRestaurantUrl;
 	}
 }
