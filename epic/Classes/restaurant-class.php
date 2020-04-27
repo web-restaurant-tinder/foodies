@@ -363,4 +363,15 @@ class Restaurant {
 		$parameters = ["restaurantId"=>$this->restaurantId->getBytes(), "restaurantAddress"=> $this->restaurantAddress, "restaurantAvatar"=> $this->restaurantAvatar, "restaurantFoodType"=> $this->restaurantFoodType, "restaurantLat"=> $this->restaurantLat, "restaurantLng"=> $this->restaurantLng, "restaurantName"=> $this->restaurantName, "restaurantPhone"=> $this->restaurantPhone, "restaurantStarRating"=> $this->restaurantStarRating, "restaurantUrl"=> $this->restaurantUrl,];
 		$statement->execute($parameters);
 	}
+
+	public function delete(\PDO $pdo): void {
+
+		// create query template
+		$query = "DELETE FROM restaurant WHERE restaurantId = :restaurantId";
+		$statement = $pdo->prepare($query);
+
+		// bind the member variables to the place holder in the template
+		$parameters = ["restaurantId" => $this->restaurantId()->getBytes()];
+		$statement->execute($parameters);
+	}
 }
