@@ -397,4 +397,47 @@ class Restaurant {
 
 		$statement->execute($parameters);
 	}
+
+	/**
+	 * get authorByAuthorId from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param Uuid|string $restaurantId restaurant Id
+	 * @return Restaurant|null Restaurant found or null if not found
+	 * @throws \PDOException when my SQL related
+	 * @throws \TypeError when a variable are not the correct data type
+	 * @throws \InvalidArgumentException if data types are not valid
+	 * @throws \RangeException if restaurant Id is out of range
+	 */
+
+	public static function getRestaurantByRestaurantId(\PDO $pdo, $restaurantId) : ?Restaurant {
+		// sanitize the authorId before searching
+		try {
+			$authorId = self::validateUuid($restaurantId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+
+		// create query template
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantId = :restaurantId";
+		$statement = $pdo->prepare($query);
+
+		// bind the author id to the place holder in the template
+		$parameters = ["restaurantId" => $restaurantId->getBytes()];
+		$statement->execute($parameters);
+
+		// grab the author from mySQL
+		try {
+			$restaurant = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$restaurant = new Restaurant($row["restaurantId"], $row["restaurantAddress"], $row["restaurantAvatar"], $row["restaurantFoodType"], $row["restaurantLat"], $row["restaurantLng"], $row["restaurantName"], $row["restaurantPhone"], $row["restaurantStarRating"], $row["restaurantUrl"]);
+			}
+		} catch(\Exception $exception) {
+			// if the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($restaurant);
+	}
 }
