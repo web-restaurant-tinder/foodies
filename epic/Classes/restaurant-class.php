@@ -538,4 +538,5 @@ class Restaurant {
 		}
 		return($restaurants);
 	}
+
 }
