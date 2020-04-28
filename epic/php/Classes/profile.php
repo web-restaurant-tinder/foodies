@@ -550,7 +550,7 @@ class Profile implements \JsonSerializable{
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileFirstName AND profileLastName LIKE :profileFirstName, :profileLastName";
 		$statement = $pdo->prepare($query);
 
-		// bind the profile First and Last name to the place holder in the template
+		// bind the profile First and Last name  to the place holder in the template
 		$parameters = ["profileFirstName" => $profileFirstName, "profileLastName" => $profileLastName];
 		$statement->execute($parameters);
 
