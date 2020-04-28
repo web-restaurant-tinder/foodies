@@ -528,25 +528,30 @@ class Profile implements \JsonSerializable{
 	 * gets the Profile by first and last name
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param string $profileFirstName first name to search for
+	 * @param string $profileFirstName $profileLastName first name to search for
 	 * @return \SPLFixedArray of all profiles found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
-	public static function getProfileByProfileFirstNameAndProfileLastName(\PDO $pdo, string $profileFirstName) : \SPLFixedArray {
-		// sanitize the at name before searching
+	public static function getProfileByProfileFirstNameAndProfileLastName(\PDO $pdo, string $profileFirstName, string $profileLastName) : \SPLFixedArray {
+		// sanitize the string before searching
 		$profileFirstName = trim($profileFirstName);
 		$profileFirstName = filter_var($profileFirstName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($profileFirstName) === true) {
-			throw(new \PDOException("not valid"));
+			throw(new \PDOException("name not valid"));
+		}
+		$profileLastName = trim($profileLastName);
+		$profileLastName = filter_var($profileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($profileLastName === true) {
+			throw(new \PDOException("name not valid"));
 		}
 
 		// create query template
-		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileUsername LIKE :profileUsername";
+		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileFirstName AND profileLastName LIKE :profileFirstName, :profileLastName";
 		$statement = $pdo->prepare($query);
 
 		// bind the profile First Name to the place holder in the template
-		$parameters = ["profileFirstName" => $profileFirstName];
+		$parameters = ["profileFirstName" => $profileFirstName, "profileLastName" => $profileLastName];
 		$statement->execute($parameters);
 
 
