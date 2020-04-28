@@ -193,6 +193,37 @@ class Follow implements \JsonSerializable {
 
     }
 
+    public static function getFollowByFollowProfileId(\PDO $pdo, $followProfileId) : ?Follow {
+        //sanitize the followProfileId before searching
+        try {
+            $followProfileId = self::validateUuid($followProfileId);
+        } catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+            throw(new \PDOException($exception->getMessage(),0, $exception));
+        }
+
+        //create query table
+        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE follow = followProfileId ";
+        $statement = $pdo->prepare($query);
+
+        //bind follow id to the place holder in the template
+        $parameters = ["followProfileId" => $followProfileId->getBytes()];
+        $statement->execute($parameters);
+
+        //grab the follow id from mySQL
+        try {
+            $follow = null;
+            $statement->setFetchMode(\PDO::FETCH_ASSOC);
+            $row = $statement->fetch();
+            if($row !== false) {
+                $follow = new Follow($row["followProfileId"], $row["followFollowedProfileId"], $row[followDate]);
+            }
+        } catch (\Exception $exception) {
+            //if the row could not be converted, rethrow it
+            throw(new \PDOException($exception->getMessage(),0,$exception));
+        }
+        return ($follow);
+    }
+
     /**
      * formats the state variables for JSON serialization
      *
