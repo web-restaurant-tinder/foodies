@@ -5,8 +5,8 @@ namespace Sararendon01\TinderRestaurant;
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
-use NortizCode\ObjectOriented\ValidateDate;
-use NortizCode\ObjectOriented\ValidateUuid;
+use Sararendon01\TinderRestaurant\ValidateDate;
+use Sararendon01\TinderRestaurant\ValidateUuid;
 use Ramsey\Uuid\Uuid;
 
 /**
