@@ -538,5 +538,38 @@ class Restaurant {
 		}
 		return($restaurants);
 	}
+	/**
+	 * gets the restaurant by distance
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param float $restaurantLat latitude coordinate of where restaurant is
+	 * @param float $restaurantLng longitude coordinate of where restaurant is
+	 * @param float $distance distance in miles that the restaurant is searching by
+	 * @return \SplFixedArray SplFixedArray of pieces of restaurant found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 * **/
+	public static function getRestaurantByDistance(\PDO $pdo, float $restaurantLng, float $restaurantLat, float $distance) : \SplFixedArray {
+		// create query template
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl  FROM restaurant WHERE haversine(:restaurantLng, :restaurantLat, restaurantLng, restaurantLat) < :distance";
+		$statement = $pdo->prepare($query);
+		// bind the restaurant distance to the place holder in the template
+		$parameters = ["distance" => $distance, "restaurantLat" => $restaurantLat, "restaurantLng" => $restaurantLng];
+		$statement->execute($parameters);
+		// build an array of restaurant
+		$restaurants = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$restaurant = new Restaurant($row["restaurantId"], $row["restaurantAddress"], $row["restaurantAvatar"], $row["restaurantFoodType"], $row["restaurantLat"], $row["restaurantLng"], $row["restaurantName"], $row["restaurantPhone"], $row["restaurantStarRating"], $row["restaurantUrl"]);
+				$restaurants[$restaurants->key()] = $restaurant;
+				$restaurants->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($restaurants);
+	}
 
 }
