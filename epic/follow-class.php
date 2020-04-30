@@ -171,7 +171,7 @@ class Follow implements \JsonSerializable {
      */
     public function delete(\PDO $pdo) : void {
         //create query template
-        $query = "DELETE FROM tweet WHERE followProfileId = :followProfileId";
+        $query = "DELETE FROM follow WHERE followProfileId = :followProfileId";
         $statement = $pdo->prepare($query);
 
         //bind the member variables to the place holder in the template
