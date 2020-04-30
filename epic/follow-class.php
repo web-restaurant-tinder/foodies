@@ -69,11 +69,11 @@ class Follow implements \JsonSerializable {
     /**
      *mutator method for follow followed profile id
      *
-     * @param mixed $followFollowedProfileId
+     * @param mixed $newFollowFollowedProfileId
      * @throws \RangeException if $newFollowFollowedProfileId is not positive
      * @throws \TypeError if $newFollowFollowedProfileId is not an integer
      */
-    public function setFollowFollowedProfileId($followFollowedProfileId): void{
+    public function setFollowFollowedProfileId($newFollowFollowedProfileId): void{
         try {
             $uuid = self::validateUuid($newFollowFollowedProfileId);
         } catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
@@ -94,11 +94,11 @@ class Follow implements \JsonSerializable {
     /**
      * mutator method for follow profile id
      *
-     * @param Uuid|string $newFollowProfileId new value of follow profile id
+     * @param string | Uuid $newFollowProfileId new value of follow profile id
      * @throws \RangeException if $newFollowProfileId is not positive
-     * @throws \TypeError if $newFollowProileId is not uuid or string
+     * @throws \TypeError if $newFollowProfileId is not uuid or string
      */
-    public function setFollowProfileId($newFollowProfileId) : void {
+    public function setFollowProfileId( $newFollowProfileId ) : void {
         try {
             uuid = self::validateUuid($newFollowProfileId);
         } catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
