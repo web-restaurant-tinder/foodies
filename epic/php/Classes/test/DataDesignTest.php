@@ -1,5 +1,5 @@
 <?php
-namespace Nortizcode\foodies\Test;
+namespace WebRestaurantTinder\Foodies;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;

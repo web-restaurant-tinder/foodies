@@ -1,12 +1,12 @@
 <?php
 
-namespace Nortizcode\foodies;
+namespace WebRestaurantTinder\Foodies;
 
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
-use NortizCode\ObjectOriented\ValidateDate;
-use NortizCode\ObjectOriented\ValidateUuid;
+use WebRestaurantTinder\Foodies\ValidateDate;
+use WebRestaurantTinder\Foodies\ValidateUuid;
 use Ramsey\Uuid\Uuid;
 
 
@@ -86,6 +86,10 @@ class Profile implements \JsonSerializable{
 
 	}
 
+
+
+
+
 	public function getProfileAvatarCloudinaryId(): string {
 		return ($this->profileAvatarCloudinaryId);
 	}
@@ -109,8 +113,11 @@ class Profile implements \JsonSerializable{
 	}
 
 
-	public function getProfileAvatarCloudinaryIdl(): string {
-		return ($this->profileAvatarCloudinaryId);
+
+
+
+	public function getProfileAvatarUrl(): string {
+		return ($this->profileAvatarUrl);
 	}
 
 	/**
@@ -128,9 +135,9 @@ class Profile implements \JsonSerializable{
 
 		// verify the avatar URL will fit in the database
 		if(strlen($newProfileAvatarUrl) > 255) {
-			throw(new \RangeException("image cloudinary content too large"));
+			throw(new \RangeException("image content too large"));
 		}
-		// store the image cloudinary content
+		// store the image content
 		$this->profileAvatarUrl = $newProfileAvatarUrl;
 	}
 
@@ -315,7 +322,7 @@ class Profile implements \JsonSerializable{
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the place holders in the template
-		$parameters = ["profileId" => $this->profileId->getBytes(), "profileActivationToken" => $this->profileActivationToken, "profileAvatarCloudinaryId" => $this->profileAvatarCloudinaryId, "profileAvatarUrl" => $this->profileAvatarUrl,  "profileEmail" => $this->profileEmail, "profileFirstName" => $this->profileFirstName, "profileHash" => $this->profileHash, "profileLastName" => $this->profileLastName, "profileUsername" => $this->profileUserName->getBytes()];
+		$parameters = ["profileId" => $this->profileId->getBytes(), "profileActivationToken" => $this->profileActivationToken, "profileAvatarCloudinaryId" => $this->profileAvatarCloudinaryId, "profileAvatarUrl" => $this->profileAvatarUrl,  "profileEmail" => $this->profileEmail, "profileFirstName" => $this->profileFirstName, "profileHash" => $this->profileHash, "profileLastName" => $this->profileLastName, "profileUsername" => $this->profileUserName];
 		$statement->execute($parameters);
 	}
 

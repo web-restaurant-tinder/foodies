@@ -1,5 +1,5 @@
 <?php
-namespace NortizCode\ObjectOriented;
+namespace WebRestaurantTinder\Foodies;
 /**
  * Trait to Validate a mySQL Date
  *

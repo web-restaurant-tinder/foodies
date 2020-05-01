@@ -1,7 +1,7 @@
 <?php
-namespace Nortizcode\foodies\Test;
+namespace WebRestaurantTinder\Foodies;
 
-use Nortizcode\foodies\Profile;
+use WebRestaurantTinder\Foodies\Profile;
 
 //TODO remember to add this to my Test class!!!!
 //Hack!!! - added so this class could see DataDesignTest
