@@ -1,5 +1,5 @@
 <?php
-namespace NortizCode\ObjectOriented;
+namespace CNewsome2\Foodies;
 /**
  * Trait to Validate a mySQL Date
  *

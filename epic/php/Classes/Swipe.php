@@ -78,7 +78,7 @@ class Swipe implements \JsonSerializable
 	 */
 	public function getSwipeRestaurantId(): ?string
 	{
-		return $this->SwipeRestaurantId;
+		return $this->swipeRestaurantId;
 	}
 
 	/**
@@ -112,7 +112,7 @@ class Swipe implements \JsonSerializable
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 
-		$this->SwipeRestaurantId = $newSwipeRestaurantId;
+		$this->swipeRestaurantId = $newSwipeRestaurantId;
 	}
 
 	/**
