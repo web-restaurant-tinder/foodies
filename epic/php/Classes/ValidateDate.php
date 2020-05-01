@@ -1,5 +1,5 @@
 <?php
-namespace CNewsome2\Foodies;
+
 /**
  * Trait to Validate a mySQL Date
  *
