@@ -246,7 +246,6 @@ class Follow implements \JsonSerializable {
 
         $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes()];
         $statement->execute($parameters);
-
         try {
             $follow = null;
             $statement->setFetchMode(\PDO::FETCH_ASSOC);
