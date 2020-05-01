@@ -225,6 +225,81 @@ class Follow implements \JsonSerializable {
     }
 
     /**
+     * gets followed count by followProfileId
+     *
+     * @param \PDO $pdo PDO connection object
+     * @param Uuid|string $followFollowedProfileId profile id to search for
+     * @return Follow|null Follow found or null if not found
+     * @throws \PDOException when mySQL related errors occur
+     * @throws \TypeError when a variable is not the correct data type
+     */
+    public static function getFollowCountByFollowFollowedProfileId(\PDO $pdo, $followFollowedProfileId) : ?Follow {
+        //sanitize the followFollowedProfileId before searching
+        try {
+            $profileId = self::vaidateUuid($followFollowedProfileId);
+        } catch (\InvalidArgumentException | \RangeException | \TypeError $exception) {
+            throw (new \PDOException($exception->getMessage(), 0, $exception));
+        }
+
+        $query = "SELECT followProfileId, followFollowedProfileId, followDate FROM WHERE followProfileId = :followProfileId";
+        $statement = $pdo->prepare($query);
+
+        $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes()];
+        $statement->execute($parameters);
+
+        try {
+            $follow = null;
+            $statement->setFetchMode(\PDO::FETCH_ASSOC);
+            $row = $statement->fetch();
+            if($row !== false) {
+                $follow = new Follow($row["followProfileId"], $row["followFollowedProfileId"], $row["followDate"]);
+            }
+        } catch (\Exception $exception) {
+
+            throw (new \PDOException($exception->getMessage(), 0, $exception));
+        }
+        return($follow);
+    }
+
+    /**
+     * gets follow count by followProfileId
+     *
+     * @param \PDO $pdo PDO connection object
+     * @param Uuid|string $followProfileId profile id to search for
+     * @return Follow|null Follow found or null if not found
+     * @throws \PDOException when mySQL related errors occur
+     * @throws \TypeError when a variable is not the correct data type
+     */
+    public static function getFollowCountByFollowProfileId(\PDO $pdo, $followProfileId) : ?Follow {
+        //sanitize the followProfileId before searching
+        try {
+            $followProfileId = self::vaidateUuid($followProfileId);
+        } catch (\InvalidArgumentException | \RangeException | \TypeError $exception) {
+            throw (new \PDOException($exception->getMessage(), 0, $exception));
+        }
+
+        $query = "SELECT followProfileId, followFollowedProfileId, followDate FROM WHERE followProfileId = :followProfileId";
+        $statement = $pdo->prepare($query);
+
+        $parameters = ["followProfileId" => $followProfileId->getBytes()];
+        $statement->execute($parameters);
+
+        try {
+            $follow = null;
+            $statement->setFetchMode(\PDO::FETCH_ASSOC);
+            $row = $statement->fetch();
+            if($row !== false) {
+                $follow = new Follow($row["followProfileId"], $row["followFollowedProfileId"], $row["followDate"]);
+            }
+        } catch (\Exception $exception) {
+
+            throw (new \PDOException($exception->getMessage(), 0, $exception));
+        }
+        return($follow);
+    }
+
+
+    /**
      * formats the state variables for JSON serialization
      *
      * @return array resulting state variables to serialize
