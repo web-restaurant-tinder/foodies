@@ -20,7 +20,7 @@ class Extensions_Database_DataSet_FilterTest extends TestCase
     public function setUp(): void
     {
         $this->expectedDataSet = new FlatXmlDataSet(
-            __DIR__ . '/../_files/XmlDataSets/FilteredTestFixture.xml'
+			  __DIR__ . '/../_files/XmlDataSets/FilteredTestFixture.xml'
         );
     }
 
@@ -28,7 +28,7 @@ class Extensions_Database_DataSet_FilterTest extends TestCase
     {
         $constraint = new DataSetIsEqual($this->expectedDataSet);
         $dataSet    = new FlatXmlDataSet(
-            __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
+			  __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
         );
 
         $filteredDataSet = new Filter($dataSet, [
@@ -44,7 +44,7 @@ class Extensions_Database_DataSet_FilterTest extends TestCase
     {
         $constraint = new DataSetIsEqual($this->expectedDataSet);
         $dataSet    = new FlatXmlDataSet(
-            __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
+			  __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
         );
 
         $filteredDataSet = new Filter($dataSet);
@@ -60,7 +60,7 @@ class Extensions_Database_DataSet_FilterTest extends TestCase
     {
         $constraint = new DataSetIsEqual($this->expectedDataSet);
         $dataSet    = new FlatXmlDataSet(
-            __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
+			  __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
         );
 
         $filteredDataSet = new Filter($dataSet);
@@ -76,7 +76,7 @@ class Extensions_Database_DataSet_FilterTest extends TestCase
     {
         $constraint = new DataSetIsEqual($this->expectedDataSet);
         $dataSet    = new FlatXmlDataSet(
-            __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
+			  __DIR__ . '/../_files/XmlDataSets/FilteredTestComparison.xml'
         );
 
         $filteredDataSet = new Filter($dataSet);
