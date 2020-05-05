@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Claim;
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Claim\Factory::__construct
      */
@@ -22,7 +22,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $callback = function () {
         };
-        $factory = new Factory(['test' => $callback]);
+        $factory = new Factory(['Test' => $callback]);
 
         $expected = [
             'iat' => [$factory, 'createLesserOrEqualsTo'],
@@ -32,14 +32,14 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
             'aud' => [$factory, 'createEqualsTo'],
             'sub' => [$factory, 'createEqualsTo'],
             'jti' => [$factory, 'createEqualsTo'],
-            'test' => $callback
+            'Test' => $callback
         ];
 
         $this->assertAttributeEquals($expected, 'callbacks', $factory);
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -55,7 +55,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -71,7 +71,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -87,7 +87,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -103,7 +103,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -119,7 +119,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -135,7 +135,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -151,7 +151,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Factory::__construct
      * @uses Lcobucci\JWT\Claim\Basic::__construct
@@ -163,6 +163,6 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $claim = new Factory();
 
-        $this->assertInstanceOf(Basic::class, $claim->create('test', 1));
+        $this->assertInstanceOf(Basic::class, $claim->create('Test', 1));
     }
 }

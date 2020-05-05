@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestResult;
 use PHPUnit\Framework\TestSuite;
 
 /**
- * @group test-reorder
+ * @group Test-reorder
  */
 class ResultCacheExtensionTest extends TestCase
 {

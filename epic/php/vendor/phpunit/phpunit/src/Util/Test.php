@@ -152,7 +152,7 @@ final class Test
     }
 
     /**
-     * Returns the requirements for a test.
+     * Returns the requirements for a Test.
      *
      * @throws Warning
      */
@@ -230,7 +230,7 @@ final class Test
     }
 
     /**
-     * Returns the missing requirements for a test.
+     * Returns the missing requirements for a Test.
      *
      * @throws Warning
      *
@@ -341,7 +341,7 @@ final class Test
     }
 
     /**
-     * Returns the expected exception for a test.
+     * Returns the expected exception for a Test.
      *
      * @return array|false
      */

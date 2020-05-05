@@ -24,7 +24,7 @@ use ReflectionClass;
 use SebastianBergmann\Comparator\ComparisonFailure;
 
 /**
- * A TestListener that generates a logfile of the test execution using the
+ * A TestListener that generates a logfile of the Test execution using the
  * TeamCity format (for use with PhpStorm, for instance).
  */
 class TeamCity extends ResultPrinter
@@ -128,7 +128,7 @@ class TeamCity extends ResultPrinter
     }
 
     /**
-     * Incomplete test.
+     * Incomplete Test.
      */
     public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
     {
@@ -136,7 +136,7 @@ class TeamCity extends ResultPrinter
     }
 
     /**
-     * Risky test.
+     * Risky Test.
      *
      * @throws \InvalidArgumentException
      */
@@ -146,7 +146,7 @@ class TeamCity extends ResultPrinter
     }
 
     /**
-     * Skipped test.
+     * Skipped Test.
      *
      * @throws \ReflectionException
      */
@@ -247,7 +247,7 @@ class TeamCity extends ResultPrinter
     }
 
     /**
-     * A test started.
+     * A Test started.
      *
      * @throws \ReflectionException
      */
@@ -267,7 +267,7 @@ class TeamCity extends ResultPrinter
     }
 
     /**
-     * A test ended.
+     * A Test ended.
      */
     public function endTest(Test $test, float $time): void
     {

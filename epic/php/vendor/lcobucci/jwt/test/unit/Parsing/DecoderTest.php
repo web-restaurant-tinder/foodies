@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Parsing;
 class DecoderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Parsing\Decoder::jsonDecode
      */
@@ -23,13 +23,13 @@ class DecoderTest extends \PHPUnit_Framework_TestCase
         $decoder = new Decoder();
 
         $this->assertEquals(
-            (object) ['test' => 'test'],
-            $decoder->jsonDecode('{"test":"test"}')
+            (object) ['Test' => 'Test'],
+            $decoder->jsonDecode('{"Test":"Test"}')
         );
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Parsing\Decoder::jsonDecode
      *
@@ -38,11 +38,11 @@ class DecoderTest extends \PHPUnit_Framework_TestCase
     public function jsonDecodeMustRaiseExceptionWhenAnErrorHasOccured()
     {
         $decoder = new Decoder();
-        $decoder->jsonDecode('{"test":\'test\'}');
+        $decoder->jsonDecode('{"Test":\'Test\'}');
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Parsing\Decoder::base64UrlDecode
      */

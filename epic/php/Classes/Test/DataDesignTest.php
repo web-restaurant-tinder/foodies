@@ -1,5 +1,5 @@
 <?php
-namespace WebRestaurantTinder\Foodies;
+namespace WebRestaurantTinder\Foodies\Test;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;
@@ -47,12 +47,15 @@ abstract class DataDesignTest extends TestCase {
 
 		// add all the tables for the project here
 		// THESE TABLES *MUST* BE LISTED IN THE SAME ORDER THEY WERE CREATED!!!!
-		$dataset->addTable("author");
+		$dataset->addTable("profile");
+		$dataset->addTable("restaurant");
+		$dataset->addTable("follow");
+		$dataset->addTable("swipe");
 		return($dataset);
 	}
 
 	/**
-	 * templates the setUp method that runs before each test; this method expunges the database before each run
+	 * templates the setUp method that runs before each Test; this method expunges the database before each run
 	 *
 	 * @see https://phpunit.de/manual/current/en/fixtures.html#fixtures.more-setup-than-teardown PHPUnit Fixtures: setUp and tearDown
 	 * @see https://github.com/sebastianbergmann/dbunit/issues/37 TRUNCATE fails on tables which have foreign key constraints
@@ -66,7 +69,7 @@ abstract class DataDesignTest extends TestCase {
 	}
 
 	/**
-	 * templates the tearDown method that runs after each test; this method expunges the database after each run
+	 * templates the tearDown method that runs after each Test; this method expunges the database after each run
 	 *
 	 * @return Operation delete command for the database
 	 **/
@@ -86,7 +89,7 @@ abstract class DataDesignTest extends TestCase {
 			// connect to mySQL and provide the interface to PHPUnit
 
 			//TODO: fix the namespace on Secrets
-			$secrets =  new \Secrets("/etc/apache2/capstone-mysql/cohort28/cohort28testing.ini");
+			$secrets =  new \Secrets("/etc/apache2/capstone-mysql/cohort28/foodies.ini");
 			$pdo = $secrets->getPdoObject();
 			$this->connection = $this->createDefaultDBConnection($pdo, $secrets->getDatabase());
 		}

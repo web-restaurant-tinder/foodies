@@ -9,7 +9,7 @@ class Swift_Bug534Test extends \SwiftMailerTestCase
         $message = (new Swift_Message())
             ->setFrom('from@example.com')
             ->setTo('to@example.com')
-            ->setSubject('test')
+            ->setSubject('Test')
         ;
         $cid = $message->embed(Swift_Image::fromPath(__DIR__.'/../../_samples/files/swiftmailer.png'));
         $message->setBody('<img src="'.$cid.'" />', 'text/html');

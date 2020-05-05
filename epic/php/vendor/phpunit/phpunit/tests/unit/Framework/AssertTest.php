@@ -110,7 +110,7 @@ class AssertTest extends TestCase
 
     public function testAssertContainsEmptyStringInString(): void
     {
-        $this->assertContains('', 'test');
+        $this->assertContains('', 'Test');
     }
 
     public function testAssertStringContainsNonString(): void

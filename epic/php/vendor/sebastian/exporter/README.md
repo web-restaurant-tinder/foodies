@@ -20,7 +20,7 @@ Exception Object &0000000078de0f0d000000002003a261 (
     'message' => ''
     'string' => ''
     'code' => 0
-    'file' => '/home/sebastianbergmann/test.php'
+    'file' => '/home/sebastianbergmann/Test.php'
     'line' => 34
     'previous' => null
 )

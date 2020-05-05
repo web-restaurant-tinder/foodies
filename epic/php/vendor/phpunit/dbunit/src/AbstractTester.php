@@ -60,7 +60,7 @@ abstract class AbstractTester implements Tester
     }
 
     /**
-     * Returns the test dataset.
+     * Returns the Test dataset.
      *
      * @return IDataSet
      */
@@ -86,7 +86,7 @@ abstract class AbstractTester implements Tester
     }
 
     /**
-     * Sets the test dataset to use.
+     * Sets the Test dataset to use.
      *
      * @param IDataSet $dataSet
      */
@@ -106,7 +106,7 @@ abstract class AbstractTester implements Tester
     }
 
     /**
-     * Sets the DatabaseOperation to call when starting the test.
+     * Sets the DatabaseOperation to call when starting the Test.
      *
      * @param Operation $setUpOperation
      */
@@ -116,7 +116,7 @@ abstract class AbstractTester implements Tester
     }
 
     /**
-     * Sets the DatabaseOperation to call when ending the test.
+     * Sets the DatabaseOperation to call when ending the Test.
      *
      * @param Operation $tearDownOperation
      */
@@ -136,7 +136,7 @@ abstract class AbstractTester implements Tester
     }
 
     /**
-     * Returns the database operation that will be called when starting the test.
+     * Returns the database operation that will be called when starting the Test.
      *
      * @return Operation
      */
@@ -146,7 +146,7 @@ abstract class AbstractTester implements Tester
     }
 
     /**
-     * Returns the database operation that will be called when ending the test.
+     * Returns the database operation that will be called when ending the Test.
      *
      * @return Operation
      */

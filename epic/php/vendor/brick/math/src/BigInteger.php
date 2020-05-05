@@ -721,14 +721,14 @@ final class BigInteger extends BigNumber
      *
      * Computes ((this & (1<<n)) != 0).
      *
-     * @param int $n The bit to test, 0-based.
+     * @param int $n The bit to Test, 0-based.
      *
      * @return bool
      */
     public function testBit(int $n) : bool
     {
         if ($n < 0) {
-            throw new \InvalidArgumentException('The bit to test cannot be negative.');
+            throw new \InvalidArgumentException('The bit to Test cannot be negative.');
         }
 
         return $this->shiftedRight($n)->isOdd();

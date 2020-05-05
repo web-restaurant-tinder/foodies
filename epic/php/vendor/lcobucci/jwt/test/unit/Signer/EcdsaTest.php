@@ -76,7 +76,7 @@ class EcdsaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Signer\Ecdsa::__construct
      */
@@ -90,7 +90,7 @@ class EcdsaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -139,7 +139,7 @@ class EcdsaTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa::__construct
      * @uses Lcobucci\JWT\Signer\Key

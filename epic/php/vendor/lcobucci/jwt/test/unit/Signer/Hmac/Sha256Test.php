@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Signer\Hmac;
 class Sha256Test extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Signer\Hmac\Sha256::getAlgorithmId
      */
@@ -26,7 +26,7 @@ class Sha256Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Signer\Hmac\Sha256::getAlgorithm
      */

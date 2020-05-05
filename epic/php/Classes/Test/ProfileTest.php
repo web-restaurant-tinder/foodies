@@ -1,5 +1,5 @@
 <?php
-namespace WebRestaurantTinder\Foodies;
+namespace WebRestaurantTinder\Foodies\Test;
 
 use WebRestaurantTinder\Foodies\Profile;
 
@@ -30,7 +30,7 @@ class ProfileTest extends DataDesignTest {
 	}
 
 	public function testInsertValidAuthor() : void {
-		//get count of author records in db before we run the test.
+		//get count of author records in db before we run the Test.
 		$numRows = $this->getConnection()->getRowCount("author");
 
 		//insert an author record in the db
@@ -55,7 +55,7 @@ class ProfileTest extends DataDesignTest {
 	}
 
 	public function testUpdateValidProfile() : void {
-		//get count of author records in db before we run the test.
+		//get count of author records in db before we run the Test.
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		//insert an author record in the db
@@ -86,7 +86,7 @@ class ProfileTest extends DataDesignTest {
 
 	public function testDeleteValidProfile() : void {
 
-		//get count of author records in db before we run the test.
+		//get count of author records in db before we run the Test.
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		$rowsInserted = 2;

@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Parsing;
 class EncoderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Parsing\Encoder::jsonEncode
      */
@@ -22,11 +22,11 @@ class EncoderTest extends \PHPUnit_Framework_TestCase
     {
         $encoder = new Encoder();
 
-        $this->assertEquals('{"test":"test"}', $encoder->jsonEncode(['test' => 'test']));
+        $this->assertEquals('{"Test":"Test"}', $encoder->jsonEncode(['Test' => 'Test']));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Parsing\Encoder::jsonEncode
      *
@@ -39,7 +39,7 @@ class EncoderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Parsing\Encoder::base64UrlEncode
      */

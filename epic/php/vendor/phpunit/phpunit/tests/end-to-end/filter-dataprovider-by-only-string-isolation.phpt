@@ -5,7 +5,7 @@ phpunit --process-isolation --filter @false\ test DataProviderFilterTest ../../_
 $_SERVER['argv'][1] = '--no-configuration';
 $_SERVER['argv'][2] = '--process-isolation';
 $_SERVER['argv'][3] = '--filter';
-$_SERVER['argv'][4] = '@false test';
+$_SERVER['argv'][4] = '@false Test';
 $_SERVER['argv'][5] = 'DataProviderFilterTest';
 $_SERVER['argv'][6] = __DIR__ . '/../_files/DataProviderFilterTest.php';
 

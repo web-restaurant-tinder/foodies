@@ -16,7 +16,7 @@ use Lcobucci\JWT\ValidationData;
 class LesserOrEqualsToTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -33,7 +33,7 @@ class LesserOrEqualsToTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -56,7 +56,7 @@ class LesserOrEqualsToTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -79,7 +79,7 @@ class LesserOrEqualsToTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName

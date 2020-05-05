@@ -18,21 +18,21 @@ class DefaultDatabaseConnectionTest extends TestCase
     {
         $this->db = new PDO('sqlite::memory:');
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->db->exec('CREATE TABLE test (field1 VARCHAR(100))');
+        $this->db->exec('CREATE TABLE Test (field1 VARCHAR(100))');
     }
 
     public function testRowCountForEmptyTableReturnsZero(): void
     {
         $conn = new DefaultConnection($this->db);
-        $this->assertEquals(0, $conn->getRowCount('test'));
+        $this->assertEquals(0, $conn->getRowCount('Test'));
     }
 
     public function testRowCountForTableWithTwoRowsReturnsTwo(): void
     {
-        $this->db->exec('INSERT INTO test (field1) VALUES (\'foobar\')');
-        $this->db->exec('INSERT INTO test (field1) VALUES (\'foobarbaz\')');
+        $this->db->exec('INSERT INTO Test (field1) VALUES (\'foobar\')');
+        $this->db->exec('INSERT INTO Test (field1) VALUES (\'foobarbaz\')');
 
         $conn = new DefaultConnection($this->db);
-        $this->assertEquals(2, $conn->getRowCount('test'));
+        $this->assertEquals(2, $conn->getRowCount('Test'));
     }
 }

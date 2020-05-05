@@ -41,7 +41,7 @@ class DependencyFailureTest extends TestCase
     }
 
     /**
-     * This test has been added to check the printed warnings for the user
+     * This Test has been added to check the printed warnings for the user
      * when a dependency simply doesn't exist.
      *
      * @depends doesNotExist

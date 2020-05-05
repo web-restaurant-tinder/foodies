@@ -15,7 +15,7 @@ namespace PHPUnit\Framework;
 final class TestSuiteIteratorTest extends TestCase
 {
     /*
-     * tests for the initial state with empty test suite
+     * tests for the initial state with empty Test suite
      */
 
     public function testKeyForEmptyTestSuiteInitiallyReturnsZero(): void
@@ -43,7 +43,7 @@ final class TestSuiteIteratorTest extends TestCase
     }
 
     /*
-     * tests for the initial state with non-empty test suite
+     * tests for the initial state with non-empty Test suite
      */
 
     public function testKeyForNonEmptyTestSuiteInitiallyReturnsZero(): void
