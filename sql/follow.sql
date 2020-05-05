@@ -1,7 +1,7 @@
 use fgallegos59;
 DROP TABLE IF EXISTS followFollowedProfileId;
 DROP TABLE IF EXISTS followProfileId;
-DROP TABLE IF EXISTS followDat;
+DROP TABLE IF EXISTS followDate;
 
 CREATE TABLE follow(
   followFollowedProfileId BINARY(16) NOT NULL,
