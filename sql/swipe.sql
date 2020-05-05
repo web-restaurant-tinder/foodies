@@ -1,3 +1,4 @@
+CREATE TABLE IF NOT EXISTS swipe(
 swipeProfileId BINARY(128) NOT NULL,
 swipeRestaurantId CHAR(32),
 swipeDate DATETIME(6),
