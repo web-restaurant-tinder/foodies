@@ -16,7 +16,7 @@ use Lcobucci\JWT\ValidationData;
 class EqualsToTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -27,13 +27,13 @@ class EqualsToTest extends \PHPUnit_Framework_TestCase
      */
     public function validateShouldReturnTrueWhenValidationDontHaveTheClaim()
     {
-        $claim = new EqualsTo('iss', 'test');
+        $claim = new EqualsTo('iss', 'Test');
 
         $this->assertTrue($claim->validate(new ValidationData()));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -47,16 +47,16 @@ class EqualsToTest extends \PHPUnit_Framework_TestCase
      */
     public function validateShouldReturnTrueWhenValueIsEqualsToValidationData()
     {
-        $claim = new EqualsTo('iss', 'test');
+        $claim = new EqualsTo('iss', 'Test');
 
         $data = new ValidationData();
-        $data->setIssuer('test');
+        $data->setIssuer('Test');
 
         $this->assertTrue($claim->validate($data));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -70,7 +70,7 @@ class EqualsToTest extends \PHPUnit_Framework_TestCase
      */
     public function validateShouldReturnFalseWhenValueIsNotEqualsToValidationData()
     {
-        $claim = new EqualsTo('iss', 'test');
+        $claim = new EqualsTo('iss', 'Test');
 
         $data = new ValidationData();
         $data->setIssuer('test1');

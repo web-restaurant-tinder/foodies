@@ -24,11 +24,11 @@ class Extensions_Database_Operation_OperationsMySQLTest extends TestCase
     protected function setUp(): void
     {
         if (!\extension_loaded('pdo_mysql')) {
-            $this->markTestSkipped('pdo_mysql is required to run this test.');
+            $this->markTestSkipped('pdo_mysql is required to run this Test.');
         }
 
         if (!\defined('PHPUNIT_TESTSUITE_EXTENSION_DATABASE_MYSQL_DSN')) {
-            $this->markTestSkipped('No MySQL server configured for this test.');
+            $this->markTestSkipped('No MySQL server configured for this Test.');
         }
 
         parent::setUp();

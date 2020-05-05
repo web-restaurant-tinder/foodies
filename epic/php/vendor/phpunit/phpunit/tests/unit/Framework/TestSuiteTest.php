@@ -223,7 +223,7 @@ class TestSuiteTest extends TestCase
             ->willReturn(__CLASS__);
 
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('No valid test provided.');
+        $this->expectExceptionMessage('No valid Test provided.');
 
         TestSuite::createTest($reflection, 'TestForConstructorlessTestClass');
     }

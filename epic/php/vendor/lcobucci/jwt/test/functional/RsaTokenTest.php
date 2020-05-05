@@ -38,7 +38,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -65,7 +65,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -92,7 +92,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Token
@@ -127,7 +127,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @depends builderCanGenerateAToken
      *
@@ -149,7 +149,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @depends builderCanGenerateAToken
      *
@@ -171,7 +171,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @depends builderCanGenerateAToken
      *
@@ -194,7 +194,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -218,7 +218,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @depends builderCanGenerateAToken
      *
@@ -240,7 +240,7 @@ class RsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Parser

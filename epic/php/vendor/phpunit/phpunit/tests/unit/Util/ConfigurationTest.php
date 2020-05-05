@@ -95,7 +95,7 @@ class ConfigurationTest extends TestCase
     /**
      * @dataProvider configurationRootOptionsProvider
      *
-     * @group test-reorder
+     * @group Test-reorder
      *
      * @param bool|int|string $expected
      */

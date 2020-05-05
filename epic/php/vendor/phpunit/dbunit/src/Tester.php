@@ -16,7 +16,7 @@ use PHPUnit\DbUnit\Operation\Operation;
 
 /**
  * This is the interface for DatabaseTester objects. These objects are used to
- * add database testing to existing test cases using composition instead of
+ * add database testing to existing Test cases using composition instead of
  * extension.
  */
 interface Tester
@@ -29,14 +29,14 @@ interface Tester
     public function closeConnection(Connection $connection);
 
     /**
-     * Returns the test database connection.
+     * Returns the Test database connection.
      *
      * @return Connection
      */
     public function getConnection();
 
     /**
-     * Returns the test dataset.
+     * Returns the Test dataset.
      *
      * @return IDataSet
      */
@@ -53,7 +53,7 @@ interface Tester
     public function onTearDown();
 
     /**
-     * Sets the test dataset to use.
+     * Sets the Test dataset to use.
      *
      * @param IDataSet $dataSet
      */
@@ -67,14 +67,14 @@ interface Tester
     public function setSchema($schema);
 
     /**
-     * Sets the DatabaseOperation to call when starting the test.
+     * Sets the DatabaseOperation to call when starting the Test.
      *
      * @param Operation $setUpOperation
      */
     public function setSetUpOperation(Operation $setUpOperation);
 
     /**
-     * Sets the DatabaseOperation to call when stopping the test.
+     * Sets the DatabaseOperation to call when stopping the Test.
      *
      * @param Operation $tearDownOperation
      */

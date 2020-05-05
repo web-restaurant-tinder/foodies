@@ -36,7 +36,7 @@ class Extensions_Database_DataSet_QueryTableTest extends TestCase
         $this->table = new QueryTable(
             'table1',
             $query,
-            new DefaultConnection(new PDO('sqlite::memory:'), 'test')
+            new DefaultConnection(new PDO('sqlite::memory:'), 'Test')
         );
     }
 

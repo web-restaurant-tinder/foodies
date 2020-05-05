@@ -12,7 +12,7 @@ use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\NullTestResultCache;
 
 /**
- * @group test-reorder
+ * @group Test-reorder
  */
 class NullTestResultCacheTest extends TestCase
 {

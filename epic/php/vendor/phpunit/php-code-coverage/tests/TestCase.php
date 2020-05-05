@@ -13,7 +13,7 @@ namespace SebastianBergmann\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Driver\Driver;
 
 /**
- * Abstract base class for test case classes.
+ * Abstract base class for Test case classes.
  *
  * @since Class available since Release 1.0.0
  */

@@ -388,35 +388,35 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * This method is called before the first test of this test class is run.
+     * This method is called before the first Test of this Test class is run.
      */
     public static function setUpBeforeClass()/* The :void return type declaration that should be here would cause a BC issue */
     {
     }
 
     /**
-     * This method is called after the last test of this test class is run.
+     * This method is called after the last Test of this Test class is run.
      */
     public static function tearDownAfterClass()/* The :void return type declaration that should be here would cause a BC issue */
     {
     }
 
     /**
-     * This method is called before each test.
+     * This method is called before each Test.
      */
     protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
     {
     }
 
     /**
-     * This method is called after each test.
+     * This method is called after each Test.
      */
     protected function tearDown()/* The :void return type declaration that should be here would cause a BC issue */
     {
     }
 
     /**
-     * Returns a string representation of the test case.
+     * Returns a string representation of the Test case.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws \ReflectionException
@@ -470,7 +470,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns the size of the test.
+     * Returns the size of the Test.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
@@ -603,7 +603,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Sets up an expectation for an exception to be raised by the code under test.
+     * Sets up an expectation for an exception to be raised by the code under Test.
      * Information for expected exception class, expected exception message, and
      * expected exception code are retrieved from a given Exception object.
      */
@@ -652,7 +652,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Runs the test case and collects the results in a TestResult object.
+     * Runs the Test case and collects the results in a TestResult object.
      * If no TestResult object is passed a new one will be created.
      *
      * @throws CodeCoverageException
@@ -1063,7 +1063,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns the number of assertions performed by this test.
+     * Returns the number of assertions performed by this Test.
      */
     public function getNumAssertions(): int
     {
@@ -1130,7 +1130,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Override to run the test and assert its state.
+     * Override to run the Test and assert its state.
      *
      * @throws AssertionFailedError
      * @throws Exception
@@ -1238,7 +1238,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     /**
      * This method is a wrapper for the ini_set() function that automatically
      * resets the modified php.ini setting to its original value after the
-     * test is run.
+     * Test is run.
      *
      * @throws Exception
      */
@@ -1261,7 +1261,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
     /**
      * This method is a wrapper for the setlocale() function that automatically
-     * resets the locale to its original value after the test is run.
+     * resets the locale to its original value after the Test is run.
      *
      * @throws Exception
      */
@@ -1299,7 +1299,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a test double for the specified class.
+     * Returns a Test double for the specified class.
      *
      * @param string|string[] $originalClassName
      *
@@ -1317,7 +1317,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a configured test double for the specified class.
+     * Returns a configured Test double for the specified class.
      *
      * @param string|string[] $originalClassName
      *
@@ -1336,7 +1336,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a partial test double for the specified class.
+     * Returns a partial Test double for the specified class.
      *
      * @param string|string[] $originalClassName
      * @param string[]        $methods
@@ -1356,7 +1356,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Returns a test proxy for the specified class.
+     * Returns a Test proxy for the specified class.
      *
      * @throws Exception
      * @throws \InvalidArgumentException
@@ -1564,25 +1564,25 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
-     * Performs assertions shared by all tests of a test case.
+     * Performs assertions shared by all tests of a Test case.
      *
-     * This method is called between setUp() and test.
+     * This method is called between setUp() and Test.
      */
     protected function assertPreConditions()/* The :void return type declaration that should be here would cause a BC issue */
     {
     }
 
     /**
-     * Performs assertions shared by all tests of a test case.
+     * Performs assertions shared by all tests of a Test case.
      *
-     * This method is called between test and tearDown().
+     * This method is called between Test and tearDown().
      */
     protected function assertPostConditions()/* The :void return type declaration that should be here would cause a BC issue */
     {
     }
 
     /**
-     * This method is called when a test method did not execute successfully.
+     * This method is called when a Test method did not execute successfully.
      *
      * @throws Throwable
      */
@@ -1734,7 +1734,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                         $this->result->addError(
                             $this,
                             new SkippedTestError(
-                                'This test depends on a test that is larger than itself.'
+                                'This Test depends on a Test that is larger than itself.'
                             ),
                             0
                         );
@@ -1769,7 +1769,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this,
             new SkippedTestError(
                 \sprintf(
-                    'This test depends on "%s" to pass.',
+                    'This Test depends on "%s" to pass.',
                     $dependency
                 )
             ),
@@ -1786,7 +1786,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this,
             new Warning(
                 \sprintf(
-                    'This test depends on "%s" which does not exist.',
+                    'This Test depends on "%s" which does not exist.',
                     $dependency
                 )
             ),
@@ -1945,13 +1945,13 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->compareGlobalStateSnapshotPart(
                 $before->globalVariables(),
                 $after->globalVariables(),
-                "--- Global variables before the test\n+++ Global variables after the test\n"
+                "--- Global variables before the Test\n+++ Global variables after the Test\n"
             );
 
             $this->compareGlobalStateSnapshotPart(
                 $before->superGlobalVariables(),
                 $after->superGlobalVariables(),
-                "--- Super-global variables before the test\n+++ Super-global variables after the test\n"
+                "--- Super-global variables before the Test\n+++ Super-global variables after the Test\n"
             );
         }
 
@@ -1959,7 +1959,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->compareGlobalStateSnapshotPart(
                 $before->staticAttributes(),
                 $after->staticAttributes(),
-                "--- Static attributes before the test\n+++ Static attributes after the test\n"
+                "--- Static attributes before the Test\n+++ Static attributes after the Test\n"
             );
         }
     }

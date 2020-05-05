@@ -14,7 +14,7 @@ namespace Lcobucci\JWT;
 class ValidationDataTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\ValidationData::__construct
      */
@@ -27,7 +27,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @dataProvider claimValues
      *
@@ -45,7 +45,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @dataProvider claimValues
      *
@@ -63,7 +63,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @dataProvider claimValues
      *
@@ -81,7 +81,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @dataProvider claimValues
      *
@@ -99,7 +99,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\ValidationData::__construct
      *
@@ -115,7 +115,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\ValidationData::__construct
      *
@@ -129,7 +129,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\ValidationData::__construct
      *
@@ -143,7 +143,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\ValidationData::__construct
      *
@@ -153,11 +153,11 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     {
         $data = new ValidationData(1);
 
-        $this->assertFalse($data->has('test'));
+        $this->assertFalse($data->has('Test'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\ValidationData::__construct
      *
@@ -171,7 +171,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\ValidationData::__construct
      *
@@ -181,7 +181,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     {
         $data = new ValidationData(1);
 
-        $this->assertNull($data->get('test'));
+        $this->assertNull($data->get('Test'));
     }
 
     /**
@@ -191,7 +191,7 @@ class ValidationDataTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [1],
-            ['test']
+            ['Test']
         ];
     }
 

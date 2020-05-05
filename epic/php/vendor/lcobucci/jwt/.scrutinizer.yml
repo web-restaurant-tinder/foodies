@@ -53,4 +53,4 @@ checks:
 
 filter:
     excluded_paths:
-        - test/*
+        - Test/*

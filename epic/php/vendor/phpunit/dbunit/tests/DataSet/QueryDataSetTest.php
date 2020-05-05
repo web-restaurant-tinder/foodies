@@ -90,7 +90,7 @@ class Extensions_Database_DataSet_QueryDataSetTest extends TestCase
      */
     protected function getConnection()
     {
-        return $this->createDefaultDBConnection($this->pdo, 'test');
+        return $this->createDefaultDBConnection($this->pdo, 'Test');
     }
 
     protected function getDataSet()

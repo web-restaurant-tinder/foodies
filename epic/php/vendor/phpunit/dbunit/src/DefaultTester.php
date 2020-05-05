@@ -36,7 +36,7 @@ class DefaultTester extends AbstractTester
     }
 
     /**
-     * Returns the test database connection.
+     * Returns the Test database connection.
      *
      * @return Connection
      */

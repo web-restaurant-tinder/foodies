@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestSuite;
 
 /**
- * @group test-reorder
+ * @group Test-reorder
  */
 class TestSuiteSorterTest extends TestCase
 {
@@ -298,7 +298,7 @@ class TestSuiteSorterTest extends TestCase
      * This class has the following relevant properties:
      * - it has five tests 'testOne' ... 'testFive'
      * - 'testThree' @depends on both 'testOne' and 'testTwo'
-     * - 'testFour' @depends on 'MultiDependencyTest::testThree' to test FQN @depends
+     * - 'testFour' @depends on 'MultiDependencyTest::testThree' to Test FQN @depends
      * - 'testFive' has no dependencies
      */
     public function commonSorterOptionsProvider(): array
@@ -362,7 +362,7 @@ class TestSuiteSorterTest extends TestCase
      * This class has the following relevant properties:
      * - it has five tests 'testOne' ... 'testFive'
      * - 'testThree' @depends on both 'testOne' and 'testTwo'
-     * - 'testFour' @depends on 'MultiDependencyTest::testThree' to test FQN @depends
+     * - 'testFour' @depends on 'MultiDependencyTest::testThree' to Test FQN @depends
      * - 'testFive' has no dependencies
      */
     public function defectsSorterOptionsProvider(): array
@@ -525,7 +525,7 @@ class TestSuiteSorterTest extends TestCase
                 ],
             ],
 
-            // Torture test
+            // Torture Test
             // - incomplete TestResultCache
             // - skipped testThree: will move it to the front as far as possible
             // - testOne and testTwo are required before testThree, but can be reversed locally

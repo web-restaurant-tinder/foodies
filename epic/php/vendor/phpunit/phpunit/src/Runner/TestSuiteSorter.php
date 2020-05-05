@@ -42,7 +42,7 @@ final class TestSuiteSorter
     public const ORDER_DURATION = 4;
 
     /**
-     * List of sorting weights for all test result codes. A higher number gives higher priority.
+     * List of sorting weights for all Test result codes. A higher number gives higher priority.
      */
     private const DEFECT_SORT_WEIGHT = [
         BaseTestRunner::STATUS_ERROR      => 6,
@@ -272,7 +272,7 @@ final class TestSuiteSorter
     }
 
     /**
-     * Compares test duration for sorting tests by duration ascending.
+     * Compares Test duration for sorting tests by duration ascending.
      */
     private function cmpDuration(Test $a, Test $b): int
     {
@@ -282,12 +282,12 @@ final class TestSuiteSorter
     /**
      * Reorder Tests within a TestCase in such a way as to resolve as many dependencies as possible.
      * The algorithm will leave the tests in original running order when it can.
-     * For more details see the documentation for test dependencies.
+     * For more details see the documentation for Test dependencies.
      *
      * Short description of algorithm:
      * 1. Pick the next Test from remaining tests to be checked for dependencies.
-     * 2. If the test has no dependencies: mark done, start again from the top
-     * 3. If the test has dependencies but none left to do: mark done, start again from the top
+     * 2. If the Test has no dependencies: mark done, start again from the top
+     * 3. If the Test has dependencies but none left to do: mark done, start again from the top
      * 4. When we reach the end add any leftover tests to the end. These will be marked 'skipped' during execution.
      *
      * @param array<DataProviderTestSuite|TestCase> $tests
@@ -321,7 +321,7 @@ final class TestSuiteSorter
     /**
      * @param DataProviderTestSuite|TestCase $test
      *
-     * @return array<string> A list of full test names as "TestSuiteClassName::testMethodName"
+     * @return array<string> A list of full Test names as "TestSuiteClassName::testMethodName"
      */
     private function getNormalizedDependencyNames($test): array
     {

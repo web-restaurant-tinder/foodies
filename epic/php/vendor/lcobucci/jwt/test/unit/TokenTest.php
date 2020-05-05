@@ -21,7 +21,7 @@ use Lcobucci\JWT\Claim\LesserOrEqualsTo;
 class TokenTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Token::__construct
      */
@@ -36,7 +36,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -44,13 +44,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function hasHeaderMustReturnTrueWhenItIsConfigured()
     {
-        $token = new Token(['test' => 'testing']);
+        $token = new Token(['Test' => 'testing']);
 
-        $this->assertTrue($token->hasHeader('test'));
+        $this->assertTrue($token->hasHeader('Test'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -58,13 +58,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function hasHeaderMustReturnFalseWhenItIsNotConfigured()
     {
-        $token = new Token(['test' => 'testing']);
+        $token = new Token(['Test' => 'testing']);
 
         $this->assertFalse($token->hasHeader('testing'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasHeader
@@ -75,13 +75,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getHeaderMustRaiseExceptionWhenHeaderIsNotConfigured()
     {
-        $token = new Token(['test' => 'testing']);
+        $token = new Token(['Test' => 'testing']);
 
         $token->getHeader('testing');
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasHeader
@@ -90,13 +90,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getHeaderMustReturnTheDefaultValueWhenIsNotConfigured()
     {
-        $token = new Token(['test' => 'testing']);
+        $token = new Token(['Test' => 'testing']);
 
         $this->assertEquals('blah', $token->getHeader('testing', 'blah'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasHeader
@@ -106,13 +106,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getHeaderMustReturnTheRequestedHeader()
     {
-        $token = new Token(['test' => 'testing']);
+        $token = new Token(['Test' => 'testing']);
 
-        $this->assertEquals('testing', $token->getHeader('test'));
+        $this->assertEquals('testing', $token->getHeader('Test'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasHeader
@@ -129,7 +129,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -137,13 +137,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getHeadersMustReturnTheConfiguredHeader()
     {
-        $token = new Token(['test' => 'testing']);
+        $token = new Token(['Test' => 'testing']);
 
-        $this->assertEquals(['test' => 'testing'], $token->getHeaders());
+        $this->assertEquals(['Test' => 'testing'], $token->getHeaders());
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -151,13 +151,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getClaimsMustReturnTheConfiguredClaims()
     {
-        $token = new Token([], ['test' => 'testing']);
+        $token = new Token([], ['Test' => 'testing']);
 
-        $this->assertEquals(['test' => 'testing'], $token->getClaims());
+        $this->assertEquals(['Test' => 'testing'], $token->getClaims());
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Claim\Basic
@@ -166,13 +166,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function hasClaimMustReturnTrueWhenItIsConfigured()
     {
-        $token = new Token([], ['test' => new Basic('test', 'testing')]);
+        $token = new Token([], ['Test' => new Basic('Test', 'testing')]);
 
-        $this->assertTrue($token->hasClaim('test'));
+        $this->assertTrue($token->hasClaim('Test'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Claim\Basic
@@ -181,13 +181,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function hasClaimMustReturnFalseWhenItIsNotConfigured()
     {
-        $token = new Token([], ['test' => new Basic('test', 'testing')]);
+        $token = new Token([], ['Test' => new Basic('Test', 'testing')]);
 
         $this->assertFalse($token->hasClaim('testing'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasClaim
@@ -197,13 +197,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getClaimMustReturnTheDefaultValueWhenIsNotConfigured()
     {
-        $token = new Token([], ['test' => new Basic('test', 'testing')]);
+        $token = new Token([], ['Test' => new Basic('Test', 'testing')]);
 
         $this->assertEquals('blah', $token->getClaim('testing', 'blah'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasClaim
@@ -220,7 +220,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::hasClaim
@@ -230,13 +230,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function getClaimShouldReturnTheClaimValueWhenItExists()
     {
-        $token = new Token([], ['testing' => new Basic('testing', 'test')]);
+        $token = new Token([], ['testing' => new Basic('testing', 'Test')]);
 
-        $this->assertEquals('test', $token->getClaim('testing'));
+        $this->assertEquals('Test', $token->getClaim('testing'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -249,11 +249,11 @@ class TokenTest extends \PHPUnit_Framework_TestCase
         $signer = $this->getMock(Signer::class);
 
         $token = new Token();
-        $token->verify($signer, 'test');
+        $token->verify($signer, 'Test');
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -274,11 +274,11 @@ class TokenTest extends \PHPUnit_Framework_TestCase
 
         $token = new Token(['alg' => 'RS256'], [], $signature);
 
-        $this->assertFalse($token->verify($signer, 'test'));
+        $this->assertFalse($token->verify($signer, 'Test'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -296,16 +296,16 @@ class TokenTest extends \PHPUnit_Framework_TestCase
 
         $signature->expects($this->once())
                   ->method('verify')
-                  ->with($signer, $this->isType('string'), 'test')
+                  ->with($signer, $this->isType('string'), 'Test')
                   ->willReturn(true);
 
         $token = new Token(['alg' => 'HS256'], [], $signature);
 
-        $this->assertTrue($token->verify($signer, 'test'));
+        $this->assertTrue($token->verify($signer, 'Test'));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\ValidationData::__construct
@@ -321,7 +321,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\ValidationData::__construct
@@ -332,13 +332,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function validateShouldReturnTrueWhenThereAreNoValidatableClaims()
     {
-        $token = new Token([], ['testing' => new Basic('testing', 'test')]);
+        $token = new Token([], ['testing' => new Basic('testing', 'Test')]);
 
         $this->assertTrue($token->validate(new ValidationData()));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\ValidationData
@@ -353,8 +353,8 @@ class TokenTest extends \PHPUnit_Framework_TestCase
         $token = new Token(
             [],
             [
-                'iss' => new EqualsTo('iss', 'test'),
-                'testing' => new Basic('testing', 'test')
+                'iss' => new EqualsTo('iss', 'Test'),
+                'testing' => new Basic('testing', 'Test')
             ]
         );
 
@@ -365,7 +365,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\ValidationData
@@ -383,21 +383,21 @@ class TokenTest extends \PHPUnit_Framework_TestCase
         $token = new Token(
             [],
             [
-                'iss' => new EqualsTo('iss', 'test'),
+                'iss' => new EqualsTo('iss', 'Test'),
                 'iat' => new LesserOrEqualsTo('iat', $now),
                 'exp' => new GreaterOrEqualsTo('exp', $now + 500),
-                'testing' => new Basic('testing', 'test')
+                'testing' => new Basic('testing', 'Test')
             ]
         );
 
         $data = new ValidationData($now + 10);
-        $data->setIssuer('test');
+        $data->setIssuer('Test');
 
         $this->assertTrue($token->validate($data));
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Token::isExpired
      *
@@ -413,7 +413,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Token::isExpired
      *
@@ -434,7 +434,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @covers Lcobucci\JWT\Token::isExpired
      *
@@ -455,7 +455,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      *
@@ -469,7 +469,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::getPayload
@@ -478,13 +478,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
      */
     public function toStringMustReturnEncodedDataWithEmptySignature()
     {
-        $token = new Token(['alg' => 'none'], [], null, ['test', 'test']);
+        $token = new Token(['alg' => 'none'], [], null, ['Test', 'Test']);
 
-        $this->assertEquals('test.test.', (string) $token);
+        $this->assertEquals('Test.Test.', (string) $token);
     }
 
     /**
-     * @test
+     * @Test
      *
      * @uses Lcobucci\JWT\Token::__construct
      * @uses Lcobucci\JWT\Token::getPayload
@@ -495,8 +495,8 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     {
         $signature = $this->getMock(Signature::class, [], [], '', false);
 
-        $token = new Token(['alg' => 'none'], [], $signature, ['test', 'test', 'test']);
+        $token = new Token(['alg' => 'none'], [], $signature, ['Test', 'Test', 'Test']);
 
-        $this->assertEquals('test.test.test', (string) $token);
+        $this->assertEquals('Test.Test.Test', (string) $token);
     }
 }

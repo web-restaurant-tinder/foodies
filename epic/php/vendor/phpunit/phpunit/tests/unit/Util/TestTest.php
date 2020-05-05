@@ -565,7 +565,7 @@ class TestTest extends TestCase
     }
 
     /**
-     * @todo This test does not really test functionality of \PHPUnit\Util\Test
+     * @todo This Test does not really Test functionality of \PHPUnit\Util\Test
      */
     public function testGetProvidedDataRegEx(): void
     {
@@ -637,7 +637,7 @@ class TestTest extends TestCase
 
     public function testWithVariousIterableDataProviders(): void
     {
-        $dataSets = Test::getProvidedData(\VariousIterableDataProviderTest::class, 'test');
+        $dataSets = Test::getProvidedData(\VariousIterableDataProviderTest::class, 'Test');
 
         $this->assertEquals([
             ['A'],
@@ -735,7 +735,7 @@ class TestTest extends TestCase
     }
 
     /**
-     * @todo Not sure what this test tests (name is misleading at least)
+     * @todo Not sure what this Test tests (name is misleading at least)
      */
     public function testParseAnnotation(): void
     {
@@ -749,7 +749,7 @@ class TestTest extends TestCase
      * @depends Foo
      * @depends ほげ
      *
-     * @todo Remove fixture from test class
+     * @todo Remove fixture from Test class
      */
     public function methodForTestParseAnnotation(): void
     {
@@ -766,7 +766,7 @@ class TestTest extends TestCase
     /** @depends Bar */
     public function methodForTestParseAnnotationThatIsOnlyOneLine(): void
     {
-        // TODO Remove fixture from test class
+        // TODO Remove fixture from Test class
     }
 
     /**

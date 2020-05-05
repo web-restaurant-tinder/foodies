@@ -4,7 +4,7 @@ phpunit --filter testFalse@false\ test DataProviderFilterTest ../../_files/DataP
 <?php
 $_SERVER['argv'][1] = '--no-configuration';
 $_SERVER['argv'][2] = '--filter';
-$_SERVER['argv'][3] = 'testFalse@false test';
+$_SERVER['argv'][3] = 'testFalse@false Test';
 $_SERVER['argv'][4] = 'DataProviderFilterTest';
 $_SERVER['argv'][5] = __DIR__ . '/../_files/DataProviderFilterTest.php';
 

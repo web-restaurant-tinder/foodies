@@ -44,7 +44,7 @@ class TestResultCache implements \Serializable, TestResultCacheInterface
      * The list of defective tests
      *
      * <code>
-     * // Mark a test skipped
+     * // Mark a Test skipped
      * $this->defects[$testName] = BaseTestRunner::TEST_SKIPPED;
      * </code>
      *
@@ -56,7 +56,7 @@ class TestResultCache implements \Serializable, TestResultCacheInterface
      * The list of execution duration of suites and tests (in seconds)
      *
      * <code>
-     * // Record running time for test
+     * // Record running time for Test
      * $this->times[$testName] = 1.234;
      * </code>
      *

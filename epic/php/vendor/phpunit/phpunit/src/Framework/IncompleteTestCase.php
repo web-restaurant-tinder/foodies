@@ -10,7 +10,7 @@
 namespace PHPUnit\Framework;
 
 /**
- * An incomplete test case
+ * An incomplete Test case
  */
 class IncompleteTestCase extends TestCase
 {
@@ -57,7 +57,7 @@ class IncompleteTestCase extends TestCase
     }
 
     /**
-     * Returns a string representation of the test case.
+     * Returns a string representation of the Test case.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */

@@ -154,7 +154,7 @@ abstract class AbstractPhpProcess
     }
 
     /**
-     * Runs a single test in a separate PHP process.
+     * Runs a single Test in a separate PHP process.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
