@@ -1,5 +1,5 @@
 <?php
-namespace CNewsome2\Foodies;
+namespace WebRestaurantTinder\Foodies;
 
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Restaurants Class
- * @package CNewsome2\Foodies
+ * @package WebRestaurantTinder\Foodies
  */
 
 class Restaurant {

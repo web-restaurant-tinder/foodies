@@ -1,5 +1,5 @@
 <?php
-namespace CNewsome2\Foodies;
+namespace WebRestaurantTinder\Foodies;
 /**
  * Trait to Validate a mySQL Date
  *
