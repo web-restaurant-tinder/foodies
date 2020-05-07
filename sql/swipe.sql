@@ -1,9 +1,10 @@
 CREATE TABLE IF NOT EXISTS swipe(
-swipeProfileId BINARY(128) NOT NULL,
-swipeRestaurantId CHAR(32),
+swipeProfileId BINARY(16) NOT NULL,
+swipeRestaurantId BINARY(16) NOT NULL,
 swipeDate DATETIME(6),
-swipeRight BOOLEAN (128) NOT NULL,
-swipeLeft BOOLEAN(128) NOT NULL,
-FOREIGN KEY(swipeProfileId) REFERENCES swipe(swipeId),
-FOREIGN KEY(swipeRestaurantId) REFERENCES swipe(swipeId),
+swipeRight TINYINT(1) NOT NULL,
+swipeLeft TINYINT(1) NOT NULL,
+FOREIGN KEY(swipeProfileId) REFERENCES profile(profileId),
+FOREIGN KEY(swipeRestaurantId) REFERENCES restaurant(restaurantId)
 );
+

@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS followFollowedProfileId;
-DROP TABLE IF EXISTS followProfileId;
-DROP TABLE IF EXISTS followDate;
+DROP TABLE IF EXISTS follow;
 
 CREATE TABLE follow(
 	followFollowedProfileId BINARY(16) NOT NULL,
