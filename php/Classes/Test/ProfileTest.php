@@ -5,7 +5,7 @@ use WebRestaurantTinder\Foodies\Profile;
 
 //TODO remember to add this to my Test class!!!!
 //Hack!!! - added so this class could see DataDesignTest
-require_once(dirname(__DIR__) . "/Test/DataDesignTest.php");
+//require_once(dirname(__DIR__) . "/Test/DataDesignTest.php");
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");
@@ -35,7 +35,7 @@ class ProfileTest extends DataDesignTest {
 
 		//insert an author record in the db
 		$profileId = generateUuidV4()->toString();
-		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL,$this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
 		$profile->insert($this->getPDO());
 
 		//check count of author records in the db after the insert
@@ -60,7 +60,7 @@ class ProfileTest extends DataDesignTest {
 
 		//insert an author record in the db
 		$profileId = generateUuidV4()->toString();
-		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL,$this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
 		$profile->insert($this->getPDO());
 
 		//update a value on the record I just inserted.
@@ -93,11 +93,7 @@ class ProfileTest extends DataDesignTest {
 		//now insert multiple rows of data
 		for ($i=0; $i<$rowsInserted; $i++){
 			$profileId = generateUuidV4()->toString();
-			$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN,
-				$this->VALID_AVATAR_URL,
-				$this->VALID_AUTHOR_EMAIL . $i,
-				$this->VALID_AUTHOR_HASH,
-				$this->VALID_USERNAME . $i);
+			$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL . $i, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME . $i);
 			$profile->insert($this->getPDO());
 		}
 
@@ -116,7 +112,7 @@ class ProfileTest extends DataDesignTest {
 
 	}
 
-	public function testGetValidProfileByProfileId() : void {
+	public function testGetValidProfileByProfileId($pdoProfile) : void {
 		//how many records were in the db before we start?
 		$numRows = $this->getConnection()->getRowCount("profile");
 
@@ -139,4 +135,74 @@ class ProfileTest extends DataDesignTest {
 		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
 	}
 
+
+	public function testGetValidProfileByProfileEmail($pdoProfile) : void {
+		//how many records were in the db before we start?
+		$numRows = $this->getConnection()->getRowCount("profile");
+
+		//now insert a row of data
+		$profileId = generateUuidV4()->toString();
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
+		$profile->insert($this->getPDO());
+
+		//validate new row count in the table - should be old row count + 1 if insert is successful
+		$numRowsAfterInsert = $this->getConnection()->getRowCount("author");
+		self::assertEquals($numRows + 1, $numRowsAfterInsert);
+
+		//now get the row we just inserted and verify that the data coming out of the db matches the data we put in the db
+		$pdoAuthor = Profile::getProfileByProfileEmail($this->getPDO(), $profile->getProfileEmail()->toString());
+		self::assertEquals($pdoProfile->getProfileId(), $profileId);
+		self::assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
+		self::assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
+		self::assertEquals($pdoProfile->getProfileEmail(), $this->VALID_AUTHOR_EMAIL);
+		self::assertEquals($pdoProfile->getProfileHash(), $this->VALID_AUTHOR_HASH);
+		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
+	}
+
+	public function testGetValidProfileByProfileUserName($pdoProfile) : void {
+		//how many records were in the db before we start?
+		$numRows = $this->getConnection()->getRowCount("profile");
+
+		//now insert a row of data
+		$profileId = generateUuidV4()->toString();
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
+		$profile->insert($this->getPDO());
+
+		//validate new row count in the table - should be old row count + 1 if insert is successful
+		$numRowsAfterInsert = $this->getConnection()->getRowCount("author");
+		self::assertEquals($numRows + 1, $numRowsAfterInsert);
+
+		//now get the row we just inserted and verify that the data coming out of the db matches the data we put in the db
+		$pdoAuthor = Profile::getProfileByProfileUserName($this->getPDO(), $profile->getProfileId()->toString());
+		self::assertEquals($pdoProfile->getProfileId(), $profileId);
+		self::assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
+		self::assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
+		self::assertEquals($pdoProfile->getProfileEmail(), $this->VALID_AUTHOR_EMAIL);
+		self::assertEquals($pdoProfile->getProfileHash(), $this->VALID_AUTHOR_HASH);
+		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
+	}
+
+
+	public function testGetValidProfileByProfileActivationToken($pdoProfile) : void {
+		//how many records were in the db before we start?
+		$numRows = $this->getConnection()->getRowCount("profile");
+
+		//now insert a row of data
+		$profileId = generateUuidV4()->toString();
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
+		$profile->insert($this->getPDO());
+
+		//validate new row count in the table - should be old row count + 1 if insert is successful
+		$numRowsAfterInsert = $this->getConnection()->getRowCount("author");
+		self::assertEquals($numRows + 1, $numRowsAfterInsert);
+
+		//now get the row we just inserted and verify that the data coming out of the db matches the data we put in the db
+		$pdoAuthor = Profile::getProfileByProfileActivationToken($this->getPDO(), $profile->getProfileId()->toString());
+		self::assertEquals($pdoProfile->getProfileId(), $profileId);
+		self::assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
+		self::assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
+		self::assertEquals($pdoProfile->getProfileEmail(), $this->VALID_AUTHOR_EMAIL);
+		self::assertEquals($pdoProfile->getProfileHash(), $this->VALID_AUTHOR_HASH);
+		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
+	}
 }

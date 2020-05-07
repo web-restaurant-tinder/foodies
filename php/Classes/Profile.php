@@ -39,7 +39,7 @@ class Profile implements \JsonSerializable{
 
 	//constructor method
 
-	public function __construct( $newProfileId, $newProfileActivationToken, $newProfileAvatarCloudinaryId, $newProfileAvatarUrl, $newProfileEmail, $newProfileFirstName, $newProfileHash, $newProfileLastName, $newProfileUsername) {
+	public function __construct($newProfileId, $newProfileActivationToken, $newProfileAvatarCloudinaryId, $newProfileAvatarUrl, $newProfileEmail, $newProfileFirstName) {
 		try {
 			$this->setProfileActivationToken($newProfileActivationToken);
 			$this->setprofileAvatarCloudinaryId($newProfileAvatarCloudinaryId);
@@ -397,7 +397,7 @@ class Profile implements \JsonSerializable{
 			$row = $statement->fetch();
 			if($row !== false) {
 
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],$row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
@@ -438,7 +438,7 @@ class Profile implements \JsonSerializable{
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],$row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
@@ -481,7 +481,7 @@ class Profile implements \JsonSerializable{
 			$row = $statement->fetch();
 			if($row !== false) {
 
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],$row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
@@ -521,7 +521,7 @@ class Profile implements \JsonSerializable{
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],$row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
@@ -570,7 +570,7 @@ class Profile implements \JsonSerializable{
 
 		while (($row = $statement->fetch()) !== false) {
 			try {
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],$row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"]);
 				$profiles[$profiles->key()] = $profile;
 				$profiles->next();
 			} catch(\Exception $exception) {
