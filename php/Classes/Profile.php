@@ -272,10 +272,8 @@ class Profile implements \JsonSerializable{
 	 **/
 	public function setProfileLastName(string $newProfileLastName) : void {
 		// verify the at name is secure
-		var_dump("lastname = " . $newProfileLastName);
 		$newProfileLastName = trim($newProfileLastName);
 		$newProfileLastName = filter_var($newProfileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		var_dump("lastname2 = " . $newProfileLastName);
 		if(empty($newProfileLastName) === true){
 			throw(new \InvalidArgumentException("Last name is empty or insecure"));
 		}
@@ -364,12 +362,17 @@ class Profile implements \JsonSerializable{
 
 
 		// create query template
-		$query = "UPDATE profile SET profileActivationToken = :profileActivationToken, profileAvatarCloudinaryId = :profileAvatarCloudinaryId, profileAvatarUrl = :profileAvatarUrl, profileEmail = :profileEmail, profileFirstName = :profileFirstName, profileHash = :profileHash, profileLastName = :profileLastName, profileUserName = :profileUserName WHERE profileId = :profileId";
+		$query = "UPDATE profile SET profileActivationToken = :profileActivationToken, profileAvatarCloudinaryId = :profileAvatarCloudinaryId, 
+    profileAvatarUrl = :profileAvatarUrl, profileEmail = :profileEmail, profileFirstName = :profileFirstName, profileHash = :profileHash,
+    profileLastName = :profileLastName, profileUserName = :profileUserName WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the place holders in the template
 
-		$parameters = ["profileId" => $this->profileId->getBytes(), "profileActivationToken" => $this->profileActivationToken, "profileAvatarCloudinaryId" => $this->profileAvatarCloudinaryId, "profileAvatarUrl" => $this->profileAvatarUrl, "profileEmail" => $this->profileEmail, "profileFirstName" => $this->profileFirstName, "profileHash" => $this->profileHash, "profileLastName" => $this->profileLastName, "profileUserName" => $this->profileUserName];
+		$parameters = ["profileId" => $this->profileId->getBytes(), "profileActivationToken" => $this->profileActivationToken,
+			"profileAvatarCloudinaryId" => $this->profileAvatarCloudinaryId, "profileAvatarUrl" => $this->profileAvatarUrl,
+			"profileEmail" => $this->profileEmail, "profileFirstName" => $this->profileFirstName, "profileHash" => $this->profileHash,
+			"profileLastName" => $this->profileLastName, "profileUserName" => $this->profileUserName];
 		$statement->execute($parameters);
 	}
 
@@ -386,7 +389,7 @@ class Profile implements \JsonSerializable{
 	public static function getProfileByProfileId(\PDO $pdo, $profileId): ?Profile{
 		//create query template
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
-       profileFirstName, profileHash, profileLastName, profileUsername
+       profileFirstName, profileHash, profileLastName, profileUserName
 					FROM profile WHERE profileId = :profileId";
 
 		//prepare query
