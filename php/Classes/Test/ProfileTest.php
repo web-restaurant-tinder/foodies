@@ -113,54 +113,27 @@ class ProfileTest extends DataDesignTest {
 		$this->assertEquals($numRows, $this->getConnection()->getRowCount("profile"));
 	}
 
-//	/**
-//	 * test creating a Profile and then deleting it
-//	 **/
-//	public function testDeleteValidProfile() : void {
-//		// count the number of rows and save it for later
-//		$numRows = $this->getConnection()->getRowCount("profile");
-//
-//		$profileId = generateUuidV4();
-//		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_CLOUDINARY_ID, $this->VALID_AVATAR_URL,
-//			$this->VALID_PROFILE_EMAIL, $this->VALID_FIRSTNAME, $this->VALID_PROFILE_HASH, $this->VALID_LASTNAME, $this->VALID_USERNAME);
-//		$profile->insert($this->getPDO());
-//
-//
-//		// delete the Profile from mySQL
-//		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
-//		$profile->delete($this->getPDO());
-//
-//		// grab the data from mySQL and enforce the Profile does not exist
-//		$pdoProfile = Profile::getProfileByProfileId($this->getPDO(), $profile->getProfileId());
-//		$this->assertNull($pdoProfile);
-//		$this->assertEquals($numRows, $this->getConnection()->getRowCount("profile"));
-//	}
-//
 
-//
-//	public function testGetValidProfileByProfileId($pdoProfile) : void {
-//		//how many records were in the db before we start?
-//		$numRows = $this->getConnection()->getRowCount("profile");
-//
-//		//now insert a row of data
-//		$profileId = generateUuidV4()->toString();
-//		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
-//		$profile->insert($this->getPDO());
-//
-//		//validate new row count in the table - should be old row count + 1 if insert is successful
-//		$numRowsAfterInsert = $this->getConnection()->getRowCount("author");
-//		self::assertEquals($numRows + 1, $numRowsAfterInsert);
-//
-//		//now get the row we just inserted and verify that the data coming out of the db matches the data we put in the db
-//		$pdoAuthor = Profile::getProfileByProfileId($this->getPDO(), $profile->getProfileId()->toString());
-//		self::assertEquals($pdoProfile->getProfileId(), $profileId);
-//		self::assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
-//		self::assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
-//		self::assertEquals($pdoProfile->getProfileEmail(), $this->VALID_AUTHOR_EMAIL);
-//		self::assertEquals($pdoProfile->getProfileHash(), $this->VALID_AUTHOR_HASH);
-//		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
-//	}
-//
+
+	public function testGetValidProfileByProfileId(): void {
+
+//get count of profile records in db before we run the test
+		$numRows = $this->getConnection()->getRowCount("profile");
+		//get an profile record in the db by Id
+		$profileId = generateUuidV4()->toString();
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_CLOUDINARY_ID, $this->VALID_AVATAR_URL,
+			$this->VALID_PROFILE_EMAIL, $this->VALID_FIRSTNAME, $this->VALID_PROFILE_HASH, $this->VALID_LASTNAME, $this->VALID_USERNAME);
+		$profile->insert($this->getPDO());
+
+
+		$profile->getProfileByProfileId($this->getPDO(),$profileId);
+		//check count of profile record in the db after the insert
+		$numRowsAfter = $this->getConnection()->getRowCount("profile");
+		self::assertEquals($numRows + 1, $numRowsAfter,"checked record count");
+	}
+
+
+
 //
 //	public function testGetValidProfileByProfileEmail($pdoProfile) : void {
 //		//how many records were in the db before we start?
