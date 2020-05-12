@@ -265,6 +265,6 @@ class RestaurantTest extends DataDesignTest {
 		self::assertEquals($numRows + $rowsInserted, $this->getConnection()->getRowCount("restaurant"));
 
 		//validate number of rows coming back from our function.
-		self::assertEquals($numRows + $rowsInserted, $restaurant->getAllAuthors($this->getPDO())->count());
+		self::assertEquals($numRows + $rowsInserted, $restaurant->getAllRestaurants($this->getPDO())->count());
 	}
 }
