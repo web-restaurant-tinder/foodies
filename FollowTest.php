@@ -31,11 +31,6 @@ class FollowTest extends DataDesignTest {
     /**
      *
      */
-    
-
-    /**
-     *
-     */
     public function testInsertValidFollow() : void {
         $numRows = $this->getConnection()->getRowCount("follow");
 
@@ -54,9 +49,6 @@ class FollowTest extends DataDesignTest {
 
     }
 
-    /**
-     *
-     */
     public function testUpdateValidFollow() : void {
         $numRows = $this->getConnection()->getRowCount("follow");
         $followProfileId = generateUuidV4()->getRowCount("follow");
@@ -79,11 +71,29 @@ class FollowTest extends DataDesignTest {
         self::assertEquals($changedFollowProfile, $pdoFollow->getFollowProfile());
     }
 
-    /**
-     *
-     */
-    public function testDeleteFollow() : void {
+
+    public function testDeleteValidFollow() : void {
         $numRows = $this->getConnection()->getRowCount("follow");
+
+        $rowsInserted = 2;
+
+        for ($i=0; $i<$rowsInserted; $i++){
+            $followProfileId = generateUuidV4()->toString();
+            $follow = new Follow($followProfileId, $this->VALID_FOLLOW_PROFILE_ID,
+                $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID,
+                $this->VALID_FOLLOW_DATE . $i);
+            $follow->insert($this->getPDO());
+        }
+
+        $numRowsAfterInsert = $this->getConnection()->getRowCount("follow");
+        self::assertEquals($numRows + $rowsInserted, $numRowsAfterInsert);
+
+        $follow->delete($this->getPDO);
+
+        $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId()->toString());
+
+        $numRowsAfterDelete = $this->getConnection()->getRowCount("follow");
+        self::assertsEquals($numRows + $rowsInserted - 1, $numRowsAfterDelete);
 
     }
 
