@@ -100,7 +100,7 @@ class Follow implements \JsonSerializable {
      */
     public function setFollowProfileId( $newFollowProfileId ) : void {
         try {
-            uuid = self::validateUuid($newFollowProfileId);
+            $uuid = self::validateUuid($newFollowProfileId);
         } catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
             $exceptionType = get_class($exception);
             throw (new $exceptionType($exception->getMessage(), 0, $exception));
@@ -180,7 +180,8 @@ class Follow implements \JsonSerializable {
     }
 
     /**
-     * @return array
+     * @param \PDO $pdo PDO connection object
+     * @throws \PDOException when mySQL related error occurs
      */
     public function update(\PDO $pdo) : void {
         //create query template
