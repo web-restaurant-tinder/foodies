@@ -12,7 +12,7 @@ use Ramsey\Uuid\Uuid;
  * @package CNewsome2\Foodies
  */
 
-class Restaurant {
+class Restaurant implements \JsonSerializable{
 	use ValidateUuid;
 	use ValidateDate;
 
@@ -572,4 +572,12 @@ class Restaurant {
 		return($restaurants);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		$fields["restaurantId"] = $this->restaurantId->toString();
+		return ($fields);
+	}
 }
