@@ -1,7 +1,6 @@
 <?php
 namespace WebRestaurantTinder\Foodies\Test;
 
-use WebRestaurantTinder\Foodies\{Restaurant};
 
 //TODO remember to add this to my Test class!!!!
 //Hack!!! - added so this class could see DataDesignTest
@@ -9,6 +8,8 @@ use WebRestaurantTinder\Foodies\{Restaurant};
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");
+
+use WebRestaurantTinder\Foodies\Restaurant;
 
 // grab the uuid generator
 require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
