@@ -185,7 +185,7 @@ class Follow implements \JsonSerializable {
      */
     public function update(\PDO $pdo) : void {
         //create query template
-        $query = "UPDATE follow SET followFollowedProfileId = :followFollowedProfileId, followProfileId = :followProfileId, followDate WHERE followProfileId = :followProfileId ";
+        $query = "UPDATE follow SET followFollowedProfileId = :followFollowedProfileId, followProfileId = :followProfileId, followDate = :followDate WHERE followProfileId = :followProfileId ";
         $statement = $pdo->prepare($query);
 
         $formattedDate = $this->followDate->format("Y-m-d H:i:s.u");
@@ -203,7 +203,7 @@ class Follow implements \JsonSerializable {
         }
 
         //create query table
-        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE follow = followProfileId ";
+        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE followProfileId = followProfileId ";
         $statement = $pdo->prepare($query);
 
         //bind follow id to the place holder in the template
@@ -242,7 +242,7 @@ class Follow implements \JsonSerializable {
             throw (new \PDOException($exception->getMessage(), 0, $exception));
         }
 
-        $query = "SELECT followProfileId, followFollowedProfileId, followDate FROM WHERE followProfileId = :followProfileId";
+        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE followProfileId = :followProfileId";
         $statement = $pdo->prepare($query);
 
         $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes()];
@@ -278,7 +278,7 @@ class Follow implements \JsonSerializable {
             throw (new \PDOException($exception->getMessage(), 0, $exception));
         }
 
-        $query = "SELECT followProfileId, followFollowedProfileId, followDate FROM WHERE followProfileId = :followProfileId";
+        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE followProfileId = :followProfileId";
         $statement = $pdo->prepare($query);
 
         $parameters = ["followProfileId" => $followProfileId->getBytes()];
