@@ -35,7 +35,7 @@ class FollowTest extends DataDesignTest {
         $numRows = $this->getConnection()->getRowCount("follow");
 
         $followProfileId = generateUuidV4()->toString();
-        $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_PROFILE_ID, $this->VALID_FOLLOWDATE);
+        $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
         $follow->insert($this->getPDO());
 
         $numRowsAfterInsert = $this ->getConnection()->getRowCount("follow");
@@ -44,7 +44,7 @@ class FollowTest extends DataDesignTest {
         $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId()->toString());
         self::assertEquals($followProfileId, $pdoFollow->getFollowProfileId());
         self::assertEquals($this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $pdoFollow->getFollowFollowedProfileId());
-        self::assertEquals($this->VALID_FOLLOWDATE, $pdoFollow->getFollowDate());
+        self::assertEquals($this->VALID_FOLLOW_DATE, $pdoFollow->getFollowDate());
 
 
     }
@@ -54,10 +54,8 @@ class FollowTest extends DataDesignTest {
         $followProfileId = generateUuidV4()->getRowCount("follow");
         $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
         $follow->insert($this->getPDO());
-
-        $changedFollowProfile = $this->VALID_PROFILE . "changed";
-        $follow->setFollowProifle($changedFollowProfile);
         $follow->update($this->getPDO());
+
 
         $numRowsAfterInsert = $this->getConnection()->getRowCount("follow");
         self::assertEquals($numRows + 1, $numRowsAfterInsert);
@@ -68,32 +66,25 @@ class FollowTest extends DataDesignTest {
         self::assertEquals($this->VALID_FOLLOW_PROFILE_ID, $pdoFollow->getFollowProfileId());
         self::assertEquals($this->VALID_FOLLOW_DATE, $pdoFollow->getFollowDate());
 
-        self::assertEquals($changedFollowProfile, $pdoFollow->getFollowProfile());
     }
 
 
     public function testDeleteValidFollow() : void {
+        //count number of rows
         $numRows = $this->getConnection()->getRowCount("follow");
 
-        $rowsInserted = 2;
+        $followProfileId = generateUuidV4();
+        $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
+        $follow->insert($this->getPDO());
 
-        for ($i=0; $i<$rowsInserted; $i++){
-            $followProfileId = generateUuidV4()->toString();
-            $follow = new Follow($followProfileId, $this->VALID_FOLLOW_PROFILE_ID,
-                $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID,
-                $this->VALID_FOLLOW_DATE . $i);
-            $follow->insert($this->getPDO());
-        }
 
-        $numRowsAfterInsert = $this->getConnection()->getRowCount("follow");
-        self::assertEquals($numRows + $rowsInserted, $numRowsAfterInsert);
-
+        //delete the Follow from mySQl
+        $this->assertsEquals($numRows + 1, $this->getConnection()->getRowCount("follow"));
         $follow->delete($this->getPDO);
 
-        $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId()->toString());
-
-        $numRowsAfterDelete = $this->getConnection()->getRowCount("follow");
-        self::assertsEquals($numRows + $rowsInserted - 1, $numRowsAfterDelete);
+        $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId());
+        $this->assertNull($pdoFollow);
+        $this->assertEquals($numRows, $this->getConnection()->getRowCount("follow"));
 
     }
 
@@ -108,7 +99,7 @@ class FollowTest extends DataDesignTest {
         self::assertEquals($numRows + 1, $numRowsAfterInsert);
 
         $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId()->toString());
-        self::assertEquals($pdoFollow->getFollowProfileId(), followProfileId);
+        self::assertEquals($pdoFollow->getFollowProfileId(), $followProfileId);
         self::assertEquals($pdoFollow->getFollowFollowedProfileId(), $followProfileId);
         self::assertEquals($pdoFollow->getFollowDate(), $this->VALID_FOLLOW_DATE);
     }
