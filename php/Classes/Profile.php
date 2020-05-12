@@ -520,7 +520,6 @@ class Profile implements \JsonSerializable{
 		}
 
 		// create query template
-		// todo add wildcard to first and last name
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileFirstName LIKE :profileFirstName AND profileLastName LIKE :profileLastName";
 		$statement = $pdo->prepare($query);
 

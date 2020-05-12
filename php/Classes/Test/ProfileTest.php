@@ -187,11 +187,8 @@ class ProfileTest extends DataDesignTest {
 		$this->assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
 		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILE_EMAIL);
 		$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILE_HASH);
-//		$this->assertEquals($pdoProfile->getProfileUserName(), $this->VALID_USERNAME);
 		$this->assertEquals($pdoProfile->getProfileFirstName(), $this->VALID_FIRSTNAME);
 		$this->assertEquals($pdoProfile->getProfileLastName(), $this->VALID_LASTNAME);
 
-
 	}
-
 }
