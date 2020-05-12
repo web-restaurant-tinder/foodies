@@ -24,7 +24,7 @@ class FollowTest extends DataDesignTest {
 
     /**
      * timestamp of when a profile is followed
-     * @var \DateTime $VALID_FOLLOWDATE
+     * @var \DateTime $VALID_FOLLOW_DATE
      */
     private $VALID_FOLLOW_DATE = null;
 
@@ -52,7 +52,7 @@ class FollowTest extends DataDesignTest {
     public function testUpdateValidFollow() : void {
         $numRows = $this->getConnection()->getRowCount("follow");
         $followProfileId = generateUuidV4()->getRowCount("follow");
-        $follow = new Author($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
+        $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
         $follow->insert($this->getPDO());
 
         $changedFollowProfile = $this->VALID_PROFILE . "changed";
