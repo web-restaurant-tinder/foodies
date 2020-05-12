@@ -134,52 +134,64 @@ class ProfileTest extends DataDesignTest {
 
 
 
-//
-//	public function testGetValidProfileByProfileEmail($pdoProfile) : void {
-//		//how many records were in the db before we start?
-//		$numRows = $this->getConnection()->getRowCount("profile");
-//
-//		//now insert a row of data
-//		$profileId = generateUuidV4()->toString();
-//		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
-//		$profile->insert($this->getPDO());
-//
-//		//validate new row count in the table - should be old row count + 1 if insert is successful
-//		$numRowsAfterInsert = $this->getConnection()->getRowCount("author");
-//		self::assertEquals($numRows + 1, $numRowsAfterInsert);
-//
-//		//now get the row we just inserted and verify that the data coming out of the db matches the data we put in the db
-//		$pdoAuthor = Profile::getProfileByProfileEmail($this->getPDO(), $profile->getProfileEmail()->toString());
-//		self::assertEquals($pdoProfile->getProfileId(), $profileId);
-//		self::assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
-//		self::assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
-//		self::assertEquals($pdoProfile->getProfileEmail(), $this->VALID_AUTHOR_EMAIL);
-//		self::assertEquals($pdoProfile->getProfileHash(), $this->VALID_AUTHOR_HASH);
-//		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
-//	}
-//
-//	public function testGetValidProfileByProfileUserName($pdoProfile) : void {
-//		//how many records were in the db before we start?
-//		$numRows = $this->getConnection()->getRowCount("profile");
-//
-//		//now insert a row of data
-//		$profileId = generateUuidV4()->toString();
-//		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_AVATAR_URL, $this->VALID_AUTHOR_EMAIL, $this->VALID_AUTHOR_HASH, $this->VALID_USERNAME);
-//		$profile->insert($this->getPDO());
-//
-//		//validate new row count in the table - should be old row count + 1 if insert is successful
-//		$numRowsAfterInsert = $this->getConnection()->getRowCount("author");
-//		self::assertEquals($numRows + 1, $numRowsAfterInsert);
-//
-//		//now get the row we just inserted and verify that the data coming out of the db matches the data we put in the db
-//		$pdoAuthor = Profile::getProfileByProfileUserName($this->getPDO(), $profile->getProfileId()->toString());
-//		self::assertEquals($pdoProfile->getProfileId(), $profileId);
-//		self::assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
-//		self::assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
-//		self::assertEquals($pdoProfile->getProfileEmail(), $this->VALID_AUTHOR_EMAIL);
-//		self::assertEquals($pdoProfile->getProfileHash(), $this->VALID_AUTHOR_HASH);
-//		self::assertEquals($pdoProfile->getProfileUsername(), $this->VALID_USERNAME);
-//	}
-//
-//
+	/**
+	 * test grabbing a Profile by email
+	 **/
+	public function testGetValidProfileByEmail() : void {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("profile");
+
+		$profileId = generateUuidV4();
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_CLOUDINARY_ID, $this->VALID_AVATAR_URL,
+			$this->VALID_PROFILE_EMAIL, $this->VALID_FIRSTNAME, $this->VALID_PROFILE_HASH, $this->VALID_LASTNAME, $this->VALID_USERNAME);
+		$profile->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$pdoProfile = Profile::getProfileByEmail($this->getPDO(), $profile->getProfileEmail());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
+		$this->assertEquals($pdoProfile->getProfileId(), $profileId);
+		$this->assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
+		$this->assertEquals($pdoProfile->getProfileAvatarCloudinaryId(), $this->VALID_CLOUDINARY_ID);
+		$this->assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
+		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILE_EMAIL);
+		$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILE_HASH);
+		$this->assertEquals($pdoProfile->getProfileUserName(), $this->VALID_USERNAME);
+		$this->assertEquals($pdoProfile->getProfileFirstName(), $this->VALID_FIRSTNAME);
+		$this->assertEquals($pdoProfile->getProfileLastName(), $this->VALID_LASTNAME);
+	}
+
+
+
+
+	public function testProfileByUserName(): void{
+//get count of Profile records in db before we run the test
+		$numRows = $this->getConnection()->getRowCount("profile");
+
+		$profileId=generateUuidV4()->toString();
+		$profile = new Profile($profileId, $this->VALID_ACTIVATION_TOKEN, $this->VALID_CLOUDINARY_ID, $this->VALID_AVATAR_URL,
+			$this->VALID_PROFILE_EMAIL, $this->VALID_FIRSTNAME, $this->VALID_PROFILE_HASH, $this->VALID_LASTNAME, $this->VALID_USERNAME);
+
+		$profile->insert($this->getPDO());
+
+		//Returns an array
+		$results = Profile::getProfileByProfileUserName($this->getPDO(),$profile->getProfileUserName());
+
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
+		//$this->assertCount(0, $results);
+
+		// grab the result from the array and validate it
+		$pdoProfile = $results;
+		$this->assertEquals($profileId, $pdoProfile->getProfileId());
+		$this->assertEquals($pdoProfile->getProfileActivationToken(), $this->VALID_ACTIVATION_TOKEN);
+		$this->assertEquals($pdoProfile->getProfileAvatarCloudinaryId(), $this->VALID_CLOUDINARY_ID);
+		$this->assertEquals($pdoProfile->getProfileAvatarUrl(), $this->VALID_AVATAR_URL);
+		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILE_EMAIL);
+		$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILE_HASH);
+//		$this->assertEquals($pdoProfile->getProfileUserName(), $this->VALID_USERNAME);
+		$this->assertEquals($pdoProfile->getProfileFirstName(), $this->VALID_FIRSTNAME);
+		$this->assertEquals($pdoProfile->getProfileLastName(), $this->VALID_LASTNAME);
+
+
+	}
+
 }
