@@ -242,7 +242,7 @@ class Follow implements \JsonSerializable {
             throw (new \PDOException($exception->getMessage(), 0, $exception));
         }
 
-        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE followProfileId = :followProfileId";
+        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE followFollowedProfileId = :followFollowedProfileId";
         $statement = $pdo->prepare($query);
 
         $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes()];

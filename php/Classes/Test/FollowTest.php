@@ -3,9 +3,9 @@ namespace WebRestaurantTinder\Foodies\Test;
 
 use WebRestaurantTinder\Foodies\Follow;
 
-require_once (dirname(__DIR__) . "/Test/DataDesignTest.php");
+require_once(dirname(__DIR__) . "/Test/DataDesignTest.php");
 
-require_once (dirname(__DIR__). "/autoload.php");
+require_once(dirname(__DIR__) . "/autoload.php");
 
 require_once (dirname(__DIR__, 2) . "/lib/uuid.php");
 
@@ -74,6 +74,38 @@ class FollowTest extends DataDesignTest {
     }
 
     public function testGetValidFollowByFollowProfileId() : void {
+        $numRows = $this->getConnection()->getRowCount("follow");
+
+        $followProfileId = generateUuidV4()->toString();
+        $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
+        $follow->insert($this->getPDO());
+
+        $numRowsAfterInsert = $this->getConnection()->getRowCount("follow");
+        self::assertEquals($numRows + 1, $numRowsAfterInsert);
+
+        $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId()->toString());
+        self::assertEquals($pdoFollow->getFollowProfileId(), $followProfileId);
+        self::assertEquals($pdoFollow->getFollowFollowedProfileId(), $followProfileId);
+        self::assertEquals($pdoFollow->getFollowDate(), $this->VALID_FOLLOW_DATE);
+    }
+
+    public function testGetValidFollowCountByFollowFollowedProfileId() : void {
+        $numRows = $this->getConnection()->getRowCount("follow");
+
+        $followProfileId = generateUuidV4()->toString();
+        $follow = new Follow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID, $this->VALID_FOLLOW_DATE);
+        $follow->insert($this->getPDO());
+
+        $numRowsAfterInsert = $this->getConnection()->getRowCount("follow");
+        self::assertEquals($numRows + 1, $numRowsAfterInsert);
+
+        $pdoFollow = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId()->toString());
+        self::assertEquals($pdoFollow->getFollowProfileId(), $followProfileId);
+        self::assertEquals($pdoFollow->getFollowFollowedProfileId(), $followProfileId);
+        self::assertEquals($pdoFollow->getFollowDate(), $this->VALID_FOLLOW_DATE);
+    }
+
+    public function testGetValidFollowCountByFollowProfileId() : void {
         $numRows = $this->getConnection()->getRowCount("follow");
 
         $followProfileId = generateUuidV4()->toString();
