@@ -1,7 +1,7 @@
 <?php
 namespace WebRestaurantTinder\Foodies\Test;
 
-use WebRestaurantTinder\Foodies\{Follow};
+use WebRestaurantTinder\Foodies\Follow;
 
 require_once (dirname(__DIR__) . "/Test/DataDesignTest.php");
 
@@ -10,27 +10,12 @@ require_once (dirname(__DIR__). "/autoload.php");
 require_once (dirname(__DIR__, 2) . "/lib/uuid.php");
 
 class FollowTest extends DataDesignTest {
-    /**
-     * profile that is being followed by another profile; this is for foreign key relations
-     * @var
-     */
+
     private $VALID_FOLLOW_FOLLOWED_PROFILE_ID = null;
-
-    /**
-     * profile that is following another profile; this is for foreign key relations
-     * @var profile
-     */
     private $VALID_FOLLOW_PROFILE_ID = null;
-
-    /**
-     * timestamp of when a profile is followed
-     * @var \DateTime $VALID_FOLLOW_DATE
-     */
     private $VALID_FOLLOW_DATE = null;
 
-    /**
-     *
-     */
+
     public function testInsertValidFollow() : void {
         $numRows = $this->getConnection()->getRowCount("follow");
 
