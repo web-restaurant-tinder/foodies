@@ -112,7 +112,7 @@ class FollowTest extends DataDesignTest {
             $followProfileId = generateUuidV4()->toString();
             $follow = newFollow($followProfileId, $this->VALID_FOLLOW_FOLLOWED_PROFILE_ID,
                  $this->VALID_FOLLOW_PROFILE_ID,
-                 $this->VALID_FOLLOWDATE . i);
+                 $this->VALID_FOLLOW_DATE);
             $follow->insert($this->getPDO());
         }
 
