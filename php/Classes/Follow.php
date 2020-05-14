@@ -162,7 +162,7 @@ class Follow implements \JsonSerializable {
 
         //bind member variables to the place holders in the template
         $formattedDate = $this->followDate->format("Y-m-d H:i:s.u");
-        $parameters = ["followProfileId" => $this->followProfileId->getBytes(), "followFollowedProfileId" => $this->followFollowedProfileId->getBytes(), "followDate" => $formattedDate];
+        $parameters = ["followFollowedProfileId" => $this->followFollowedProfileId->getBytes(), "followProfileId" => $this->followProfileId->getBytes(), "followDate" => $formattedDate];
         $statement->execute($parameters);
     }
 
@@ -199,7 +199,7 @@ class Follow implements \JsonSerializable {
 //
 //    }
 
-    public static function getFollowByFollowProfileId(\PDO $pdo, $followProfileId) : \SplFixedArray {
+    public static function getFollowByFollowProfileId(\PDO $pdo, string $followProfileId) : \SplFixedArray {
         //sanitize the followProfileId before searching
         try {
             $followProfileId = self::validateUuid($followProfileId);
@@ -231,7 +231,7 @@ class Follow implements \JsonSerializable {
         return ($follows);
     }
 
-    public static function getFollowByFollowProfileIdAndFollowFollowedProfileId(\PDO $pdo, string $followProfileId, string $followFollowedProfileId) : ?Follow {
+    public static function getFollowByFollowProfileIdAndFollowFollowedProfileId(\PDO $pdo, string $followFollowedProfileId, string $followProfileId) : ?Follow {
 
         try {
             $followProfileId = self::validateUuid($followProfileId);
@@ -246,10 +246,10 @@ class Follow implements \JsonSerializable {
         }
 
 
-        $query = "SELECT followProfileId, followFollowedProfileId, followDate FROM follow WHERE followProfileId = :followProfileId AND followFollowedProfileId = :followFollowedProfileId";
+        $query = "SELECT followFollowedProfileId, followProfileId, followDate FROM follow WHERE followProfileId = :followProfileId AND followFollowedProfileId = :followFollowedProfileId";
         $statement = $pdo->prepare($query);
 
-        $parameters = ["followProfileId" => $followProfileId->getBytes(), "followFollowedProfileId" => $followFollowedProfileId->getBytes()];
+        $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes(), "followProfileId" => $followProfileId->getBytes()];
         $statement->execute($parameters);
 
         try {
@@ -257,7 +257,7 @@ class Follow implements \JsonSerializable {
             $statement->setFetchMode(\PDO::FETCH_ASSOC);
             $row = $statement->fetch();
             if($row !== false) {
-                $follow = new Follow($row["followProfileId"], $row["followFollowedProfileId"], $row["followDate"]);
+                $follow = new Follow($row["followFollowedProfileId"], $row["followProfileId"], $row["followDate"]);
             }
         } catch (\Exception $exception) {
             throw(new \PDOException($exception->getMessage(), 0, $exception));
@@ -278,7 +278,7 @@ class Follow implements \JsonSerializable {
         $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes()];
         $statement->execute($parameters);
 
-        $follow = new \SplFixedArray($statement->rowCount());
+        $follows = new \SplFixedArray($statement->rowCount());
         $statement->setFetchMode(\PDO::FETCH_ASSOC);
         while (($row = $statement->fetch()) !== false) {
             try {
@@ -302,11 +302,11 @@ class Follow implements \JsonSerializable {
      * @throws \PDOException when mySQL related errors occur
      * @throws \TypeError when a variable is not the correct data type
      */
-    public static function getFollowCountByFollowFollowedProfileId(\PDO $pdo, $followFollowedProfileId) : \SplFixedArray {
+    public static function getFollowCountByFollowFollowedProfileId(\PDO $pdo, $followFollowedProfileId) : int {
         //sanitize the followFollowedProfileId before searching
 
         try {
-            $followFollowedProfileId = self::vaidateUuid($followFollowedProfileId);
+            $followFollowedProfileId = self::validateUuid($followFollowedProfileId);
         } catch (\InvalidArgumentException | \RangeException | \TypeError $exception) {
             throw (new \PDOException($exception->getMessage(), 0, $exception));
         }
@@ -342,7 +342,7 @@ class Follow implements \JsonSerializable {
     public static function getFollowCountByFollowProfileId(\PDO $pdo, $followProfileId) : ?Follow {
         //sanitize the followProfileId before searching
         try {
-            $followProfileId = self::vaidateUuid($followProfileId);
+            $followProfileId = self::validateUuid($followProfileId);
         } catch (\InvalidArgumentException | \RangeException | \TypeError $exception) {
             throw (new \PDOException($exception->getMessage(), 0, $exception));
         }
