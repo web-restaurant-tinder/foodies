@@ -5,6 +5,7 @@ require_once("autoload.php");
 require_once (dirname(__DIR__) . "/vendor/autoload.php");
 
 
+use http\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -175,7 +176,7 @@ class Follow implements \JsonSerializable {
      */
     public function delete(\PDO $pdo) : void {
         //create query template
-        $query = "DELETE FROM follow WHERE followProfileId = :followProfileId";
+        $query = "DELETE FROM follow WHERE followProfileId = :followProfileId AND followFollowedProfileId = :followFollowedProfileId";
         $statement = $pdo->prepare($query);
 
         //bind the member variables to the place holder in the template
@@ -262,6 +263,34 @@ class Follow implements \JsonSerializable {
             throw(new \PDOException($exception->getMessage(), 0, $exception));
         }
         return ($follow);
+    }
+
+    public static function getFollowByFollowFollowedProfileId(\PDO $pdo, string $followFollowedProfileId): \SplFixedArray {
+        try {
+            $followFollowedProfileId = self::validateUuid($followFollowedProfileId);
+        } catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+            throw (new \PDOException($exception->getMessage(), 0, $exception));
+        }
+
+        $query = "SELECT followProfileId, followFollowedProfileId, followDate FROM follow WHERE followFollowedProfileId = :followFollowedProfileId";
+        $statement = $pdo->prepare($query);
+
+        $parameters = ["followFollowedProfileId" => $followFollowedProfileId->getBytes()];
+        $statement->execute($parameters);
+
+        $follow = new \SplFixedArray($statement->rowCount());
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
+        while (($row = $statement->fetch()) !== false) {
+            try {
+                $follow = new Follow($row["followFollowedProfileId"], $row["followProfileId"], $row["followDate"]);
+                $follows[$follows->key()] = $follow;
+                $follows->next();
+            } catch (\Exception $exception) {
+                throw(new \PDOException($exception->getMessage(), 0, $exception));
+            }
+            return ($follows);
+        }
+
     }
 
     /**
