@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * This is the Swipe class
- * @author Sara Rendon <srendon4@cnm.edu>
+ * @swipe Sara Rendon <srendon4@cnm.edu>
  */
 class Swipe implements \JsonSerializable {
 
@@ -50,7 +50,7 @@ class Swipe implements \JsonSerializable {
 	}
 
 	/**
-	 *mutator method for author id
+	 *mutator method for swipe id
 	 *
 	 * @param Uuid|string $newSwipeProfileId new value of SwipeProfile id
 	 * @throws \InvalidArgumentException if data types are not valid
@@ -69,7 +69,7 @@ class Swipe implements \JsonSerializable {
 	}
 
 	/**
-	 * accessor method for author Swipe Restaurant Id
+	 * accessor method for swipe Swipe Restaurant Id
 	 *
 	 * @return string value of the Swipe Restaurant Id
 	 */
@@ -203,16 +203,6 @@ class Swipe implements \JsonSerializable {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function jsonSerialize() {
-		// TODO: Implement jsonSerialize() method.
-	}
-}
-
-
 /**
  * accessor for swipe left
  *
