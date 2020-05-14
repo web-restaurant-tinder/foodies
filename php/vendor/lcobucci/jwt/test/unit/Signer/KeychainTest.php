@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Signer;
 class KeychainTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Key
      *
@@ -23,15 +23,15 @@ class KeychainTest extends \PHPUnit_Framework_TestCase
     public function getPrivateKeyShouldReturnAKey()
     {
         $keychain = new Keychain();
-        $key = $keychain->getPrivateKey('testing', 'Test');
+        $key = $keychain->getPrivateKey('testing', 'test');
 
         $this->assertInstanceOf(Key::class, $key);
         $this->assertAttributeEquals('testing', 'content', $key);
-        $this->assertAttributeEquals('Test', 'passphrase', $key);
+        $this->assertAttributeEquals('test', 'passphrase', $key);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Key
      *

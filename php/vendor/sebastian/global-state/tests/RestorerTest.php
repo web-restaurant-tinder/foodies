@@ -27,7 +27,7 @@ class RestorerTest extends TestCase
     }
 
     /**
-     * Check global variables are correctly backuped and restored (unit Test).
+     * Check global variables are correctly backuped and restored (unit test).
      *
      * @covers \SebastianBergmann\GlobalState\Restorer::restoreGlobalVariables
      * @covers \SebastianBergmann\GlobalState\Restorer::restoreSuperGlobalArray
@@ -60,7 +60,7 @@ class RestorerTest extends TestCase
     /**
      * Check global variables are correctly backuped and restored.
      *
-     * The real Test is the second, but the first has to be executed to backup the globals.
+     * The real test is the second, but the first has to be executed to backup the globals.
      *
      * @backupGlobals enabled
      * @covers \SebastianBergmann\GlobalState\Restorer::restoreGlobalVariables

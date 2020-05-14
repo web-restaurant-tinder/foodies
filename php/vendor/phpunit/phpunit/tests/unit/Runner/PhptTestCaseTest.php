@@ -16,7 +16,7 @@ class PhptTestCaseTest extends TestCase
 {
     private const EXPECT_CONTENT = <<<EOF
 --TEST--
-EXPECT Test
+EXPECT test
 --FILE--
 <?php echo "Hello PHPUnit!"; ?>
 --EXPECT--
@@ -25,7 +25,7 @@ EOF;
 
     private const EXPECTF_CONTENT = <<<EOF
 --TEST--
-EXPECTF Test
+EXPECTF test
 --FILE--
 <?php echo "Hello PHPUnit!"; ?>
 --EXPECTF--
@@ -34,7 +34,7 @@ EOF;
 
     private const EXPECTREGEX_CONTENT = <<<EOF
 --TEST--
-EXPECTREGEX Test
+EXPECTREGEX test
 --FILE--
 <?php echo "Hello PHPUnit!"; ?>
 --EXPECTREGEX--
@@ -319,7 +319,7 @@ EOF
     }
 
     /**
-     * Defines the content of the current PHPT Test.
+     * Defines the content of the current PHPT test.
      *
      * @param string $content
      */

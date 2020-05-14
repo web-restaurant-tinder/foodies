@@ -35,7 +35,7 @@ class HmacTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Key
      *
@@ -43,15 +43,15 @@ class HmacTest extends \PHPUnit_Framework_TestCase
      */
     public function createHashMustReturnAHashAccordingWithTheAlgorithm()
     {
-        $hash = hash_hmac('sha256', 'Test', '123', true);
+        $hash = hash_hmac('sha256', 'test', '123', true);
 
-        $this->assertEquals($hash, $this->signer->createHash('Test', new Key('123')));
+        $this->assertEquals($hash, $this->signer->createHash('test', new Key('123')));
 
         return $hash;
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends createHashMustReturnAHashAccordingWithTheAlgorithm
      *
@@ -62,11 +62,11 @@ class HmacTest extends \PHPUnit_Framework_TestCase
      */
     public function doVerifyShouldReturnTrueWhenExpectedHashWasCreatedWithSameInformation($expected)
     {
-        $this->assertTrue($this->signer->doVerify($expected, 'Test', new Key('123')));
+        $this->assertTrue($this->signer->doVerify($expected, 'test', new Key('123')));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends createHashMustReturnAHashAccordingWithTheAlgorithm
      *
@@ -77,11 +77,11 @@ class HmacTest extends \PHPUnit_Framework_TestCase
      */
     public function doVerifyShouldReturnFalseWhenExpectedHashWasNotCreatedWithSameInformation($expected)
     {
-        $this->assertFalse($this->signer->doVerify($expected, 'Test', new Key('1234')));
+        $this->assertFalse($this->signer->doVerify($expected, 'test', new Key('1234')));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Key
      *
@@ -89,11 +89,11 @@ class HmacTest extends \PHPUnit_Framework_TestCase
      */
     public function doVerifyShouldReturnFalseWhenExpectedHashIsNotString()
     {
-        $this->assertFalse($this->signer->doVerify(false, 'Test', new Key('1234')));
+        $this->assertFalse($this->signer->doVerify(false, 'test', new Key('1234')));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Hmac::hashEquals
      */
@@ -103,7 +103,7 @@ class HmacTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends createHashMustReturnAHashAccordingWithTheAlgorithm
      *
@@ -114,11 +114,11 @@ class HmacTest extends \PHPUnit_Framework_TestCase
      */
     public function hashEqualsShouldReturnFalseWhenExpectedHashIsDifferentThanGenerated($expected)
     {
-        $this->assertFalse($this->signer->hashEquals($expected, $this->signer->createHash('Test', new Key('1234'))));
+        $this->assertFalse($this->signer->hashEquals($expected, $this->signer->createHash('test', new Key('1234'))));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends createHashMustReturnAHashAccordingWithTheAlgorithm
      *
@@ -129,6 +129,6 @@ class HmacTest extends \PHPUnit_Framework_TestCase
      */
     public function hashEqualsShouldReturnTrueWhenExpectedHashIsEqualsThanGenerated($expected)
     {
-        $this->assertTrue($this->signer->hashEquals($expected, $this->signer->createHash('Test', new Key('123'))));
+        $this->assertTrue($this->signer->hashEquals($expected, $this->signer->createHash('test', new Key('123'))));
     }
 }

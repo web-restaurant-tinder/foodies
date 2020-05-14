@@ -15,7 +15,7 @@ use PHPUnit\Util\Filesystem;
 use ReflectionClass;
 
 /**
- * The standard Test suite loader.
+ * The standard test suite loader.
  */
 class StandardTestSuiteLoader implements TestSuiteLoader
 {

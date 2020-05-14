@@ -23,7 +23,7 @@ final class NamePrettifier
     private $strings = [];
 
     /**
-     * Prettifies the name of a Test class.
+     * Prettifies the name of a test class.
      */
     public function prettifyTestClass(string $className): string
     {
@@ -91,7 +91,7 @@ final class NamePrettifier
     }
 
     /**
-     * Prettifies the name of a Test method.
+     * Prettifies the name of a test method.
      */
     public function prettifyTestMethod(string $name): string
     {
@@ -111,7 +111,7 @@ final class NamePrettifier
 
         if (\strpos($name, 'test_') === 0) {
             $name = \substr($name, 5);
-        } elseif (\strpos($name, 'Test') === 0) {
+        } elseif (\strpos($name, 'test') === 0) {
             $name = \substr($name, 4);
         }
 

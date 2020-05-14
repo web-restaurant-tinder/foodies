@@ -6,7 +6,7 @@ class Swift_Bug71Test extends \PHPUnit\Framework\TestCase
 
     protected function setUp()
     {
-        $this->message = new Swift_Message('Test');
+        $this->message = new Swift_Message('test');
     }
 
     public function testCallingToStringAfterSettingNewBodyReflectsChanges()

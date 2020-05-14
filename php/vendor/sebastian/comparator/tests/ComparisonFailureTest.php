@@ -52,8 +52,8 @@ final class ComparisonFailureTest extends TestCase
 
     public function testDiffNotPossible(): void
     {
-        $failure = new ComparisonFailure('a', 'b', false, false, true, 'Test');
+        $failure = new ComparisonFailure('a', 'b', false, false, true, 'test');
         $this->assertSame('', $failure->getDiff());
-        $this->assertSame('Test', $failure->toString());
+        $this->assertSame('test', $failure->toString());
     }
 }

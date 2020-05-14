@@ -13,14 +13,14 @@ class Issue445Test extends TestCase
 {
     public function testOutputWithExpectationBefore(): void
     {
-        $this->expectOutputString('Test');
-        print 'Test';
+        $this->expectOutputString('test');
+        print 'test';
     }
 
     public function testOutputWithExpectationAfter(): void
     {
-        print 'Test';
-        $this->expectOutputString('Test');
+        print 'test';
+        $this->expectOutputString('test');
     }
 
     public function testNotMatchingOutput(): void

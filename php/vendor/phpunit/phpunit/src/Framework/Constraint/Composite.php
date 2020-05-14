@@ -36,7 +36,7 @@ abstract class Composite extends Constraint
      * failure.
      *
      * @param mixed  $other        value or object to evaluate
-     * @param string $description  Additional information about the Test
+     * @param string $description  Additional information about the test
      * @param bool   $returnResult Whether to return a result or throw an exception
      *
      * @throws ExpectationFailedException

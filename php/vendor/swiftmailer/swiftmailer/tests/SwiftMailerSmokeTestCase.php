@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base Test for smoke tests.
+ * Base test for smoke tests.
  *
  * @author Rouven Weßling
  */

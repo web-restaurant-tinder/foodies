@@ -1,17 +1,19 @@
+
+DROP TABLE IF EXISTS swipe;
+DROP TABLE IF EXISTS restaurant;
+
 CREATE TABLE IF NOT EXISTS restaurant(
 	restaurantId BINARY(16) not null,
-	restaurantAddress VARCHAR(32),
+	restaurantAddress VARCHAR(100),
 	restaurantAvatar VARCHAR(32),
-	restaurantFoodType VARCHAR(75) NOT NULL,
-	restaurantLat FLOAT(10, 6) NOT NULL,
-	restaurantLng FLOAT(10, 6) NOT NULL,
+	restaurantFoodType VARCHAR(300) NOT NULL,
+	restaurantLat FLOAT(11, 8) NOT NULL,
+	restaurantLng FLOAT(11, 8) NOT NULL,
 	restaurantName VARCHAR(32) NOT NULL,
 	restaurantPhone VARCHAR(15) NOT NULL,
 	restaurantStarRating ENUM ('1','2','3','4','5'),
-	restaurantUrl VARCHAR(75),
+	restaurantUrl VARCHAR(1000),
 	PRIMARY KEY (restaurantId),
-	UNIQUE (restaurantLat),
-	UNIQUE (restaurantLng),
 	UNIQUE (restaurantPhone),
 	UNIQUE (restaurantUrl)
 );

@@ -58,7 +58,7 @@ trait TestCaseTrait
         $this->getDatabaseTester()->onTearDown();
 
         /*
-         * Destroy the tester after the Test is run to keep DB connections
+         * Destroy the tester after the test is run to keep DB connections
          * from piling up.
          */
         $this->databaseTester = null;
@@ -130,7 +130,7 @@ trait TestCaseTrait
     }
 
     /**
-     * Returns the Test database connection.
+     * Returns the test database connection.
      *
      * @return Connection
      */
@@ -153,14 +153,14 @@ trait TestCaseTrait
     }
 
     /**
-     * Returns the Test dataset.
+     * Returns the test dataset.
      *
      * @return IDataSet
      */
     abstract protected function getDataSet();
 
     /**
-     * Returns the database operation executed in Test setup.
+     * Returns the database operation executed in test setup.
      *
      * @return Operation
      */
@@ -170,7 +170,7 @@ trait TestCaseTrait
     }
 
     /**
-     * Returns the database operation executed in Test cleanup.
+     * Returns the database operation executed in test cleanup.
      *
      * @return Operation
      */

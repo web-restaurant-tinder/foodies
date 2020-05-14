@@ -11,7 +11,7 @@ namespace PHPUnit\Framework;
 
 /**
  * A marker interface for marking any exception/error as result of an unit
- * Test as incomplete implementation or currently not implemented.
+ * test as incomplete implementation or currently not implemented.
  */
 interface IncompleteTest
 {

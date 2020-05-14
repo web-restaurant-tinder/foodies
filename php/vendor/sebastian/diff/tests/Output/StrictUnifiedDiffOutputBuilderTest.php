@@ -671,7 +671,7 @@ final class StrictUnifiedDiffOutputBuilderTest extends TestCase
     }
 
     /**
-     * Returns a new instance of a Differ with a new instance of the class (DiffOutputBuilderInterface) under Test.
+     * Returns a new instance of a Differ with a new instance of the class (DiffOutputBuilderInterface) under test.
      *
      * @param array $options
      *

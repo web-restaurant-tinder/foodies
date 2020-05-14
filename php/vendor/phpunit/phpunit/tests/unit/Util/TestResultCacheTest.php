@@ -12,7 +12,7 @@ use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\TestResultCache;
 
 /**
- * @group Test-reorder
+ * @group test-reorder
  */
 class TestResultCacheTest extends TestCase
 {
@@ -55,7 +55,7 @@ class TestResultCacheTest extends TestCase
         // Create a cache with one result and store it
         $cacheFile = \tempnam(\sys_get_temp_dir(), 'phpunit_');
         $cache     = new TestResultCache($cacheFile);
-        $testName  = 'Test' . \uniqid();
+        $testName  = 'test' . \uniqid();
         $cache->setState($testName, BaseTestRunner::STATUS_SKIPPED);
         $cache->persist();
         unset($cache);

@@ -20,7 +20,7 @@ class Issue3379TestListener implements TestListener
     public function addSkippedTest(Test $test, \Throwable $t, float $time): void
     {
         if ($test instanceof TestCase) {
-            print 'Skipped Test ' . $test->getName() . ', status: ' . $test->getStatus() . \PHP_EOL;
+            print 'Skipped test ' . $test->getName() . ', status: ' . $test->getStatus() . \PHP_EOL;
         }
     }
 }
