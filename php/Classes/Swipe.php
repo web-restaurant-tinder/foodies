@@ -4,7 +4,8 @@ namespace Sararendon01\WebRestaurantTinder\Foodies;
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
-use Sararendon01\TinderRestaurant\ValidateDate;
+use WebRestaurantTinder\Foodies\ValidateDate;
+use WebRestaurantTinder\Foodies\ValidateUuid;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -211,14 +212,134 @@ class Swipe implements \JsonSerializable {
 public function getSwipeLeft(): string {
 	return $this->swipeleft;
 }
+
+
+	public function insert(\PDO $pdo) : void {
+		//create query template
+		$query = "INSERT INTO swipe(swipeRight, swipeLeft, swipeDate, swipeRestaurantId, swipeProfileId) VALUES(:swipeRight, :swipeLeft, :swipeDate, :swipeProfileId, :swipeRestuarantId)";
+		$statement = $pdo->prepare($query);
+		//bind member variables to the place holders in the template
+		$formattedDate = $this->swipeDate->format("Y-m-d H:i:s.u");
+		$parameters = ["swipeProfileId" => $this->swipeProfileId->getBytes(), "swipeRestuarantId" => $this->swipeRestaurantId->getBytes(), "swipeDate" => $formattedDate];
+		$statement->execute($parameters);
+	}
+
+
+	public function delete(\PDO $pdo) : void {
+		//create query template
+		$query = "DELETE FROM swipe WHERE swipeProfileId = :swipeProfileId AND swipeRestaurantId = :swipeRestuarantId";
+		$statement = $pdo->prepare($query);
+		//bind the member variables to the place holder in the template
+		$parameters = ["swipeProfileId" => $this->swipeProfileId->getBytes(), "swipeRestuarantId" => $this->swipeRestaurantId->getBytes()];
+		$statement->execute($parameters);
+	}
+
+
+
+	public static function getSwipeBySwipeProfileId(\PDO $pdo, string $swipeProfileId) : \SplFixedArray {
+		//sanitize the swipeProfileId before searching
+		try {
+			$swipeProfileId = self::validateUuid($swipeProfileId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(),0, $exception));
+		}
+
+		//create query table
+		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight, swipeLeft FROM swipe WHERE swipeProfileId = :swipeProfileId";
+		$statement = $pdo->prepare($query);
+
+		//bind swipe id to the place holder in the template
+		$parameters = ["swipeProfileId" => $swipeProfileId->getBytes()];
+		$statement->execute($parameters);
+
+		//grab the swipe id from mySQL
+		$swipes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while (($row = $statement->fetch()) !== false) {
+			try {
+				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"], $row["swipeLeft"]);
+				$swipes[$swipes->key()] = $swipe;
+				$swipes->next();
+			} catch (\Exception $exception) {
+				//if the row could not be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($swipes);
+	}
+
+	public static function getSwipeBySwipeProfileIdAndSwipeRestaurantId(\PDO $pdo, string $swipeProfileId, string $swipeRestaurantId) : ?Swipe {
+
+		try {
+			$swipeProfileId = self::validateUuid($swipeProfileId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+
+		try {
+			$swipeRestaurantId = self::validateUuid($swipeRestaurantId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+
+
+		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight, swipeLeft FROM swipe WHERE swipeProfileId = :swipeProfileId 
+      AND swipeRestaurantId = :swipeRestaurantId";
+		$statement = $pdo->prepare($query);
+
+		$parameters = ["swipeProfileId" => $swipeProfileId->getBytes(), "swipeRestaurantId" => $swipeRestaurantId->getBytes()];
+		$statement->execute($parameters);
+
+		try {
+			$swipe = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"], $row["swipeLeft"]);
+			}
+		} catch (\Exception $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($swipe);
+	}
+
+
+
+	public static function getSwipeBySwipeRestaurantId(\PDO $pdo, string $swipeRestaurantId): \SplFixedArray {
+		try {
+			$swipeRestaurantId = self::validateUuid($swipeRestaurantId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw (new \PDOException($exception->getMessage(), 0, $exception));
+		}
+
+		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight, swipeLeft FROM swipe WHERE swipeRestaurantId = :swipeRestaurantId";
+		$statement = $pdo->prepare($query);
+
+		$parameters = ["swipeRestaurantId" => $swipeRestaurantId->getBytes()];
+		$statement->execute($parameters);
+
+		$swipes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while (($row = $statement->fetch()) !== false) {
+			try {
+				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"], $row["swipeLeft"]);
+				$swipes[$swipes->key()] = $swipe;
+				$swipes->next();
+			} catch (\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			return ($swipes);
+		}
+
+	}
+
+
 /**
  * @inheritDoc
  */
 public function jsonSerialize(){
 	$fields = get_object_vars($this);
-	$fields["profileId"] = $this->profileId->toString();
-	unset($fields["profileActivationToken"]);
-	unset($fields["profileHash"]);
+	$fields["swipeProfileId"] = $this->swipeProfileId->toString();
 	return($fields);
 }
 }
