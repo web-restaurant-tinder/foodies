@@ -115,9 +115,6 @@ class Profile implements \JsonSerializable{
 	}
 
 
-
-
-
 	public function getProfileAvatarUrl(): string {
 		return ($this->profileAvatarUrl);
 	}
