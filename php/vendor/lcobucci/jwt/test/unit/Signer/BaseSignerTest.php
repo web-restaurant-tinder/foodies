@@ -32,7 +32,7 @@ class BaseSignerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\BaseSigner::modifyHeader
      */
@@ -47,7 +47,7 @@ class BaseSignerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signature::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -61,14 +61,14 @@ class BaseSignerTest extends \PHPUnit_Framework_TestCase
 
         $this->signer->expects($this->once())
                      ->method('createHash')
-                     ->with('Test', $key)
-                     ->willReturn('Test');
+                     ->with('test', $key)
+                     ->willReturn('test');
 
-        $this->assertEquals(new Signature('Test'), $this->signer->sign('Test', $key));
+        $this->assertEquals(new Signature('test'), $this->signer->sign('test', $key));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signature::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -80,14 +80,14 @@ class BaseSignerTest extends \PHPUnit_Framework_TestCase
     {
         $this->signer->expects($this->once())
                      ->method('createHash')
-                     ->with('Test', new Key('123'))
-                     ->willReturn('Test');
+                     ->with('test', new Key('123'))
+                     ->willReturn('test');
 
-        $this->assertEquals(new Signature('Test'), $this->signer->sign('Test', '123'));
+        $this->assertEquals(new Signature('test'), $this->signer->sign('test', '123'));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signature::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -101,14 +101,14 @@ class BaseSignerTest extends \PHPUnit_Framework_TestCase
 
         $this->signer->expects($this->once())
                      ->method('doVerify')
-                     ->with('Test', 'Test', $key)
+                     ->with('test', 'test', $key)
                      ->willReturn(true);
 
-        $this->assertTrue($this->signer->verify('Test', 'Test', $key));
+        $this->assertTrue($this->signer->verify('test', 'test', $key));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signature::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -120,9 +120,9 @@ class BaseSignerTest extends \PHPUnit_Framework_TestCase
     {
         $this->signer->expects($this->once())
                      ->method('doVerify')
-                     ->with('Test', 'Test', new Key('123'))
+                     ->with('test', 'test', new Key('123'))
                      ->willReturn(true);
 
-        $this->assertTrue($this->signer->verify('Test', 'Test', '123'));
+        $this->assertTrue($this->signer->verify('test', 'test', '123'));
     }
 }

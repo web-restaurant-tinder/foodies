@@ -12,7 +12,7 @@ namespace PHPUnit\Framework;
 use RecursiveIterator;
 
 /**
- * Iterator for Test suites.
+ * Iterator for test suites.
  */
 final class TestSuiteIterator implements RecursiveIterator
 {

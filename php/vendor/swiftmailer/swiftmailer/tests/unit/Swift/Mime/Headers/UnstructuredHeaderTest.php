@@ -322,15 +322,15 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
     public function testSetBodyModel()
     {
         $header = $this->getHeader('Subject', $this->getEncoder('Q', true));
-        $header->setFieldBodyModel('Test');
-        $this->assertEquals('Test', $header->getValue());
+        $header->setFieldBodyModel('test');
+        $this->assertEquals('test', $header->getValue());
     }
 
     public function testGetBodyModel()
     {
         $header = $this->getHeader('Subject', $this->getEncoder('Q', true));
-        $header->setValue('Test');
-        $this->assertEquals('Test', $header->getFieldBodyModel());
+        $header->setValue('test');
+        $this->assertEquals('test', $header->getFieldBodyModel());
     }
 
     private function getHeader($name, $encoder)

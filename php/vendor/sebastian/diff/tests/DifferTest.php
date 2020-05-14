@@ -224,7 +224,7 @@ final class DifferTest extends TestCase
                 ['x' => 'y', 'a' => 'b'],
                 ['z' => 'x', 'c' => 'd'],
             ],
-            'Test line diff detection' => [
+            'test line diff detection' => [
                 [
                     [
                         "#Warning: Strings contain different line endings!\n",
@@ -242,7 +242,7 @@ final class DifferTest extends TestCase
                 "<?php\r\n",
                 "<?php\n",
             ],
-            'Test line diff detection in array input' => [
+            'test line diff detection in array input' => [
                 [
                     [
                         "#Warning: Strings contain different line endings!\n",

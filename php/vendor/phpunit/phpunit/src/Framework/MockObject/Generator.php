@@ -1019,7 +1019,7 @@ class Generator
      */
     private function getTemplate($template)
     {
-        $filename = __DIR__ . \DIRECTORY_SEPARATOR . \DIRECTORY_SEPARATOR . $template;
+        $filename = __DIR__ . \DIRECTORY_SEPARATOR . 'Generator' . \DIRECTORY_SEPARATOR . $template;
 
         if (!isset(self::$templates[$filename])) {
             self::$templates[$filename] = new Text_Template($filename);

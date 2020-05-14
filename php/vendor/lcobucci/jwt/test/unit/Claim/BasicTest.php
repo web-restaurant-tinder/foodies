@@ -14,20 +14,20 @@ namespace Lcobucci\JWT\Claim;
 class BasicTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Claim\Basic::__construct
      */
     public function constructorShouldConfigureTheAttributes()
     {
-        $claim = new Basic('Test', 1);
+        $claim = new Basic('test', 1);
 
-        $this->assertAttributeEquals('Test', 'name', $claim);
+        $this->assertAttributeEquals('test', 'name', $claim);
         $this->assertAttributeEquals(1, 'value', $claim);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      *
@@ -35,13 +35,13 @@ class BasicTest extends \PHPUnit_Framework_TestCase
      */
     public function getNameShouldReturnTheClaimName()
     {
-        $claim = new Basic('Test', 1);
+        $claim = new Basic('test', 1);
 
-        $this->assertEquals('Test', $claim->getName());
+        $this->assertEquals('test', $claim->getName());
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      *
@@ -49,13 +49,13 @@ class BasicTest extends \PHPUnit_Framework_TestCase
      */
     public function getValueShouldReturnTheClaimValue()
     {
-        $claim = new Basic('Test', 1);
+        $claim = new Basic('test', 1);
 
         $this->assertEquals(1, $claim->getValue());
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      *
@@ -63,13 +63,13 @@ class BasicTest extends \PHPUnit_Framework_TestCase
      */
     public function jsonSerializeShouldReturnTheClaimValue()
     {
-        $claim = new Basic('Test', 1);
+        $claim = new Basic('test', 1);
 
         $this->assertEquals(1, $claim->jsonSerialize());
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      *
@@ -77,7 +77,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
      */
     public function toStringShouldReturnTheClaimValue()
     {
-        $claim = new Basic('Test', 1);
+        $claim = new Basic('test', 1);
 
         $this->assertEquals('1', (string) $claim);
     }

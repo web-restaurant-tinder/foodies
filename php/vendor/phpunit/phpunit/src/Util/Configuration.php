@@ -980,7 +980,7 @@ final class Configuration
     }
 
     /**
-     * Returns the Test suite configuration.
+     * Returns the test suite configuration.
      *
      * @throws Exception
      */
@@ -1008,7 +1008,7 @@ final class Configuration
     }
 
     /**
-     * Returns the Test suite names from the configuration.
+     * Returns the test suite names from the configuration.
      */
     public function getTestSuiteNames(): array
     {

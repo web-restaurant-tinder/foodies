@@ -34,7 +34,7 @@ class HmacTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Token
@@ -69,7 +69,7 @@ class HmacTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -91,7 +91,7 @@ class HmacTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -113,7 +113,7 @@ class HmacTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -136,7 +136,7 @@ class HmacTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -158,7 +158,7 @@ class HmacTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Parser

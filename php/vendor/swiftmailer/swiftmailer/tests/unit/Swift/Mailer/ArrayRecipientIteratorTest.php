@@ -33,10 +33,10 @@ class Swift_Mailer_ArrayRecipientIteratorTest extends \PHPUnit\Framework\TestCas
         $it = new Swift_Mailer_ArrayRecipientIterator([
             'foo@bar' => 'Foo',
             'zip@button' => 'Zip thing',
-            'Test@Test' => null,
+            'test@test' => null,
             ]);
         $this->assertEquals(['foo@bar' => 'Foo'], $it->nextRecipient());
         $this->assertEquals(['zip@button' => 'Zip thing'], $it->nextRecipient());
-        $this->assertEquals(['Test@Test' => null], $it->nextRecipient());
+        $this->assertEquals(['test@test' => null], $it->nextRecipient());
     }
 }

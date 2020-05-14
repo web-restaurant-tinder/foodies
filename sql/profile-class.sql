@@ -1,3 +1,9 @@
+USE cap28_rtinder;
+ALTER DATABASE cap28_rtinder CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+DROP TABLE IF EXISTS follow;
+DROP TABLE IF EXISTS profile;
+
 CREATE TABLE IF NOT EXISTS profile(
    profileActivationToken CHAR(32),
 	profileAvatarCloudinaryId CHAR(32),

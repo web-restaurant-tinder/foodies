@@ -21,7 +21,7 @@ use ReflectionMethod;
 use Throwable;
 
 /**
- * A TestSuite is a composite of Tests. It runs a collection of Test cases.
+ * A TestSuite is a composite of Tests. It runs a collection of test cases.
  */
 class TestSuite implements IteratorAggregate, SelfDescribing, Test
 {
@@ -45,28 +45,28 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     protected $runTestInSeparateProcess = false;
 
     /**
-     * The name of the Test suite.
+     * The name of the test suite.
      *
      * @var string
      */
     protected $name = '';
 
     /**
-     * The Test groups of the Test suite.
+     * The test groups of the test suite.
      *
      * @var array
      */
     protected $groups = [];
 
     /**
-     * The tests in the Test suite.
+     * The tests in the test suite.
      *
      * @var Test[]
      */
     protected $tests = [];
 
     /**
-     * The number of tests in the Test suite.
+     * The number of tests in the test suite.
      *
      * @var int
      */
@@ -142,7 +142,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
         $constructor = $theClass->getConstructor();
 
         if ($constructor === null) {
-            throw new Exception('No valid Test provided.');
+            throw new Exception('No valid test provided.');
         }
         $parameters = $constructor->getParameters();
 
@@ -298,13 +298,13 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
 
     public static function isTestMethod(ReflectionMethod $method): bool
     {
-        if (\strpos($method->name, 'Test') === 0) {
+        if (\strpos($method->name, 'test') === 0) {
             return true;
         }
 
         $annotations = \PHPUnit\Util\Test::parseAnnotations($method->getDocComment());
 
-        return isset($annotations['Test']);
+        return isset($annotations['test']);
     }
 
     /**
@@ -413,7 +413,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
 
     /**
      * Template Method that is called before the tests
-     * of this Test suite are run.
+     * of this test suite are run.
      */
     protected function setUp(): void
     {
@@ -421,14 +421,14 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
 
     /**
      * Template Method that is called after the tests
-     * of this Test suite have finished running.
+     * of this test suite have finished running.
      */
     protected function tearDown(): void
     {
     }
 
     /**
-     * Returns a string representation of the Test suite.
+     * Returns a string representation of the test suite.
      */
     public function toString(): string
     {
@@ -436,7 +436,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Adds a Test to the suite.
+     * Adds a test to the suite.
      *
      * @param array $groups
      */
@@ -521,7 +521,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
      *
      * If the named file cannot be read or there are no new tests that can be
      * added, a <code>PHPUnit\Framework\WarningTestCase</code> will be created instead,
-     * leaving the current Test run untouched.
+     * leaving the current test run untouched.
      *
      * @throws Exception
      */
@@ -536,23 +536,23 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
         }
 
         // The given file may contain further stub classes in addition to the
-        // Test class itself. Figure out the actual Test class.
+        // test class itself. Figure out the actual test class.
         $filename   = FileLoader::checkAndLoad($filename);
         $newClasses = \array_diff(\get_declared_classes(), $this->declaredClasses);
 
-        // The diff is empty in case a parent class (with Test methods) is added
+        // The diff is empty in case a parent class (with test methods) is added
         // AFTER a child class that inherited from it. To account for that case,
         // accumulate all discovered classes, so the parent class may be found in
         // a later invocation.
         if (!empty($newClasses)) {
-            // On the assumption that Test classes are defined first in files,
+            // On the assumption that test classes are defined first in files,
             // process discovered classes in approximate LIFO order, so as to
             // avoid unnecessary reflection.
             $this->foundClasses    = \array_merge($newClasses, $this->foundClasses);
             $this->declaredClasses = \get_declared_classes();
         }
 
-        // The Test class's name must match the filename, either in full, or as
+        // The test class's name must match the filename, either in full, or as
         // a PEAR/PSR-0 prefixed short name ('NameSpace_ShortName'), or as a
         // PSR-1 local short name ('NameSpace\ShortName'). The comparison must be
         // anchored to prevent false-positive matches (e.g., 'OtherShortName').
@@ -598,7 +598,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Wrapper for addTestFile() that adds multiple Test files.
+     * Wrapper for addTestFile() that adds multiple test files.
      *
      * @param array|Iterator $fileNames
      *
@@ -620,7 +620,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Counts the number of Test cases that will be run by this Test.
+     * Counts the number of test cases that will be run by this test.
      *
      * @param bool $preferCache indicates if cache is preferred
      */
@@ -650,7 +650,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Returns the Test groups of the suite.
+     * Returns the test groups of the suite.
      */
     public function getGroups(): array
     {
@@ -663,7 +663,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Set tests groups of the Test case
+     * Set tests groups of the test case
      */
     public function setGroupDetails(array $groups): void
     {
@@ -785,7 +785,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Returns the Test at the given index.
+     * Returns the test at the given index.
      *
      * @return false|Test
      */
@@ -809,7 +809,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Set tests of the Test suite
+     * Set tests of the test suite
      *
      * @param Test[] $tests
      */
@@ -819,7 +819,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Mark the Test suite as skipped.
+     * Mark the test suite as skipped.
      *
      * @param string $message
      *
@@ -861,7 +861,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
     }
 
     /**
-     * Returns an iterator for this Test suite.
+     * Returns an iterator for this test suite.
      */
     public function getIterator(): Iterator
     {
@@ -908,7 +908,7 @@ class TestSuite implements IteratorAggregate, SelfDescribing, Test
             $this->addTest(
                 self::warning(
                     \sprintf(
-                        'Test method "%s" in Test class "%s" is not public.',
+                        'Test method "%s" in test class "%s" is not public.',
                         $name,
                         $class->getName()
                     )

@@ -21,7 +21,7 @@ use Prophecy\Exception\Prediction\UnexpectedCallsCountException;
 
 /**
  * Prediction interface.
- * Predictions are logical Test blocks, tied to `should...` keyword.
+ * Predictions are logical test blocks, tied to `should...` keyword.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

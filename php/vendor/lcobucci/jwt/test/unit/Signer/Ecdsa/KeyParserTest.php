@@ -46,7 +46,7 @@ class KeyParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser::__construct
      */
@@ -59,7 +59,7 @@ class KeyParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -85,7 +85,7 @@ class KeyParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -105,7 +105,7 @@ class KeyParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser::__construct
      * @uses Lcobucci\JWT\Signer\Key
@@ -130,7 +130,7 @@ class KeyParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @expectedException \InvalidArgumentException
      *

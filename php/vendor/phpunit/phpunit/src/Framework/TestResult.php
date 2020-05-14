@@ -28,7 +28,7 @@ use SebastianBergmann\Timer\Timer;
 use Throwable;
 
 /**
- * A TestResult collects the results of executing a Test case.
+ * A TestResult collects the results of executing a test case.
  */
 class TestResult implements Countable
 {
@@ -198,7 +198,7 @@ class TestResult implements Countable
     {
         $annotations = $test->getAnnotations();
 
-        // If there is a @coversNothing annotation on the Test method then code
+        // If there is a @coversNothing annotation on the test method then code
         // coverage data does not need to be collected
         if (isset($annotations['method']['coversNothing'])) {
             return false;
@@ -209,13 +209,13 @@ class TestResult implements Countable
             return true;
         }
 
-        // If there are no explicit covers, and the Test class is
+        // If there are no explicit covers, and the test class is
         // marked as covers nothing, all coverage can be skipped
         if (isset($annotations['class']['coversNothing'])) {
             return false;
         }
 
-        // Otherwise each Test method can generate coverage
+        // Otherwise each test method can generate coverage
         return true;
     }
 
@@ -371,7 +371,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Informs the result that a Test suite will be started.
+     * Informs the result that a test suite will be started.
      */
     public function startTestSuite(TestSuite $suite): void
     {
@@ -385,7 +385,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Informs the result that a Test suite was completed.
+     * Informs the result that a test suite was completed.
      */
     public function endTestSuite(TestSuite $suite): void
     {
@@ -395,7 +395,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Informs the result that a Test will be started.
+     * Informs the result that a test will be started.
      */
     public function startTest(Test $test): void
     {
@@ -408,7 +408,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Informs the result that a Test was completed.
+     * Informs the result that a test was completed.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
@@ -435,7 +435,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Returns true if no risky Test occurred.
+     * Returns true if no risky test occurred.
      */
     public function allHarmless(): bool
     {
@@ -451,7 +451,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Returns true if no incomplete Test occurred.
+     * Returns true if no incomplete test occurred.
      */
     public function allCompletelyImplemented(): bool
     {
@@ -487,7 +487,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Returns true if no Test has been skipped.
+     * Returns true if no test has been skipped.
      */
     public function noneSkipped(): bool
     {
@@ -575,7 +575,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Returns the (top) Test suite.
+     * Returns the (top) test suite.
      */
     public function topTestSuite(): TestSuite
     {
@@ -813,7 +813,7 @@ class TestResult implements Countable
                 $this->addFailure(
                     $test,
                     new UnintentionallyCoveredCodeError(
-                        'This Test executed code that is not listed as code to be covered or used:' .
+                        'This test executed code that is not listed as code to be covered or used:' .
                         \PHP_EOL . $cce->getMessage()
                     ),
                     $time
@@ -822,7 +822,7 @@ class TestResult implements Countable
                 $this->addFailure(
                     $test,
                     new CoveredCodeNotExecutedException(
-                        'This Test did not execute all the code that is listed as code to be covered:' .
+                        'This test did not execute all the code that is listed as code to be covered:' .
                         \PHP_EOL . $cce->getMessage()
                     ),
                     $time
@@ -832,7 +832,7 @@ class TestResult implements Countable
                     $this->addFailure(
                         $test,
                         new MissingCoversAnnotationException(
-                            'This Test does not have a @covers annotation but is expected to have one'
+                            'This test does not have a @covers annotation but is expected to have one'
                         ),
                         $time
                     );
@@ -868,7 +868,7 @@ class TestResult implements Countable
                 $test,
                 new RiskyTestError(
                     \sprintf(
-                        "This Test did not perform any assertions\n\n%s:%d",
+                        "This test did not perform any assertions\n\n%s:%d",
                         $reflected->getFileName(),
                         $reflected->getStartLine()
                     )
@@ -882,7 +882,7 @@ class TestResult implements Countable
                 $test,
                 new RiskyTestError(
                     \sprintf(
-                        'This Test is annotated with "@doesNotPerformAssertions" but performed %d assertions',
+                        'This test is annotated with "@doesNotPerformAssertions" but performed %d assertions',
                         $test->getNumAssertions()
                     )
                 ),
@@ -893,7 +893,7 @@ class TestResult implements Countable
                 $test,
                 new OutputError(
                     \sprintf(
-                        'This Test printed output: %s',
+                        'This test printed output: %s',
                         $test->getActualOutput()
                     )
                 ),
@@ -925,7 +925,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Checks whether the Test run should stop.
+     * Checks whether the test run should stop.
      */
     public function shouldStop(): bool
     {
@@ -933,7 +933,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Marks that the Test run should stop.
+     * Marks that the test run should stop.
      */
     public function stop(): void
     {
@@ -1087,7 +1087,7 @@ class TestResult implements Countable
     }
 
     /**
-     * Returns whether the entire Test was successful or not.
+     * Returns whether the entire test was successful or not.
      */
     public function wasSuccessful(): bool
     {

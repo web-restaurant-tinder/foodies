@@ -37,12 +37,12 @@ class CliTestDoxPrinter extends ResultPrinter
     private $prettifier;
 
     /**
-     * @var int The number of Test results received from the TestRunner
+     * @var int The number of test results received from the TestRunner
      */
     private $testIndex = 0;
 
     /**
-     * @var int The number of Test results already sent to the output
+     * @var int The number of test results already sent to the output
      */
     private $testFlushIndex = 0;
 
@@ -62,27 +62,27 @@ class CliTestDoxPrinter extends ResultPrinter
     private $originalExecutionOrder = [];
 
     /**
-     * @var string Classname of the current Test
+     * @var string Classname of the current test
      */
     private $className = '';
 
     /**
-     * @var string Classname of the previous Test; empty for first Test
+     * @var string Classname of the previous test; empty for first test
      */
     private $lastClassName = '';
 
     /**
-     * @var string Prettified Test name of current Test
+     * @var string Prettified test name of current test
      */
     private $testMethod;
 
     /**
-     * @var string Test result message of current Test
+     * @var string Test result message of current test
      */
     private $testResultMessage;
 
     /**
-     * @var bool Test result message of current Test contains a verbose dump
+     * @var bool Test result message of current test contains a verbose dump
      */
     private $lastFlushedTestWasVerbose = false;
 
@@ -309,7 +309,7 @@ class CliTestDoxPrinter extends ResultPrinter
             $this->write($result['className'] . "\n");
         }
 
-        // Write the Test result itself
+        // Write the test result itself
         $this->write($result['message']);
     }
 
