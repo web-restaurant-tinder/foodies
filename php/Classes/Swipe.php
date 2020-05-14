@@ -1,5 +1,5 @@
 <?php
-namespace Sararendon01\WebRestaurantTinder\Foodies;
+namespace WebRestaurantTinder\Foodies;
 
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
@@ -24,20 +24,20 @@ class Swipe implements \JsonSerializable {
 
 	private $swipeRight;
 
-	private $swipeLeft;
+	//private $swipeLeft;
 
 
-	public function __construct($newSwipeProfileId, string $newSwipeRestaurantId, string $newSwipeDate, string $newSwipeRight, string $newSwipeLeft) {
+	public function __construct($newSwipeProfileId, $newSwipeRestaurantId, $newSwipeDate, $newSwipeRight) {
 		try {
 			$this->setSwipeProfileId($newSwipeProfileId);
 			$this->setSwipeRestaurantId($newSwipeRestaurantId);
 			$this->setSwipeDate($newSwipeDate);
 			$this->setSwipeRight($newSwipeRight);
-			$this->setSwipeLeft($newSwipeLeft);
+//			$this->setSwipeLeft($newSwipeLeft);
 
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
-			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+			throw(new $exceptionType($exception->getMessage(), $exception));
 		}
 	}
 
@@ -47,7 +47,7 @@ class Swipe implements \JsonSerializable {
 	 * @return Uuid value of Swipe Profile Id
 	 */
 	public function getSwipeProfileId(): Uuid {
-		return ($this->SwipeProfileId);
+		return ($this->swipeProfileId);
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Swipe implements \JsonSerializable {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		//convert and store the Swipe Profile Id
-		$this->SwipeProfileId = $uuid;
+		$this->swipeProfileId = $uuid;
 	}
 
 	/**
@@ -86,29 +86,15 @@ class Swipe implements \JsonSerializable {
 	 * @throws \RangeException if the id is not exactly 32 characters
 	 * @throws \TypeError if the Swipe Restaurant Id is not a string
 	 */
-	public function setSwipeRestaurantId(?string $newSwipeRestaurantId): void {
-
-		if($newSwipeRestaurantId === null) {
-			$this->SwipeRestaurantId = null;
-			return;
-		}
-
+	public function setSwipeRestaurantId(string $newSwipeRestaurantId): void {
 		try {
-			$newSwipeRestaurantId = strtolower(trim($newSwipeRestaurantId));
-			if(ctype_xdigit($newSwipeRestaurantId) === false) {
-				throw(new\RangeException("swipe restaurant is not valid"));
-			}
-
-			//make sure user Swipe Restaurant is only 32 characters
-			if(strlen($newSwipeRestaurantId) !== 32) {
-				throw(new\RangeException("swipe restaurant token has to be 32 characters"));
-			}
+			$uuid = self::validateUuid($newSwipeRestaurantId);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 
-		$this->swipeRestaurantId = $newSwipeRestaurantId;
+		$this->swipeRestaurantId = $uuid;
 	}
 
 	/**
@@ -117,7 +103,7 @@ class Swipe implements \JsonSerializable {
 	 * @return string this Swipe Date
 	 */
 	public function getSwipeDate(): string {
-		return $this->SwipeDate;
+		return $this->swipeDate;
 	}
 
 	/**
@@ -142,7 +128,7 @@ class Swipe implements \JsonSerializable {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
-		$this->SwipeDate = $newSwipeDate;
+		$this->swipeDate = $newSwipeDate;
 	}
 
 	/**
@@ -151,7 +137,7 @@ class Swipe implements \JsonSerializable {
 	 * @return string swipe right
 	 */
 	public function getSwipeRight(): string {
-		return $this->SwipeRight;
+		return $this->swipeRight;
 	}
 
 	/**
@@ -180,57 +166,57 @@ class Swipe implements \JsonSerializable {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 
-		$this->SwipeRight = $newSwipeRight;
+		$this->swipeRight = $newSwipeRight;
 	}
 
-	/**
-	 * mutator for swipe left
-	 *
-	 * @param string $newSwipeLeft
-	 * @throws \InvalidArgumentException if the swipe left is not an argon swipe left or is insecure
-	 * @throws \RangeException if the swipe left is larger than 97 characters
-	 * @throws \TypeError if the swipe left is not a string
-	 */
-	public function setSwipeLeft(string $newSwipeLeft): void {
-		try {
-			//enforce that the Swipe Left is properly formatted
-			$newSwipeLeft = trim($newSwipeLeft);
-			if(empty($newSwipeLeft) === true) {
-				throw(new \InvalidArgumentException("swipe is empty"));
-			}
-
-		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
-			$exceptionType = get_class($exception);
-			throw(new $exceptionType($exception->getMessage(), 0, $exception));
-		}
-	}
-/**
- * accessor for swipe left
- *
- * @return string this swipe left
- */
-public function getSwipeLeft(): string {
-	return $this->swipeleft;
-}
+//	/**
+//	 * mutator for swipe left
+//	 *
+//	 * @param string $newSwipeLeft
+//	 * @throws \InvalidArgumentException if the swipe left is not an argon swipe left or is insecure
+//	 * @throws \RangeException if the swipe left is larger than 97 characters
+//	 * @throws \TypeError if the swipe left is not a string
+//	 */
+//	public function setSwipeLeft(string $newSwipeLeft): void {
+//		try {
+//			//enforce that the Swipe Left is properly formatted
+//			$newSwipeLeft = trim($newSwipeLeft);
+//			if(empty($newSwipeLeft) === true) {
+//				throw(new \InvalidArgumentException("swipe is empty"));
+//			}
+//
+//		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+//			$exceptionType = get_class($exception);
+//			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+//		}
+//	}
+///**
+// * accessor for swipe left
+// *
+// * @return string this swipe left
+// */
+//public function getSwipeLeft(): string {
+//	return $this->swipeLeft;
+//}
 
 
 	public function insert(\PDO $pdo) : void {
 		//create query template
-		$query = "INSERT INTO swipe(swipeRight, swipeLeft, swipeDate, swipeRestaurantId, swipeProfileId) VALUES(:swipeRight, :swipeLeft, :swipeDate, :swipeProfileId, :swipeRestuarantId)";
+		$query = "INSERT INTO swipe(swipeRight, swipeDate, swipeRestaurantId, swipeProfileId) VALUES(:swipeRight, :swipeDate, :swipeProfileId, :swipeRestaurantId)";
 		$statement = $pdo->prepare($query);
 		//bind member variables to the place holders in the template
 		$formattedDate = $this->swipeDate->format("Y-m-d H:i:s.u");
-		$parameters = ["swipeProfileId" => $this->swipeProfileId->getBytes(), "swipeRestuarantId" => $this->swipeRestaurantId->getBytes(), "swipeDate" => $formattedDate];
+		$parameters = ["swipeProfileId" => $this->swipeProfileId->getBytes(), "swipeRestaurantId" => $this->swipeRestaurantId->getBytes(), "swipeDate" => $formattedDate, "swipeRight" =>$this->swipeRight];
 		$statement->execute($parameters);
 	}
 
 
 	public function delete(\PDO $pdo) : void {
 		//create query template
-		$query = "DELETE FROM swipe WHERE swipeProfileId = :swipeProfileId AND swipeRestaurantId = :swipeRestuarantId";
+		$query = "DELETE FROM swipe WHERE swipeProfileId = :swipeProfileId AND swipeRestaurantId = :swipeRestaurantId";
 		$statement = $pdo->prepare($query);
 		//bind the member variables to the place holder in the template
-		$parameters = ["swipeProfileId" => $this->swipeProfileId->getBytes(), "swipeRestuarantId" => $this->swipeRestaurantId->getBytes()];
+		$parameters = ["swipeProfileId" => $this->swipeProfileId->getBytes(), "swipeRestaurantId" => $this->swipeRestaurantId->getBytes()];
 		$statement->execute($parameters);
 	}
 
@@ -245,7 +231,7 @@ public function getSwipeLeft(): string {
 		}
 
 		//create query table
-		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight, swipeLeft FROM swipe WHERE swipeProfileId = :swipeProfileId";
+		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight FROM swipe WHERE swipeProfileId = :swipeProfileId";
 		$statement = $pdo->prepare($query);
 
 		//bind swipe id to the place holder in the template
@@ -257,7 +243,7 @@ public function getSwipeLeft(): string {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while (($row = $statement->fetch()) !== false) {
 			try {
-				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"], $row["swipeLeft"]);
+				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"]);
 				$swipes[$swipes->key()] = $swipe;
 				$swipes->next();
 			} catch (\Exception $exception) {
@@ -283,7 +269,7 @@ public function getSwipeLeft(): string {
 		}
 
 
-		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight, swipeLeft FROM swipe WHERE swipeProfileId = :swipeProfileId 
+		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight FROM swipe WHERE swipeProfileId = :swipeProfileId 
       AND swipeRestaurantId = :swipeRestaurantId";
 		$statement = $pdo->prepare($query);
 
@@ -295,7 +281,7 @@ public function getSwipeLeft(): string {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"], $row["swipeLeft"]);
+				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"]);
 			}
 		} catch (\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
@@ -312,7 +298,7 @@ public function getSwipeLeft(): string {
 			throw (new \PDOException($exception->getMessage(), 0, $exception));
 		}
 
-		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight, swipeLeft FROM swipe WHERE swipeRestaurantId = :swipeRestaurantId";
+		$query = "SELECT swipeProfileId, swipeRestaurantId, swipeDate, swipeRight FROM swipe WHERE swipeRestaurantId = :swipeRestaurantId";
 		$statement = $pdo->prepare($query);
 
 		$parameters = ["swipeRestaurantId" => $swipeRestaurantId->getBytes()];
@@ -322,15 +308,15 @@ public function getSwipeLeft(): string {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while (($row = $statement->fetch()) !== false) {
 			try {
-				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"], $row["swipeLeft"]);
+				$swipe = new Swipe($row["swipeProfileId"], $row["swipeRestaurantId"], $row["swipeDate"], $row["swipeRight"]);
 				$swipes[$swipes->key()] = $swipe;
 				$swipes->next();
 			} catch (\Exception $exception) {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
-			return ($swipes);
-		}
 
+
+	}return ($swipes);
 	}
 
 
@@ -340,6 +326,7 @@ public function getSwipeLeft(): string {
 public function jsonSerialize(){
 	$fields = get_object_vars($this);
 	$fields["swipeProfileId"] = $this->swipeProfileId->toString();
+	$fields["swipeRestaurantId"] = $this->swipeRestaurantId->toString();
 	return($fields);
 }
 }
