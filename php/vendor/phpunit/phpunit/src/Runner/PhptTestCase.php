@@ -22,7 +22,7 @@ use Text_Template;
 use Throwable;
 
 /**
- * Runner for PHPT Test cases.
+ * Runner for PHPT test cases.
  */
 class PhptTestCase implements SelfDescribing, Test
 {
@@ -68,7 +68,7 @@ class PhptTestCase implements SelfDescribing, Test
     private $output = '';
 
     /**
-     * Constructs a Test case with the given filename.
+     * Constructs a test case with the given filename.
      *
      * @throws Exception
      */
@@ -88,7 +88,7 @@ class PhptTestCase implements SelfDescribing, Test
     }
 
     /**
-     * Counts the number of Test cases executed by run(TestResult result).
+     * Counts the number of test cases executed by run(TestResult result).
      */
     public function count(): int
     {
@@ -96,7 +96,7 @@ class PhptTestCase implements SelfDescribing, Test
     }
 
     /**
-     * Runs a Test and collects its result in a TestResult instance.
+     * Runs a test and collects its result in a TestResult instance.
      *
      * @throws Exception
      * @throws \ReflectionException
@@ -190,7 +190,7 @@ class PhptTestCase implements SelfDescribing, Test
         }
 
         if ($result->allCompletelyImplemented() && $xfail !== false) {
-            $result->addFailure($this, new IncompleteTestError('XFAIL section but Test passes'), $time);
+            $result->addFailure($this, new IncompleteTestError('XFAIL section but test passes'), $time);
         }
 
         $this->runClean($sections);
@@ -201,7 +201,7 @@ class PhptTestCase implements SelfDescribing, Test
     }
 
     /**
-     * Returns the name of the Test case.
+     * Returns the name of the test case.
      */
     public function getName(): string
     {
@@ -209,7 +209,7 @@ class PhptTestCase implements SelfDescribing, Test
     }
 
     /**
-     * Returns a string representation of the Test case.
+     * Returns a string representation of the test case.
      */
     public function toString(): string
     {

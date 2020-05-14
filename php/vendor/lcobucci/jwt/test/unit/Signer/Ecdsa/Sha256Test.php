@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Signer\Ecdsa;
 class Sha256Test extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa
      * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser
@@ -29,7 +29,7 @@ class Sha256Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa
      * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser
@@ -44,7 +44,7 @@ class Sha256Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa
      * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser

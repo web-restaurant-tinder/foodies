@@ -39,7 +39,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -67,7 +67,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -95,7 +95,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Token
@@ -131,7 +131,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -155,7 +155,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -178,7 +178,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -202,7 +202,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @expectedException \RuntimeException
      *
@@ -227,7 +227,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -250,7 +250,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Token
@@ -280,7 +280,7 @@ class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Parser

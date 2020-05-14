@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+# reset all ignore rules to create sandbox for integration test
+=======
+# reset all ignore rules to create sandbox for integration Test
+>>>>>>> profile-test
+!/**

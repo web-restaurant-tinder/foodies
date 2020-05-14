@@ -16,7 +16,7 @@ use Lcobucci\JWT\ValidationData;
 class GreaterOrEqualsToTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -33,7 +33,7 @@ class GreaterOrEqualsToTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -56,7 +56,7 @@ class GreaterOrEqualsToTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName
@@ -79,7 +79,7 @@ class GreaterOrEqualsToTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Claim\Basic::__construct
      * @uses Lcobucci\JWT\Claim\Basic::getName

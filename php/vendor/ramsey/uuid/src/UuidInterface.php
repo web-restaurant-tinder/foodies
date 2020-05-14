@@ -55,7 +55,7 @@ interface UuidInterface extends
      * object, has the same variant, and contains the same value, bit for bit,
      * as the UUID.
      *
-     * @param object|null $other An object to Test for equality with this UUID
+     * @param object|null $other An object to test for equality with this UUID
      *
      * @return bool True if the other object is equal to this UUID
      */

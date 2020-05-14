@@ -6,7 +6,7 @@ class Foo
 {
     public static function bar(string $baz): Bar
     {
-        return 'Test';
+        return 'test';
     }
 }
 

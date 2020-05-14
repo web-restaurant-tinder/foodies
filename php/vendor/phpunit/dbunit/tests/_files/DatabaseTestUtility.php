@@ -24,7 +24,7 @@ class DBUnitTestUtility
     }
 
     /**
-     * Creates connection to Test MySQL database
+     * Creates connection to test MySQL database
      *
      * MySQL server must be installed locally, with root access
      * and empty password and listening on unix socket

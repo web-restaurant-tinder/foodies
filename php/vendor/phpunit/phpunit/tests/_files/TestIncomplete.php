@@ -13,6 +13,6 @@ class TestIncomplete extends TestCase
 {
     protected function runTest(): void
     {
-        $this->markTestIncomplete('Incomplete Test');
+        $this->markTestIncomplete('Incomplete test');
     }
 }

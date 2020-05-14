@@ -24,7 +24,7 @@ class TextResultPrinter extends ResultPrinter
     }
 
     /**
-     * Handler for 'on Test' event.
+     * Handler for 'on test' event.
      */
     protected function onTest($name, bool $success = true): void
     {

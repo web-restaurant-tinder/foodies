@@ -67,10 +67,10 @@ class JsonMatches extends Constraint
     }
 
     /**
-     * Throws an exception for the given compared value and Test description
+     * Throws an exception for the given compared value and test description
      *
      * @param mixed             $other             evaluated value or object
-     * @param string            $description       Additional information about the Test
+     * @param string            $description       Additional information about the test
      * @param ComparisonFailure $comparisonFailure
      *
      * @throws ExpectationFailedException

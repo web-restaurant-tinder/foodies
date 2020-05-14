@@ -54,7 +54,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder::__construct
      */
@@ -70,7 +70,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -81,14 +81,14 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     public function setAudienceMustChangeTheAudClaim()
     {
         $builder = $this->createBuilder();
-        $builder->setAudience('Test');
+        $builder->setAudience('test');
 
         $this->assertAttributeEquals(['alg' => 'none', 'typ' => 'JWT'], 'headers', $builder);
         $this->assertAttributeEquals(['aud' => $this->defaultClaim], 'claims', $builder);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -99,7 +99,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     public function setAudienceCanReplicateItemOnHeader()
     {
         $builder = $this->createBuilder();
-        $builder->setAudience('Test', true);
+        $builder->setAudience('test', true);
 
         $this->assertAttributeEquals(['aud' => $this->defaultClaim], 'claims', $builder);
 
@@ -111,7 +111,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -123,11 +123,11 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     {
         $builder = $this->createBuilder();
 
-        $this->assertSame($builder, $builder->setAudience('Test'));
+        $this->assertSame($builder, $builder->setAudience('test'));
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -145,7 +145,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -168,7 +168,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -184,7 +184,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -202,7 +202,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -225,7 +225,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -241,7 +241,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -259,7 +259,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -282,7 +282,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -298,7 +298,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -316,7 +316,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -339,7 +339,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -355,7 +355,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -373,7 +373,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -396,7 +396,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -412,7 +412,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -430,7 +430,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -453,7 +453,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -469,7 +469,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      *
@@ -484,7 +484,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      *
@@ -498,7 +498,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      *
@@ -517,7 +517,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      *
@@ -531,7 +531,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::getToken
@@ -549,13 +549,13 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
                ->willReturn($signature);
 
         $builder = $this->createBuilder();
-        $builder->sign($signer, 'Test');
+        $builder->sign($signer, 'test');
 
         $this->assertAttributeSame($signature, 'signature', $builder);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::getToken
@@ -574,13 +574,13 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         $builder = $this->createBuilder();
 
-        $this->assertSame($builder, $builder->sign($signer, 'Test'));
+        $this->assertSame($builder, $builder->sign($signer, 'test'));
 
         return $builder;
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends signMustKeepAFluentInterface
      *
@@ -594,7 +594,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends signMustKeepAFluentInterface
      *
@@ -606,7 +606,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::sign
@@ -627,12 +627,12 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
                ->willReturn($signature);
 
         $builder = $this->createBuilder();
-        $builder->sign($signer, 'Test');
-        $builder->set('Test', 123);
+        $builder->sign($signer, 'test');
+        $builder->set('test', 123);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::sign
@@ -653,12 +653,12 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
                ->willReturn($signature);
 
         $builder = $this->createBuilder();
-        $builder->sign($signer, 'Test');
-        $builder->setHeader('Test', 123);
+        $builder->sign($signer, 'test');
+        $builder->setHeader('test', 123);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Builder::__construct
      * @uses Lcobucci\JWT\Builder::set
@@ -672,7 +672,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         $this->encoder->expects($this->exactly(2))
                       ->method('jsonEncode')
-                      ->withConsecutive([['typ'=> 'JWT', 'alg' => 'none']], [['Test' => $this->defaultClaim]])
+                      ->withConsecutive([['typ'=> 'JWT', 'alg' => 'none']], [['test' => $this->defaultClaim]])
                       ->willReturnOnConsecutiveCalls('1', '2');
 
         $this->encoder->expects($this->exactly(3))
@@ -680,7 +680,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
                       ->withConsecutive(['1'], ['2'], [$signature])
                       ->willReturnOnConsecutiveCalls('1', '2', '3');
 
-        $builder = $this->createBuilder()->set('Test', 123);
+        $builder = $this->createBuilder()->set('test', 123);
 
         $builderSign = new \ReflectionProperty($builder, 'signature');
         $builderSign->setAccessible(true);

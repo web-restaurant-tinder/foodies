@@ -27,7 +27,7 @@ class Extensions_Database_Operation_RowBasedTest extends TestCase
     protected function setUp(): void
     {
         if (!\extension_loaded('pdo_sqlite')) {
-            $this->markTestSkipped('PDO/SQLite is required to run this Test.');
+            $this->markTestSkipped('PDO/SQLite is required to run this test.');
         }
 
         parent::setUp();

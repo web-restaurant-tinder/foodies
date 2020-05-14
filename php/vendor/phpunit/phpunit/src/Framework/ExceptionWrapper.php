@@ -13,7 +13,7 @@ use PHPUnit\Util\Filter;
 use Throwable;
 
 /**
- * Wraps Exceptions thrown by code under Test.
+ * Wraps Exceptions thrown by code under test.
  *
  * Re-instantiates Exceptions thrown by user-space code to retain their original
  * class names, properties, and stack traces (but without arguments).

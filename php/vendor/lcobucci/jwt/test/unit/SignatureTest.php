@@ -27,19 +27,19 @@ class SignatureTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signature::__construct
      */
     public function constructorMustConfigureAttributes()
     {
-        $signature = new Signature('Test');
+        $signature = new Signature('test');
 
-        $this->assertAttributeEquals('Test', 'hash', $signature);
+        $this->assertAttributeEquals('test', 'hash', $signature);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signature::__construct
      *
@@ -47,13 +47,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase
      */
     public function toStringMustReturnTheHash()
     {
-        $signature = new Signature('Test');
+        $signature = new Signature('test');
 
-        $this->assertEquals('Test', (string) $signature);
+        $this->assertEquals('test', (string) $signature);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signature::__construct
      * @uses Lcobucci\JWT\Signature::__toString
@@ -66,7 +66,7 @@ class SignatureTest extends \PHPUnit_Framework_TestCase
                      ->method('verify')
                      ->willReturn(true);
 
-        $signature = new Signature('Test');
+        $signature = new Signature('test');
 
         $this->assertTrue($signature->verify($this->signer, 'one', 'key'));
     }

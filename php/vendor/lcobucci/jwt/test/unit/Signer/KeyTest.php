@@ -23,26 +23,26 @@ class KeyTest extends \PHPUnit_Framework_TestCase
         vfsStream::setup(
             'root',
             null,
-            ['Test.pem' => 'testing']
+            ['test.pem' => 'testing']
         );
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Key::__construct
      * @covers Lcobucci\JWT\Signer\Key::setContent
      */
     public function constructShouldConfigureContentAndPassphrase()
     {
-        $key = new Key('testing', 'Test');
+        $key = new Key('testing', 'test');
 
         $this->assertAttributeEquals('testing', 'content', $key);
-        $this->assertAttributeEquals('Test', 'passphrase', $key);
+        $this->assertAttributeEquals('test', 'passphrase', $key);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Key::__construct
      * @covers Lcobucci\JWT\Signer\Key::setContent
@@ -50,14 +50,14 @@ class KeyTest extends \PHPUnit_Framework_TestCase
      */
     public function constructShouldBeAbleToConfigureContentFromFile()
     {
-        $key = new Key('file://' . vfsStream::url('root/Test.pem'));
+        $key = new Key('file://' . vfsStream::url('root/test.pem'));
 
         $this->assertAttributeEquals('testing', 'content', $key);
         $this->assertAttributeEquals(null, 'passphrase', $key);
     }
 
     /**
-     * @Test
+     * @test
      *
      * @expectedException \InvalidArgumentException
      *
@@ -71,7 +71,7 @@ class KeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Key::__construct
      * @uses Lcobucci\JWT\Signer\Key::setContent
@@ -80,13 +80,13 @@ class KeyTest extends \PHPUnit_Framework_TestCase
      */
     public function getContentShouldReturnConfiguredData()
     {
-        $key = new Key('testing', 'Test');
+        $key = new Key('testing', 'test');
 
         $this->assertEquals('testing', $key->getContent());
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Signer\Key::__construct
      * @uses Lcobucci\JWT\Signer\Key::setContent
@@ -95,8 +95,8 @@ class KeyTest extends \PHPUnit_Framework_TestCase
      */
     public function getPassphraseShouldReturnConfiguredData()
     {
-        $key = new Key('testing', 'Test');
+        $key = new Key('testing', 'test');
 
-        $this->assertEquals('Test', $key->getPassphrase());
+        $this->assertEquals('test', $key->getPassphrase());
     }
 }

@@ -21,7 +21,7 @@ class UnsignedTokenTest extends \PHPUnit_Framework_TestCase
     const CURRENT_TIME = 100000;
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Builder
      * @covers Lcobucci\JWT\Token
@@ -50,7 +50,7 @@ class UnsignedTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -71,7 +71,7 @@ class UnsignedTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @depends builderCanGenerateAToken
      *
@@ -96,7 +96,7 @@ class UnsignedTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @dataProvider invalidValidationData
      *

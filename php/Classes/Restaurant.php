@@ -12,7 +12,7 @@ use Ramsey\Uuid\Uuid;
  * @package WebRestaurantTinder\Foodies
  */
 
-class Restaurant {
+class Restaurant implements \JsonSerializable{
 	use ValidateUuid;
 	use ValidateDate;
 
@@ -292,7 +292,6 @@ class Restaurant {
 		if(empty($newRestaurantPhone) === true) {
 			throw(new \InvalidArgumentException("Restaurant Phone is empty or insecure"));
 		}
-
 		// verify the Todo Restaurant will fit in the database
 		if(strlen($newRestaurantPhone) > 14) {
 			throw(new \RangeException("Restaurant Phone Number is too large"));
@@ -338,8 +337,8 @@ class Restaurant {
 		$newRestaurantUrl = filter_var($newRestaurantUrl, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		try {
 			// verify the avatar URL will fit in the database
-			if(strlen($newRestaurantUrl) > 255) {
-				throw(new \RangeException("url too long, must be less than 250 characters"));
+			if(strlen($newRestaurantUrl) > 1000) {
+				throw(new \RangeException("url too long, must be less than 1000 characters"));
 			}
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
@@ -357,10 +356,18 @@ class Restaurant {
 
 	public function insert(\PDO $pdo) : void {
 		//create query template
-		$query = "INSERT INTO restaurant(restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl) VALUES (:restaurantId, :restaurantAddress, :restaurantAvatar, :restaurantFoodType, :restaurantLat, :restaurantLng, :restaurantName, :restaurantPhone, :restaurantStarRating, :restaurantUrl)";
+		$query = "INSERT INTO restaurant(restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, 
+               restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl) 
+               VALUES (:restaurantId, :restaurantAddress, :restaurantAvatar, :restaurantFoodType, :restaurantLat, 
+                       :restaurantLng, :restaurantName, :restaurantPhone, :restaurantStarRating, :restaurantUrl)";
+
 		$statement = $pdo->prepare($query);
 		//bind the member variables to the place holders in the template
-		$parameters = ["restaurantId"=>$this->restaurantId->getBytes(), "restaurantAddress"=> $this->restaurantAddress, "restaurantAvatar"=> $this->restaurantAvatar, "restaurantFoodType"=> $this->restaurantFoodType, "restaurantLat"=> $this->restaurantLat, "restaurantLng"=> $this->restaurantLng, "restaurantName"=> $this->restaurantName, "restaurantPhone"=> $this->restaurantPhone, "restaurantStarRating"=> $this->restaurantStarRating, "restaurantUrl"=> $this->restaurantUrl,];
+		$parameters = ["restaurantId"=>$this->restaurantId->getBytes(), "restaurantAddress"=> $this->restaurantAddress,
+			"restaurantAvatar"=> $this->restaurantAvatar, "restaurantFoodType"=> $this->restaurantFoodType,
+			"restaurantLat"=> $this->restaurantLat, "restaurantLng"=> $this->restaurantLng, "restaurantName"=> $this->restaurantName,
+			"restaurantPhone"=> $this->restaurantPhone, "restaurantStarRating"=> $this->restaurantStarRating,
+			"restaurantUrl"=> $this->restaurantUrl,];
 		$statement->execute($parameters);
 	}
 
@@ -371,7 +378,7 @@ class Restaurant {
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the place holder in the template
-		$parameters = ["restaurantId" => $this->restaurantId()->getBytes()];
+		$parameters = ["restaurantId" => $this->restaurantId->getBytes()];
 		$statement->execute($parameters);
 	}
 
@@ -379,7 +386,7 @@ class Restaurant {
 		//create query template
 		$query = "UPDATE restaurant SET restaurantAddress = :restaurantAddress, 
     restaurantAvatar = :restaurantAvatar, restaurantFoodType = :restaurantFoodType, restaurantLat = :restaurantLat, restaurantLng = :restaurantLng, 
-    restaurantName = :restaurantName, restaurantPhone = :restaurantPhone, restaurantStarRating = :restaurantStarRating, restaurantUrl = :restaurantUrl";
+    restaurantName = :restaurantName, restaurantPhone = :restaurantPhone, restaurantStarRating = :restaurantStarRating, restaurantUrl = :restaurantUrl WHERE restaurantId = :restaurantId";
 
 		$statement = $pdo->prepare($query);
 
@@ -419,7 +426,10 @@ class Restaurant {
 		}
 
 		// create query template
-		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantId = :restaurantId";
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, 
+       restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl 
+FROM restaurant WHERE restaurantId = :restaurantId";
+
 		$statement = $pdo->prepare($query);
 
 		// bind the restaurant id to the place holder in the template
@@ -432,7 +442,9 @@ class Restaurant {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$restaurant = new Restaurant($row["restaurantId"], $row["restaurantAddress"], $row["restaurantAvatar"], $row["restaurantFoodType"], $row["restaurantLat"], $row["restaurantLng"], $row["restaurantName"], $row["restaurantPhone"], $row["restaurantStarRating"], $row["restaurantUrl"]);
+				$restaurant = new Restaurant($row["restaurantId"], $row["restaurantAddress"], $row["restaurantAvatar"],
+					$row["restaurantFoodType"], $row["restaurantLat"], $row["restaurantLng"], $row["restaurantName"],
+					$row["restaurantPhone"], $row["restaurantStarRating"], $row["restaurantUrl"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
@@ -549,12 +561,15 @@ class Restaurant {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 * **/
-	public static function getRestaurantByDistance(\PDO $pdo, float $restaurantLng, float $restaurantLat, float $distance) : \SplFixedArray {
+	public static function getRestaurantByDistance(\PDO $pdo,float $userLat ,float $userLng, float $distance) : \SplFixedArray {
 		// create query template
-		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl  FROM restaurant WHERE haversine(:restaurantLng, :restaurantLat, restaurantLng, restaurantLat) < :distance";
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng,
+       restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl  
+		FROM restaurant WHERE haversine(:userLng, :userLat, restaurantLng, restaurantLat) < :distance";
+
 		$statement = $pdo->prepare($query);
 		// bind the restaurant distance to the place holder in the template
-		$parameters = ["distance" => $distance, "restaurantLat" => $restaurantLat, "restaurantLng" => $restaurantLng];
+		$parameters = ["distance" => $distance, "userLat" => $userLat, "userLng" => $userLng];
 		$statement->execute($parameters);
 		// build an array of restaurant
 		$restaurants = new \SplFixedArray($statement->rowCount());
@@ -570,6 +585,15 @@ class Restaurant {
 			}
 		}
 		return($restaurants);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		$fields["restaurantId"] = $this->restaurantId->toString();
+		return ($fields);
 	}
 
 }

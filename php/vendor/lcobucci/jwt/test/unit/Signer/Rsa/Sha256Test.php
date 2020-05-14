@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Signer\Rsa;
 class Sha256Test extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Rsa\Sha256::getAlgorithmId
      */
@@ -26,7 +26,7 @@ class Sha256Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Rsa\Sha256::getAlgorithm
      */

@@ -14,7 +14,7 @@ namespace Lcobucci\JWT\Signer\Rsa;
 class Sha512Test extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Rsa\Sha512::getAlgorithmId
      */
@@ -26,7 +26,7 @@ class Sha512Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Signer\Rsa\Sha512::getAlgorithm
      */

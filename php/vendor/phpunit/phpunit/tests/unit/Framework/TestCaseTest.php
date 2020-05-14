@@ -96,7 +96,7 @@ class TestCaseTest extends TestCase
         $result = $test->run();
 
         $this->assertEquals(BaseTestRunner::STATUS_SKIPPED, $test->getStatus());
-        $this->assertEquals('Skipped Test', $test->getStatusMessage());
+        $this->assertEquals('Skipped test', $test->getStatusMessage());
         $this->assertEquals(0, $result->errorCount());
         $this->assertEquals(0, $result->failureCount());
         $this->assertEquals(1, $result->skippedCount());
@@ -109,7 +109,7 @@ class TestCaseTest extends TestCase
         $result = $test->run();
 
         $this->assertEquals(BaseTestRunner::STATUS_INCOMPLETE, $test->getStatus());
-        $this->assertEquals('Incomplete Test', $test->getStatusMessage());
+        $this->assertEquals('Incomplete test', $test->getStatusMessage());
         $this->assertEquals(0, $result->errorCount());
         $this->assertEquals(0, $result->failureCount());
         $this->assertEquals(0, $result->skippedCount());
@@ -208,7 +208,7 @@ class TestCaseTest extends TestCase
 
     public function testException(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
 
         $result = $test->run();
@@ -219,7 +219,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithEmptyMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
 
         $result = $test->run();
@@ -230,7 +230,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithNullMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
 
         $result = $test->run();
@@ -241,7 +241,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
         $test->expectExceptionMessage('A runtime error occurred');
 
@@ -253,7 +253,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithWrongMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
         $test->expectExceptionMessage('A logic error occurred');
 
@@ -269,7 +269,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithRegexpMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
         $test->expectExceptionMessageRegExp('/runtime .*? occurred/');
 
@@ -281,7 +281,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithWrongRegexpMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
         $test->expectExceptionMessageRegExp('/logic .*? occurred/');
 
@@ -297,7 +297,7 @@ class TestCaseTest extends TestCase
 
     public function testExceptionWithInvalidRegexpMessage(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
         $test->expectExceptionMessageRegExp('#runtime .*? occurred/');
 
@@ -311,7 +311,7 @@ class TestCaseTest extends TestCase
 
     public function testNoException(): void
     {
-        $test = new \ThrowNoExceptionTestCase('Test');
+        $test = new \ThrowNoExceptionTestCase('test');
         $test->expectException(\RuntimeException::class);
 
         $result = $test->run();
@@ -322,7 +322,7 @@ class TestCaseTest extends TestCase
 
     public function testWrongException(): void
     {
-        $test = new \ThrowExceptionTestCase('Test');
+        $test = new \ThrowExceptionTestCase('test');
         $test->expectException(\InvalidArgumentException::class);
 
         $result = $test->run();
@@ -629,7 +629,7 @@ class TestCaseTest extends TestCase
     {
         $test   = new \RequirementsTest('testSettingDisplayErrorsOn');
 
-        // Get this so we can return it to whatever it was before the Test.
+        // Get this so we can return it to whatever it was before the test.
         $displayErrorsVal = \ini_get('display_errors');
 
         \ini_set('display_errors', 'On');

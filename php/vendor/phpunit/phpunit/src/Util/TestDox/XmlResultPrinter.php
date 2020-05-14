@@ -95,42 +95,42 @@ class XmlResultPrinter extends Printer implements TestListener
     }
 
     /**
-     * Incomplete Test.
+     * Incomplete test.
      */
     public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
     {
     }
 
     /**
-     * Risky Test.
+     * Risky test.
      */
     public function addRiskyTest(Test $test, \Throwable $t, float $time): void
     {
     }
 
     /**
-     * Skipped Test.
+     * Skipped test.
      */
     public function addSkippedTest(Test $test, \Throwable $t, float $time): void
     {
     }
 
     /**
-     * A Test suite started.
+     * A test suite started.
      */
     public function startTestSuite(TestSuite $suite): void
     {
     }
 
     /**
-     * A Test suite ended.
+     * A test suite ended.
      */
     public function endTestSuite(TestSuite $suite): void
     {
     }
 
     /**
-     * A Test started.
+     * A test started.
      */
     public function startTest(Test $test): void
     {
@@ -138,7 +138,7 @@ class XmlResultPrinter extends Printer implements TestListener
     }
 
     /**
-     * A Test ended.
+     * A test ended.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
@@ -157,7 +157,7 @@ class XmlResultPrinter extends Printer implements TestListener
             }
         );
 
-        $node = $this->document->createElement('Test');
+        $node = $this->document->createElement('test');
 
         $node->setAttribute('className', \get_class($test));
         $node->setAttribute('methodName', $test->getName());

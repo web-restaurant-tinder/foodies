@@ -55,7 +55,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @covers Lcobucci\JWT\Parser::__construct
      */
@@ -68,7 +68,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      *
@@ -84,7 +84,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      *
@@ -100,7 +100,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      *
@@ -121,7 +121,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      *
@@ -142,7 +142,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      * @uses Lcobucci\JWT\Token::__construct
@@ -162,7 +162,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
         $this->decoder->expects($this->at(3))
                       ->method('jsonDecode')
-                      ->willReturn(['aud' => 'Test']);
+                      ->willReturn(['aud' => 'test']);
 
         $parser = $this->createParser();
         $token = $parser->parse('a.a.');
@@ -173,7 +173,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      * @uses Lcobucci\JWT\Token::__construct
@@ -188,11 +188,11 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     {
         $this->decoder->expects($this->at(1))
                       ->method('jsonDecode')
-                      ->willReturn(['typ' => 'JWT', 'alg' => 'none', 'aud' => 'Test']);
+                      ->willReturn(['typ' => 'JWT', 'alg' => 'none', 'aud' => 'test']);
 
         $this->decoder->expects($this->at(3))
                       ->method('jsonDecode')
-                      ->willReturn(['aud' => 'Test']);
+                      ->willReturn(['aud' => 'test']);
 
         $parser = $this->createParser();
         $token = $parser->parse('a.a.');
@@ -208,7 +208,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Test
+     * @test
      *
      * @uses Lcobucci\JWT\Parser::__construct
      * @uses Lcobucci\JWT\Token::__construct
@@ -228,7 +228,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
         $this->decoder->expects($this->at(3))
                       ->method('jsonDecode')
-                      ->willReturn(['aud' => 'Test']);
+                      ->willReturn(['aud' => 'test']);
 
         $this->decoder->expects($this->at(4))
                       ->method('base64UrlDecode')

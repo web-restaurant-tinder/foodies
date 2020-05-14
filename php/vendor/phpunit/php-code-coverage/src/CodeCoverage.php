@@ -122,7 +122,7 @@ final class CodeCoverage
     private $isInitialized = false;
 
     /**
-     * Determine whether we need to check for dead and unused code on each Test
+     * Determine whether we need to check for dead and unused code on each test
      *
      * @var bool
      */
@@ -208,7 +208,7 @@ final class CodeCoverage
     }
 
     /**
-     * Returns the Test data.
+     * Returns the test data.
      */
     public function getTests(): array
     {
@@ -216,7 +216,7 @@ final class CodeCoverage
     }
 
     /**
-     * Sets the Test data.
+     * Sets the test data.
      */
     public function setTests(array $tests): void
     {

@@ -131,7 +131,7 @@ class TestRunner extends BaseTestRunner
             );
         }
 
-        throw new Exception('No Test case or Test suite found.');
+        throw new Exception('No test case or test suite found.');
     }
 
     public function __construct(TestSuiteLoader $loader = null, CodeCoverageFilter $filter = null)
@@ -833,7 +833,7 @@ class TestRunner extends BaseTestRunner
 
     /**
      * Override to define how to handle a failed loading of
-     * a Test suite.
+     * a test suite.
      */
     protected function runFailed(string $message): void
     {

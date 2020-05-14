@@ -431,7 +431,8 @@ class Profile implements \JsonSerializable{
 
 	public static function getProfileByEmail(\PDO $pdo, string $profileEmail): Profile{
 		//create query template
-		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileEmail = :profileEmail";
+		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
+       profileFirstName, profileHash, profileLastName, profileUserName FROM profile WHERE profileEmail = :profileEmail";
 		//prepare query
 		$statement = $pdo->prepare($query);
 
@@ -476,7 +477,7 @@ class Profile implements \JsonSerializable{
 		$statement = $pdo->prepare($query);
 
 		// bind the profile id to the place holder in the template
-		$parameters = ["profileUserName" => $profileUserName->getBytes()];
+		$parameters = ["profileUserName" => $profileUserName];
 		$statement->execute($parameters);
 
 		// grab the Profile UserName from mySQL
@@ -519,7 +520,6 @@ class Profile implements \JsonSerializable{
 		}
 
 		// create query template
-		// todo add wildcard to first and last name
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileFirstName LIKE :profileFirstName AND profileLastName LIKE :profileLastName";
 		$statement = $pdo->prepare($query);
 
