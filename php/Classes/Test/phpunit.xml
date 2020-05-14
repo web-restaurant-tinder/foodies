@@ -4,7 +4,7 @@
 			<file>ProfileTest.php</file>
 <!--			<file>RestaurantTest.php</file>-->
 <!--			<file>FollowTest.php</file>-->
-<!--			<file>SwipeTest.php</file>-->
+			<file>SwipeTest.php</file>
 		</testsuite>
 	</testsuites>
 	<filter>
