@@ -1,6 +1,5 @@
 <?php
-
-namespace Sararendon01\TinderRestaurant;
+namespace Sararendon01\WebRestaurantTinder\Foodies;
 
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
@@ -19,9 +18,13 @@ class Swipe implements \JsonSerializable
 	use ValidateUuid;
 	use ValidateDate;
 	private $swipeProfileId;
+
 	private $swipeRestaurantId;
+
 	private $swipeDate;
+
 	private  $swipeRight;
+
 	private $swipeLeft;
 
 
