@@ -13,11 +13,8 @@ class SwipeTest extends DataDesignTest {
 
 	private $profile;
 	private $restaurant;
-	private $VALID_SWIPE_PROFILE_ID = null;
-	private $VALID_SWIPE_RESTAURANT_ID = null;
 	private $VALID_SWIPE_DATE = null;
 	private $VALID_SWIPE_RIGHT;
-	private $VALID_SWIPE_LEFT;
 	private $VALID_HASH;
 	private $VALID_ACTIVATION;
 
@@ -37,27 +34,31 @@ class SwipeTest extends DataDesignTest {
 			"70", "Olive", "505-567-7686", "5", "olive34.com");
 
 		$this->restaurant->insert($this->getPDO());
-
 		$this->VALID_SWIPE_DATE = new \DateTime();
+
+		$this->VALID_SWIPE_RIGHT = 1;
 	}
 
-//	public function testInsertValidSwipe() : void {
-//		$numRows = $this->getConnection()->getRowCount("swipe");
-////        var_dump($this->profile->getProfileId()->toString(), $this->followedProfile->getProfileId()->toString());
-//		$swipe = new Swipe($this->swipeProfile->getProfileId()->toString(), $this->profile->getProfileId()->toString(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT, $this->VALID_SWIPE_LEFT);
-//		$swipe->insert($this->getPDO());
-////        var_dump($follow);
-//		$numRowsAfterInsert = $this ->getConnection()->getRowCount("swipe");
-//		self::assertEquals($numRows + 1, $numRowsAfterInsert);
-//
-//		$pdoSwipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($this->getPDO(), $this->swipeProfile->getProfileId()->toString(), $this->profile->getProfileId()->toString());
-//
-//		$this->assertEquals($this->profile->getProfileId()->toString(), $pdoSwipe->getSwipeProfileId()->toString());
-//		$this->assertEquals($this->swipeProfile->getProfileId(), $pdoSwipe->getSwipeProfileId());
-//		$this->assertEquals($this->VALID_SWIPE_DATE, $pdoSwipe->getSwipeDate());
-//
-//	}
-//
+	public function testInsertValidSwipe() : void {
+		$numRows = $this->getConnection()->getRowCount("swipe");
+//        var_dump($this->profile->getProfileId()->toString(), $this->followedProfile->getProfileId()->toString());
+		$swipe = new Swipe( $this->profile->getProfileId()->toString(),$this->restaurant->getRestaurantId()->toString(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT);
+//     var_dump($this->restaurant->getRestaurantId()->toString());
+//     var_dump($swipe->getSwipeRestaurantId());
+		$swipe->insert($this->getPDO());
+//        var_dump($follow);
+		$numRowsAfterInsert = $this ->getConnection()->getRowCount("swipe");
+		self::assertEquals($numRows + 1, $numRowsAfterInsert);
+
+		$pdoSwipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($this->getPDO(), $this->profile->getProfileId()->toString(), $this->restaurant->getRestaurantId()->toString());
+
+		$this->assertEquals($this->profile->getProfileId()->toString(), $pdoSwipe->getSwipeProfileId()->toString());
+		$this->assertEquals($this->restaurant->getRestaurantId(), $pdoSwipe->getSwipeRestaurantId());
+		$this->assertEquals($this->VALID_SWIPE_DATE, $pdoSwipe->getSwipeDate());
+		$this->assertEquals($this->VALID_SWIPE_RIGHT, $pdoSwipe->getSwipeRight());
+
+	}
+
 //    public function testUpdateValidFollow() : void {
 //        $numRows = $this->getConnection()->getRowCount("follow");
 //        $followProfileId = generateUuidV4()->getRowCount("follow");
@@ -77,11 +78,11 @@ class SwipeTest extends DataDesignTest {
 //
 //    }
 ////
-//
+
 	public function testDeleteValidSwipe() : void {
 		//count number of rows
 		$numRows = $this->getConnection()->getRowCount("swipe");
-		$swipe = new Swipe($this->profile->getProfileId(), $this->restaurant->getRestaurantId(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT, $this->VALID_SWIPE_LEFT);
+		$swipe = new Swipe($this->profile->getProfileId()->toString(), $this->restaurant->getRestaurantId()->toString(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT);
 		$swipe->insert($this->getPDO());
 
 
@@ -94,61 +95,59 @@ class SwipeTest extends DataDesignTest {
 		$this->assertEquals($numRows, $this->getConnection()->getRowCount("swipe"));
 
 	}
-//
-//	public function testGetValidFollowByFollowProfileIdAndFollowFollowedProfileId() : void {
-//		$numRows = $this->getConnection()->getRowCount("follow");
-//
-//		$follow = new Follow($this->followedProfile->getProfileId()->toString(), $this->profile->getProfileId()->toString(), $this->VALID_FOLLOW_DATE);
-//		$follow->insert($this->getPDO());
-//
-//		$pdoFollow = Follow::getFollowByFollowProfileIdAndFollowFollowedProfileId($this->getPDO(),$follow->getFollowFollowedProfileId()->toString(), $follow->getFollowProfileId()->toString());
-//		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("follow"));
-//		$this->assertEquals($pdoFollow->getFollowProfileId(), $follow->getFollowProfileId());
-//		$this->assertEquals($pdoFollow->getFollowFollowedProfileId(), $follow->getFollowFollowedProfileId());
-//
-//		$this->assertEquals($pdoFollow->getFollowDate()->getTimeStamp(), $this->VALID_FOLLOW_DATE->getTimestamp());
-//
-//	}
-//
-//
-//	public function testGetValidFollowByFollowProfileId() : void {
-//		$numRows = $this->getConnection()->getRowCount("follow");
-//
-//		$follow = new Follow($this->profile->getProfileId()->toString(), $this->profile->getProfileId()->toString(), $this->VALID_FOLLOW_DATE);
-//		$follow->insert($this->getPDO());
-//
-//		$results = Follow::getFollowByFollowProfileId($this->getPDO(), $follow->getFollowProfileId());
-//		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("follow"));
-//		$this->assertCount(1, $results);
-//		$this->assertContainsOnlyInstancesOf("WebRestaurantTinder\\Foodies\\Follow",$results);
-//
-//		$pdoFollow = $results[0];
-//		$this->assertEquals($pdoFollow->getFollowProfileId(), $follow->getFollowProfileId());
-//		$this->assertEquals($pdoFollow->getFollowFollowedProfileId(), $follow->getFollowFollowedProfileId());
-//
-//		$this->assertEquals($pdoFollow->getFollowDate()->getTimeStamp(), $this->VALID_FOLLOW_DATE->getTimestamp());
-//
-//	}
-//
-//
-//	public function testGetValidFollowByFollowFollowedProfileId() : void {
-//		$numRows = $this->getConnection()->getRowCount("follow");
-//
-//		$follow = new Follow($this->profile->getProfileId()->toString(), $this->followedProfile->getProfileId()->toString(), $this->VALID_FOLLOW_DATE);
-//		$follow->insert($this->getPDO());
-//
-//		$results = Follow::getFollowByFollowFollowedProfileId($this->getPDO(), $follow->getFollowFollowedProfileId());
-//		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("follow"));
-//		$this->assertCount(1, $results);
-//		$this->assertContainsOnlyInstancesOf("WebRestaurantTinder\\Foodies\\Follow",$results);
-//
-//		$pdoFollow = $results[0];
-//		$this->assertEquals($pdoFollow->getFollowProfileId(), $follow->getFollowProfileId());
-//		$this->assertEquals($pdoFollow->getFollowFollowedProfileId(), $follow->getFollowFollowedProfileId());
-//
-//		$this->assertEquals($pdoFollow->getFollowDate()->getTimeStamp(), $this->VALID_FOLLOW_DATE->getTimestamp());
-//
-//	}
+
+	public function testGetValidSwipeBySwipeProfileIdAndSwipeRestaurantId() : void {
+		$numRows = $this->getConnection()->getRowCount("swipe");
+
+		$swipe = new Swipe($this->profile->getProfileId()->toString(), $this->restaurant->getRestaurantId()->toString(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT);
+		$swipe->insert($this->getPDO());
+
+		$pdoSwipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($this->getPDO(), $swipe->getSwipeProfileId()->toString(), $swipe->getSwipeRestaurantId()->toString());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("swipe"));
+		$this->assertEquals($this->profile->getProfileId()->toString(), $pdoSwipe->getSwipeProfileId()->toString());
+		$this->assertEquals($this->restaurant->getRestaurantId(), $pdoSwipe->getSwipeRestaurantId());
+		$this->assertEquals($this->VALID_SWIPE_DATE, $pdoSwipe->getSwipeDate());
+		$this->assertEquals($this->VALID_SWIPE_RIGHT, $pdoSwipe->getSwipeRight());
+	}
+
+
+	public function testGetValidSwipeBySwipeProfileId() : void {
+		$numRows = $this->getConnection()->getRowCount("swipe");
+
+		$swipe = new Swipe($this->profile->getProfileId()->toString(), $this->restaurant->getRestaurantId()->toString(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT);
+		$swipe->insert($this->getPDO());
+
+		$results = Swipe::getSwipeBySwipeProfileId($this->getPDO(), $swipe->getSwipeProfileId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("swipe"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("WebRestaurantTinder\\Foodies\\Swipe",$results);
+
+		$pdoSwipe = $results[0];
+		$this->assertEquals($this->profile->getProfileId()->toString(), $pdoSwipe->getSwipeProfileId()->toString());
+		$this->assertEquals($this->restaurant->getRestaurantId(), $pdoSwipe->getSwipeRestaurantId());
+		$this->assertEquals($this->VALID_SWIPE_DATE, $pdoSwipe->getSwipeDate());
+		$this->assertEquals($this->VALID_SWIPE_RIGHT, $pdoSwipe->getSwipeRight());
+
+	}
+
+
+	public function testGetValidSwipeBySwipeRestaurantId() : void {
+		$numRows = $this->getConnection()->getRowCount("swipe");
+
+		$swipe = new Swipe($this->profile->getProfileId()->toString(), $this->restaurant->getRestaurantId()->toString(), $this->VALID_SWIPE_DATE, $this->VALID_SWIPE_RIGHT);
+		$swipe->insert($this->getPDO());
+
+		$results = Swipe::getSwipeBySwipeRestaurantId($this->getPDO(), $swipe->getSwipeRestaurantId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("swipe"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("WebRestaurantTinder\\Foodies\\Swipe",$results);
+
+		$pdoSwipe = $results[0];
+		$this->assertEquals($this->profile->getProfileId()->toString(), $pdoSwipe->getSwipeProfileId()->toString());
+		$this->assertEquals($this->restaurant->getRestaurantId(), $pdoSwipe->getSwipeRestaurantId());
+		$this->assertEquals($this->VALID_SWIPE_DATE, $pdoSwipe->getSwipeDate());
+		$this->assertEquals($this->VALID_SWIPE_RIGHT, $pdoSwipe->getSwipeRight());
+	}
 //
 //
 //	public function testGetValidFollowCountByFollowFollowedProfileId() : void {

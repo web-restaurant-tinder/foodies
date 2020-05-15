@@ -28,7 +28,7 @@ class ProfileTest extends DataDesignTest {
 		parent::setUp();
 
 		$password = "my_super_secret_password";
-		$this->VALID_PROFILE_HASH = password_hash($password, PASSWORD_ARGON2I, ["time_cost" => 45]);
+		$this->VALID_PROFILE_HASH = password_hash($password, PASSWORD_ARGON2I, ["time_cost" => 8]);
 		$this->VALID_ACTIVATION_TOKEN = bin2hex(random_bytes(16));
 	}
 
