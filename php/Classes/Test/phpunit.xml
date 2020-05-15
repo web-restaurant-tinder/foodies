@@ -1,15 +1,10 @@
 <phpunit>
 	<testsuites>
 		<testsuite name="Capstone Data Design">
-<!--			<file>ProfileTest.php</file>-->
-<<<<<<< HEAD
-<!--			<file>RestaurantTest.php</file>-->
-			<file>FollowTest.php</file>
-=======
+			<file>ProfileTest.php</file>
 			<file>RestaurantTest.php</file>
-<!--			<file>FollowTest.php</file>-->
->>>>>>> e657b82543c8a4920b792a059f001f9c94e596fb
-<!--			<file>SwipeTest.php</file>-->
+			<file>FollowTest.php</file>
+			<file>SwipeTest.php</file>
 		</testsuite>
 	</testsuites>
 	<filter>
