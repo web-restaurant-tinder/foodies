@@ -5,6 +5,14 @@ namespace WebRestaurantTinder\Foodies;
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
+use Exception;
+use InvalidArgumentException;
+use JsonSerializable;
+use PDO;
+use PDOException;
+use RangeException;
+use SPLFixedArray;
+use TypeError;
 use WebRestaurantTinder\Foodies\ValidateDate;
 use WebRestaurantTinder\Foodies\ValidateUuid;
 use Ramsey\Uuid\Uuid;
@@ -16,7 +24,7 @@ use Ramsey\Uuid\Uuid;
 	 * @author Nathan Ortiz <nortiz41@cnm.edu
  */
 
-class Profile implements \JsonSerializable{
+class Profile implements JsonSerializable {
 	use ValidateUuid;
 
 	private $profileActivationToken;
@@ -52,7 +60,7 @@ class Profile implements \JsonSerializable{
 			$this->setProfileLastName($newProfileLastName);
 			$this->setProfileUsername($newProfileUserName);
 		} //determine what exception type was thrown
-		catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		catch(InvalidArgumentException | RangeException | Exception | TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
@@ -76,19 +84,16 @@ class Profile implements \JsonSerializable{
 
 		$newProfileActivationToken = strtolower(trim($newProfileActivationToken));
 		if(ctype_xdigit($newProfileActivationToken) === false) {
-			throw(new\RangeException("profile activation is not valid"));
+			throw(newRangeException("profile activation is not valid"));
 		}
 
 		//make sure user activation token is only 32 characters
 		if(strlen($newProfileActivationToken) !== 32) {
-			throw(new\RangeException("profile activation token has to be 32"));
+			throw(newRangeException("profile activation token has to be 32"));
 		}
 		$this->profileActivationToken = $newProfileActivationToken;
 
 	}
-
-
-
 
 
 	public function getProfileAvatarCloudinaryId(): string {
@@ -99,23 +104,20 @@ class Profile implements \JsonSerializable{
 	 * mutator method for image cloudinary token
 	 *
 	 * @param string $newProfileAvatarCloudinaryId new value of image cloudinary token
-	 * @throws \InvalidArgumentException if $newProfileAvatarCloudinaryId is not a string or insecure
-	 * @throws \TypeError if $newProfileAvatarCloudinaryId is not a string
+	 * @throws InvalidArgumentException if $newProfileAvatarCloudinaryId is not a string or insecure
+	 * @throws TypeError if $newProfileAvatarCloudinaryId is not a string
 	 **/
 	public function setProfileAvatarCloudinaryId(string $newProfileAvatarCloudinaryId): void {
 		// verify the image cloudinary token content is secure
 		$newProfileAvatarCloudinaryId = filter_var($newProfileAvatarCloudinaryId, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
 		if(strlen($newProfileAvatarCloudinaryId) > 32) {
-			throw(new \RangeException("image id too large"));
+			throw(new RangeException("image id too large"));
 		}
 
 		// store the image cloudinary token
 		$this->profileAvatarCloudinaryId = $newProfileAvatarCloudinaryId;
 	}
-
-
-
 
 
 	public function getProfileAvatarUrl(): string {
@@ -126,9 +128,9 @@ class Profile implements \JsonSerializable{
 	 * mutator method for at handle
 	 *
 	 * @param string $newProfileAvatarUrl new value of profile avatar URL
-	 * @throws \InvalidArgumentException if $newProfileAvatarUrl is not a string or insecure
-	 * @throws \RangeException if $newProfileAvatarUrl is > 255 characters
-	 * @throws \TypeError if $newAtHandle is not a string
+	 * @throws InvalidArgumentException if $newProfileAvatarUrl is not a string or insecure
+	 * @throws RangeException if $newProfileAvatarUrl is > 255 characters
+	 * @throws TypeError if $newAtHandle is not a string
 	 **/
 	public function setProfileAvatarUrl(string $newProfileAvatarUrl): void {
 
@@ -137,7 +139,7 @@ class Profile implements \JsonSerializable{
 
 		// verify the avatar URL will fit in the database
 		if(strlen($newProfileAvatarUrl) > 255) {
-			throw(new \RangeException("avatar url too large"));
+			throw(new RangeException("avatar url too large"));
 		}
 		// store the image content
 		$this->profileAvatarUrl = $newProfileAvatarUrl;
@@ -159,12 +161,12 @@ class Profile implements \JsonSerializable{
 		$newProfileEmail = trim($newProfileEmail);
 		$newProfileEmail = filter_var($newProfileEmail, FILTER_VALIDATE_EMAIL);
 		if(empty($newProfileEmail) === true) {
-			throw(new \InvalidArgumentException("profile email is empty or insecure"));
+			throw(new InvalidArgumentException("profile email is empty or insecure"));
 		}
 
 		// verify the email will fit in the database
 		if(strlen($newProfileEmail) > 128) {
-			throw(new \RangeException("profile email is too large"));
+			throw(new RangeException("profile email is too large"));
 		}
 
 		// store the email
@@ -181,27 +183,26 @@ class Profile implements \JsonSerializable{
 	 * mutator method for at profileFirstName
 	 *
 	 * @param string $newProfileFirstName new value of profileFirstName
-	 * @throws \InvalidArgumentException if $newProfileFirstName is not a string or insecure
-	 * @throws \RangeException if the name is over 32 characters
-	 * @throws \TypeError if $newProfileFirstName is not a string
+	 * @throws InvalidArgumentException if $newProfileFirstName is not a string or insecure
+	 * @throws RangeException if the name is over 32 characters
+	 * @throws TypeError if $newProfileFirstName is not a string
 	 **/
-	public function setProfileFirstName(string $newProfileFirstName) : void {
+	public function setProfileFirstName(string $newProfileFirstName): void {
 		// verify the at name is secure
 		$newProfileFirstName = trim($newProfileFirstName);
 		$newProfileFirstName = filter_var($newProfileFirstName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newProfileFirstName) === true) {
-			throw(new \InvalidArgumentException("First name is empty or insecure"));
+			throw(new InvalidArgumentException("First name is empty or insecure"));
 		}
 
 		// verify the at handle will fit in the database
 		if(strlen($newProfileFirstName) > 32) {
-			throw(new \RangeException("First name is too large"));
+			throw(new RangeException("First name is too large"));
 		}
 
 		// store the at first name
 		$this->profileFirstName = $newProfileFirstName;
 	}
-
 
 
 	public function getProfileHash(): string {
@@ -212,21 +213,21 @@ class Profile implements \JsonSerializable{
 	 * mutator method for profile hash password
 	 *
 	 * @param string $newAuthorHash
-	 * @throws \InvalidArgumentException if the hash is not secure
-	 * @throws \RangeException if the hash is not 128 characters
-	 * @throws \TypeError if profile hash is not a string
+	 * @throws InvalidArgumentException if the hash is not secure
+	 * @throws RangeException if the hash is not 128 characters
+	 * @throws TypeError if profile hash is not a string
 	 */
 	public function setProfileHash(string $newProfileHash): void {
 		//enforce that the hash is properly formatted
 		$newAuthorHash = trim($newProfileHash);
 		if(empty($newProfileHash) === true) {
-			throw(new \InvalidArgumentException("profile password hash empty or insecure"));
+			throw(new InvalidArgumentException("profile password hash empty or insecure"));
 		}
 
 		//enforce the hash is really an Argon hash
 		$profileHashInfo = password_get_info($newProfileHash);
 		if($profileHashInfo["algoName"] !== "argon2i") {
-			throw(new \InvalidArgumentException("profile hash is not a valid hash"));
+			throw(new InvalidArgumentException("profile hash is not a valid hash"));
 		}
 
 		//enforce that the hash is exactly 97 characters.
@@ -247,7 +248,7 @@ class Profile implements \JsonSerializable{
 	public function setProfileId(string $newProfileId): void {
 		try {
 			$uuid = self::validateUuid($newProfileId);
-		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		} catch(InvalidArgumentException | RangeException | Exception | TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
@@ -266,21 +267,21 @@ class Profile implements \JsonSerializable{
 	 * mutator method for at profileLastName
 	 *
 	 * @param string $newProfileLastName new value of profileFirstName
-	 * @throws \InvalidArgumentException if $newProfileFirstName is not a string or insecure
-	 * @throws \RangeException if the name is over 32 characters
-	 * @throws \TypeError if $newProfileFirstName is not a string
+	 * @throws InvalidArgumentException if $newProfileFirstName is not a string or insecure
+	 * @throws RangeException if the name is over 32 characters
+	 * @throws TypeError if $newProfileFirstName is not a string
 	 **/
-	public function setProfileLastName(string $newProfileLastName) : void {
+	public function setProfileLastName(string $newProfileLastName): void {
 		// verify the at name is secure
 		$newProfileLastName = trim($newProfileLastName);
 		$newProfileLastName = filter_var($newProfileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		if(empty($newProfileLastName) === true){
-			throw(new \InvalidArgumentException("Last name is empty or insecure"));
+		if(empty($newProfileLastName) === true) {
+			throw(new InvalidArgumentException("Last name is empty or insecure"));
 		}
 
 		// verify the at handle will fit in the database
 		if(strlen($newProfileLastName) > 32) {
-			throw(new \RangeException("Last name is too large"));
+			throw(new RangeException("Last name is too large"));
 		}
 
 		// store the at first name
@@ -297,12 +298,12 @@ class Profile implements \JsonSerializable{
 		$newProfileUserName = trim($newProfileUserName);
 		$newProfileUserName = filter_var($newProfileUserName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newProfileUserName) === true) {
-			throw(new \InvalidArgumentException("profile at handle is empty or insecure"));
+			throw(new InvalidArgumentException("profile at handle is empty or insecure"));
 		}
 
 		// verify the at handle will fit in the database
 		if(strlen($newProfileUserName) > 32) {
-			throw(new \RangeException("profile at handle is too large"));
+			throw(new RangeException("profile at handle is too large"));
 		}
 
 		// store the at handle
@@ -312,12 +313,12 @@ class Profile implements \JsonSerializable{
 	/**
 	 * inserts this Profile into mySQL
 	 *
-	 * @param \PDO $pdo PDO connection object
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError if $pdo is not a PDO connection object
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 * @throws TypeError if $pdo is not a PDO connection object
 	 **/
 
-	public function insert(\PDO $pdo): void {
+	public function insert(PDO $pdo): void {
 
 		// create query template
 		$query = "INSERT INTO profile(profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, 
@@ -337,11 +338,11 @@ class Profile implements \JsonSerializable{
 	/**
 	 * deletes this Profile from mySQL
 	 *
-	 * @param \PDO $pdo PDO connection object
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError if $pdo is not a PDO connection object
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 * @throws TypeError if $pdo is not a PDO connection object
 	 **/
-	public function delete(\PDO $pdo): void {
+	public function delete(PDO $pdo): void {
 
 		// create query template
 		$query = "DELETE FROM profile WHERE profileId = :profileId";
@@ -355,10 +356,10 @@ class Profile implements \JsonSerializable{
 	/**
 	 * updates this Profile from mySQL
 	 *
-	 * @param \PDO $pdo PDO connection object
-	 * @throws \PDOException when mySQL related errors occur
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
 	 **/
-	public function update(\PDO $pdo): void {
+	public function update(PDO $pdo): void {
 
 
 		// create query template
@@ -379,14 +380,14 @@ class Profile implements \JsonSerializable{
 	/**
 	 * gets the Profile by profile id
 	 *
-	 * @param \PDO $pdo $pdo PDO connection object
+	 * @param PDO $pdo $pdo PDO connection object
 	 * @param  $profileId profile Id to search for (the data type should be mixed/not specified)
 	 * @return Profile|null Profile or null if not found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when a variable are not the correct data type
+	 * @throws PDOException when mySQL related errors occur
+	 * @throws TypeError when a variable are not the correct data type
 	 **/
 
-	public static function getProfileByProfileId(\PDO $pdo, $profileId): ?Profile{
+	public static function getProfileByProfileId(PDO $pdo, $profileId): ?Profile {
 		//create query template
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
        profileFirstName, profileHash, profileLastName, profileUserName
@@ -395,22 +396,22 @@ class Profile implements \JsonSerializable{
 		//prepare query
 		$statement = $pdo->prepare($query);
 
-		try{
+		try {
 			$profileId = self::validateUuid($profileId);
 
-		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
-			throw (new \PDOException($exception->getMessage(),0,$exception));
+		} catch(InvalidArgumentException | RangeException | Exception | TypeError $exception) {
+			throw (new PDOException($exception->getMessage(), 0, $exception));
 		}
 		//bind parameters to placeholders in the table
-		$parameter = [ "profileId"=>$profileId->getBytes()];
+		$parameter = ["profileId" => $profileId->getBytes()];
 		$statement->execute($parameter);
 
 		//grab profile from database
 
 		$profile = null;
-		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$statement->setFetchMode(PDO::FETCH_ASSOC);
 		$row = $statement->fetch();
-		if($row !== false){
+		if($row !== false) {
 			//instantiate profile object and push data into it
 			$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"],
 				$row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"], $row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
@@ -421,15 +422,15 @@ class Profile implements \JsonSerializable{
 	/**
 	 * gets the Profile by email
 	 *
-	 * @param \PDO $pdo PDO connection object
+	 * @param PDO $pdo PDO connection object
 	 * @param string $profileEmail email to search for
 	 * @return Profile|null Profile or null if not found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when variables are not the correct data type
+	 * @throws PDOException when mySQL related errors occur
+	 * @throws TypeError when variables are not the correct data type
 	 **/
 
 
-	public static function getProfileByEmail(\PDO $pdo, string $profileEmail): Profile{
+	public static function getProfileByEmail(PDO $pdo, string $profileEmail): Profile {
 		//create query template
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
        profileFirstName, profileHash, profileLastName, profileUserName FROM profile WHERE profileEmail = :profileEmail";
@@ -437,14 +438,14 @@ class Profile implements \JsonSerializable{
 		$statement = $pdo->prepare($query);
 
 		//bind the object to their respective placeholders in the database
-		$parameters=["profileEmail"=>$profileEmail];
+		$parameters = ["profileEmail" => $profileEmail];
 		$statement->execute($parameters);
 
 		//grab profile from database
 		$profile = null;
-		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$statement->setFetchMode(PDO::FETCH_ASSOC);
 		$row = $statement->fetch();
-		if ($row !== false){
+		if($row !== false) {
 			//instantiate profile and push data into it
 			$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"],
 				$row["profileEmail"], $row["profileFirstName"], $row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
@@ -456,19 +457,19 @@ class Profile implements \JsonSerializable{
 	/**
 	 * gets the Profile by UserName
 	 *
-	 * @param \PDO $pdo PDO connection object
+	 * @param PDO $pdo PDO connection object
 	 * @param string $profileAtHandle at handle to search for
-	 * @return \SPLFixedArray of all profiles found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when variables are not the correct data type
+	 * @return SPLFixedArray of all profiles found
+	 * @throws PDOException when mySQL related errors occur
+	 * @throws TypeError when variables are not the correct data type
 	 **/
-	public static function getProfileByProfileUserName(\PDO $pdo, $profileUserName):?Profile {
+	public static function getProfileByProfileUserName(PDO $pdo, $profileUserName): ?Profile {
 
 		// verify the at handle is secure
 		$profileUserName = trim($profileUserName);
 		$profileUserName = filter_var($profileUserName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($profileUserName) === true) {
-			throw(new \InvalidArgumentException("profile at handle is empty or insecure"));
+			throw(new InvalidArgumentException("profile at handle is empty or insecure"));
 		}
 
 
@@ -483,15 +484,15 @@ class Profile implements \JsonSerializable{
 		// grab the Profile UserName from mySQL
 		try {
 			$profile = null;
-			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$statement->setFetchMode(PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
 
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],  $row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"], $row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
 			}
-		} catch(\Exception $exception) {
+		} catch(Exception $exception) {
 			// if the row couldn't be converted, rethrow it
-			throw(new \PDOException($exception->getMessage(), 0, $exception));
+			throw(new PDOException($exception->getMessage(), 0, $exception));
 		}
 		return ($profile);
 	}
@@ -500,62 +501,103 @@ class Profile implements \JsonSerializable{
 	/**
 	 * gets the Profile by first and last name
 	 *
-	 * @param \PDO $pdo PDO connection object
+	 * @param PDO $pdo PDO connection object
 	 * @param string $profileFirstName $profileLastName first name to search for
-	 * @return \SPLFixedArray of all profiles found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when variables are not the correct data type
-	 **/
-	public static function getProfileByProfileFirstNameAndProfileLastName(\PDO $pdo, string $profileFirstName, string $profileLastName) : \SPLFixedArray {
+	 * @param string $profileLastName
+	 * @return SPLFixedArray of all profiles found
+	 */
+	public static function getProfileByProfileFirstNameAndProfileLastName(PDO $pdo, string $profileFirstName, string $profileLastName): SPLFixedArray {
 		// sanitize the string before searching
 		$profileFirstName = trim($profileFirstName);
 		$profileFirstName = filter_var($profileFirstName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($profileFirstName) === true) {
-			throw(new \PDOException("name not valid"));
+			throw(new PDOException("name not valid"));
 		}
-		$profileLastName = trim($profileLastName);
-		$profileLastName = filter_var($profileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		if(empty($profileLastName === true)) {
-			throw(new \PDOException("name not valid"));
-		}
-
+//		$profileLastName = trim($profileLastName);
+//		$profileLastName = filter_var($profileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+//		if(empty($profileLastName === true)) {
+//			throw(new \PDOException("name not valid"));
+//		}
 		// create query template
-		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail, profileFirstName, profileHash, profileLastName, profileUsername FROM profile WHERE profileFirstName LIKE :profileFirstName AND profileLastName LIKE :profileLastName";
+		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
+       profileFirstName, profileHash, profileLastName, profileUserName FROM profile WHERE profileFirstName
+      LIKE profileFirstName AND profileLastName LIKE profileLastName";
 		$statement = $pdo->prepare($query);
 
 		// bind the profile First and Last name to the place holder in the template
 		$parameters = ["profileFirstName" => $profileFirstName, "profileLastName" => $profileLastName];
 		$statement->execute($parameters);
+		$profiles = new SPLFixedArray($statement->rowCount());
+		$statement->setFetchMode(PDO::FETCH_ASSOC);
 
-
-
-		$profiles = new \SPLFixedArray($statement->rowCount());
-		$statement->setFetchMode(\PDO::FETCH_ASSOC);
-
-
-		while (($row = $statement->fetch()) !== false) {
+		while(($row = $statement->fetch()) !== false) {
 			try {
-				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"], $row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"],  $row["profileHash"], $row["profileLastName"], $row["profileUserName"]);
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"],
+					$row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"], $row["profileHash"], $row["profileLastName"],
+					$row["profileUserName"]);
 				$profiles[$profiles->key()] = $profile;
 				$profiles->next();
-			} catch(\Exception $exception) {
+			} catch(Exception $exception) {
 				// if the row couldn't be converted, rethrow it
-				throw(new \PDOException($exception->getMessage(), 0, $exception));
+				throw(new PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
 		return ($profiles);
 	}
 
 
+	/**
+	 * get the profile by profile activation token
+	 *
+	 * @param string $profileActivationToken
+	 * @param PDO object $pdo
+	 * @return Profile|null Profile or null if not found
+	 * @throws PDOException when mySQL related errors occur
+	 * @throws TypeError when variables are not the correct data type
+	 **/
+	public
+	static function getProfileByProfileActivationToken(PDO $pdo, string $profileActivationToken): ?Profile {
+		//make sure activation token is in the right format and that it is a string representation of a hexadecimal
+		$profileActivationToken = trim($profileActivationToken);
+		if(ctype_xdigit($profileActivationToken) === false) {
+			throw(new InvalidArgumentException("profile activation token is empty or in the wrong format"));
+		}
+
+		//create the query template
+		$query = "SELECT  profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
+       profileFirstName, profileHash, profileLastName, profileUserName FROM profile WHERE profileActivationToken = :profileActivationToken";
+		$statement = $pdo->prepare($query);
+
+		// bind the profile activation token to the placeholder in the template
+		$parameters = ["profileActivationToken" => $profileActivationToken];
+		$statement->execute($parameters);
+
+		// grab the Profile from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileActivationToken"], $row["profileAvatarCloudinaryId"],
+					$row["profileAvatarUrl"], $row["profileEmail"], $row["profileFirstName"], $row["profileHash"], $row["profileLastName"],
+					$row["profileUserName"]);
+			}
+		} catch(Exception $exception) {
+			// if the row couldn't be converted, rethrow it
+			throw(new PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
 
 	/**
 	 * @inheritDoc
 	 */
-	public function jsonSerialize(){
+	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		$fields["profileId"] = $this->profileId->toString();
 		unset($fields["profileActivationToken"]);
 		unset($fields["profileHash"]);
-		return($fields);
+		return ($fields);
 	}
 }
