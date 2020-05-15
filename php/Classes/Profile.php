@@ -92,7 +92,6 @@ class Profile implements JsonSerializable {
 			throw(newRangeException("profile activation token has to be 32"));
 		}
 		$this->profileActivationToken = $newProfileActivationToken;
-
 	}
 
 
