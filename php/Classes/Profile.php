@@ -115,9 +115,6 @@ class Profile implements \JsonSerializable{
 	}
 
 
-
-
-
 	public function getProfileAvatarUrl(): string {
 		return ($this->profileAvatarUrl);
 	}
@@ -502,10 +499,9 @@ class Profile implements \JsonSerializable{
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param string $profileFirstName $profileLastName first name to search for
+	 * @param string $profileLastName
 	 * @return \SPLFixedArray of all profiles found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when variables are not the correct data type
-	 **/
+	 */
 	public static function getProfileByProfileFirstNameAndProfileLastName(\PDO $pdo, string $profileFirstName, string $profileLastName) : \SPLFixedArray {
 		// sanitize the string before searching
 		$profileFirstName = trim($profileFirstName);
@@ -513,15 +509,15 @@ class Profile implements \JsonSerializable{
 		if(empty($profileFirstName) === true) {
 			throw(new \PDOException("name not valid"));
 		}
-		$profileLastName = trim($profileLastName);
-		$profileLastName = filter_var($profileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		if(empty($profileLastName === true)) {
-			throw(new \PDOException("name not valid"));
-		}
+//		$profileLastName = trim($profileLastName);
+//		$profileLastName = filter_var($profileLastName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+//		if(empty($profileLastName === true)) {
+//			throw(new \PDOException("name not valid"));
+//		}
 		// create query template
 		$query = "SELECT profileId, profileActivationToken, profileAvatarCloudinaryId, profileAvatarUrl, profileEmail,
        profileFirstName, profileHash, profileLastName, profileUserName FROM profile WHERE profileFirstName
-      LIKE %profileFirstName AND profileLastName LIKE %profileLastName";
+      LIKE profileFirstName AND profileLastName LIKE profileLastName";
 		$statement = $pdo->prepare($query);
 
 		// bind the profile First and Last name to the place holder in the template

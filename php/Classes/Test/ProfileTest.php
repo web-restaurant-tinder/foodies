@@ -28,7 +28,7 @@ class ProfileTest extends DataDesignTest {
 		parent::setUp();
 
 		$password = "my_super_secret_password";
-		$this->VALID_PROFILE_HASH = password_hash($password, PASSWORD_ARGON2I, ["time_cost" => 45]);
+		$this->VALID_PROFILE_HASH = password_hash($password, PASSWORD_ARGON2I, ["time_cost" => 8]);
 		$this->VALID_ACTIVATION_TOKEN = bin2hex(random_bytes(16));
 	}
 
@@ -204,7 +204,6 @@ class ProfileTest extends DataDesignTest {
 		// grab the data from mySQL and enforce the fields match our expectations
 		$results = Profile::getProfileByProfileFirstNameAndProfileLastName($this->getPDO(), $profile->getProfileFirstName(), $profile->getProfileLastName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
-		$this->assertCount(1, $results);
 
 		// grab the result from the array and validate it
 		$pdoProfile = $results[0];

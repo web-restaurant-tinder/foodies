@@ -1,3 +1,6 @@
+USE cap28_rtinder;
+ALTER DATABASE cap28_rtinder CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS swipe(
 	swipeProfileId BINARY(16) NOT NULL,
 	swipeRestaurantId BINARY(16) NOT NULL,
