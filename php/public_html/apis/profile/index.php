@@ -111,7 +111,7 @@ try {
 		$profile->update($pdo);
 
 		// update reply
-		$reply->message = "Profile information updated";he
+		$reply->message = "Profile information updated";
 
 
 	} elseif($method === "DELETE") {
