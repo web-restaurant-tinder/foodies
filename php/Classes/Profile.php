@@ -106,7 +106,7 @@ class Profile implements JsonSerializable {
 	 * @throws InvalidArgumentException if $newProfileAvatarCloudinaryId is not a string or insecure
 	 * @throws TypeError if $newProfileAvatarCloudinaryId is not a string
 	 **/
-	public function setProfileAvatarCloudinaryId(string $newProfileAvatarCloudinaryId): void {
+	public function setProfileAvatarCloudinaryId($newProfileAvatarCloudinaryId): void {
 		// verify the image cloudinary token content is secure
 		$newProfileAvatarCloudinaryId = filter_var($newProfileAvatarCloudinaryId, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
@@ -131,7 +131,7 @@ class Profile implements JsonSerializable {
 	 * @throws RangeException if $newProfileAvatarUrl is > 255 characters
 	 * @throws TypeError if $newAtHandle is not a string
 	 **/
-	public function setProfileAvatarUrl(string $newProfileAvatarUrl): void {
+	public function setProfileAvatarUrl($newProfileAvatarUrl): void {
 
 		$newProfileAvatarUrl = trim($newProfileAvatarUrl);
 		$newProfileAvatarUrl = filter_var($newProfileAvatarUrl, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);

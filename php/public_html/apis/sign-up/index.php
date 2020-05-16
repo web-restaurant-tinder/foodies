@@ -30,7 +30,6 @@ try {
 	//determine which HTTP method was used
 
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
-
 	if($method === "POST") {
 
 
@@ -41,7 +40,7 @@ try {
 
 		//profile at handle is a required field
 		if(empty($requestObject->profileUserName) === true) {
-			throw(new \InvalidArgumentException ("No profile @handle", 405));
+			throw(new \InvalidArgumentException ("No profile Username", 405));
 		}
 
 		//profile email is a required field
@@ -78,9 +77,6 @@ try {
 		$hash = password_hash($requestObject->profilePassword, PASSWORD_ARGON2I, ["time_cost" => 9]);
 
 		$profileActivationToken = bin2hex(random_bytes(16));
-
-//		$newProfileId, $newProfileActivationToken, $newProfileAvatarCloudinaryId, $newProfileAvatarUrl, $newProfileEmail,
-//										 $newProfileFirstName, $newProfileHash, $newProfileLastName, $newProfileUserName
 
 		//create the profile object and prepare to insert into the database
 		$profile = new Profile(generateUuidV4()->toString(), $profileActivationToken, null, null,

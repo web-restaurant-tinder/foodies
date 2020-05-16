@@ -12,7 +12,7 @@ require_once("/etc/apache2/capstone-mysql/Secrets.php");
 use WebRestaurantTinder\Foodies\Profile;
 
 /**
- * API for Tweet
+ * API for profile
  *
  * @author Gkephart
  * @version 1.0
