@@ -66,7 +66,7 @@ try {
 		}
 
 		//grab profile from database and put into a session
-		$profile = Profile::getProfileByProfileId($pdo, $profile->getProfileId());
+		$profile = Profile::getProfileByProfileId($pdo, $profile->getProfileId()->toString());
 
 
 		$_SESSION["profile"] = $profile;
