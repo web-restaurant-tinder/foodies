@@ -1,5 +1,5 @@
 <?php
-namespace Sararendon01\WebRestaurantTinder\Foodies;
+namespace WebRestaurantTinder\Foodies;
 
 require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
