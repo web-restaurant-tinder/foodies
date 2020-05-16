@@ -8,9 +8,9 @@ require_once dirname(__DIR__, 3) . "/lib/uuid.php";
 use WebRestaurantTinder\Foodies\Profile;
 
 /**
- * api for signing up too DDC Twitter
+ * api for signing up too foodies
  *
- * @author Gkephart <GKephart@cnm.edu>
+ * @author Nkortiz92 <Nkortiz92@cnm.edu>
  **/
 
 //verify the session, start if not active

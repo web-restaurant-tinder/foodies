@@ -9,7 +9,7 @@ require_once dirname(__DIR__, 3) . "/lib/jwt.php";
 require_once dirname(__DIR__, 3) . "/lib/uuid.php";
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
 
-use UssHopper\DataDesign\Profile;
+use WebRestaurantTinder\Foodies\Profile;
 
 /**
  * API for Tweet
@@ -30,7 +30,7 @@ $reply->data = null;
 try {
 	//grab the mySQL connection
 
-	$secrets = new \Secrets("/etc/apache2/capstone-mysql/ddctwitter.ini");
+	$secrets = new \Secrets("/etc/apache2/capstone-mysql/cohort28/foodies.ini");
 	$pdo = $secrets->getPdoObject();
 
 
@@ -39,7 +39,7 @@ try {
 
 	// sanitize input
 	$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$profileAtHandle = filter_input(INPUT_GET, "profileAtHandle", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	$profileUserName = filter_input(INPUT_GET, "profileUserName", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$profileEmail = filter_input(INPUT_GET, "profileEmail", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
 
@@ -57,11 +57,11 @@ try {
 			$reply->data = Profile::getProfileByProfileId($pdo, $id);
 
 		} else if(empty($profileAtHandle) === false) {
-			$reply->data = Profile::getProfileByProfileAtHandle($pdo, $profileAtHandle);
+			$reply->data = Profile::getProfileByProfileUserName($pdo, $profileUserName);
 
 		} else if(empty($profileEmail) === false) {
 
-			$reply->data = Profile::getProfileByProfileEmail($pdo, $profileEmail);
+			$reply->data = Profile::getProfileByEmail($pdo, $profileEmail);
 		}
 
 	} elseif($method === "PUT") {
@@ -91,8 +91,8 @@ try {
 
 
 		//profile at handle
-		if(empty($requestObject->profileAtHandle) === true) {
-			throw(new \InvalidArgumentException ("No profile at handle", 405));
+		if(empty($requestObject->profileUserName) === true) {
+			throw(new \InvalidArgumentException ("No profile username", 405));
 		}
 
 		//profile email is a required field
@@ -100,18 +100,18 @@ try {
 			throw(new \InvalidArgumentException ("No profile email present", 405));
 		}
 
-		//profile phone # | if null use the profile phone that is in the database
-		if(empty($requestObject->profilePhone) === true) {
-			$requestObject->ProfilePhone = $profile->getProfilePhone();
-		}
+//		//profile phone # | if null use the profile phone that is in the database
+//		if(empty($requestObject->profilePhone) === true) {
+//			$requestObject->ProfilePhone = $profile->getProfilePhone();
+//		}
 
-		$profile->setProfileAtHandle($requestObject->profileAtHandle);
+		$profile->setProfileUserName($requestObject->profileUserName);
 		$profile->setProfileEmail($requestObject->profileEmail);
-		$profile->setProfilePhone($requestObject->profilePhone);
+//		$profile->setProfilePhone($requestObject->profilePhone);
 		$profile->update($pdo);
 
 		// update reply
-		$reply->message = "Profile information updated";
+		$reply->message = "Profile information updated";he
 
 
 	} elseif($method === "DELETE") {
