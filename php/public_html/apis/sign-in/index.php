@@ -6,7 +6,7 @@ require_once dirname(__DIR__, 3) . "/lib/xsrf.php";
 require_once dirname(__DIR__, 3) . "/lib/jwt.php";
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
 
-use UssHopper\DataDesign\Profile;
+use WebRestaurantTinder\Foodies\Profile;
 
 /**
  * api for handling sign-in
@@ -24,7 +24,7 @@ try {
 		session_start();
 	}
 	//grab mySQL statement
-	$secrets = new \Secrets("/etc/apache2/capstone-mysql/ddctwitter.ini");
+	$secrets = new \Secrets("/etc/apache2/capstone-mysql/cohort28/foodies.ini");
 	$pdo = $secrets->getPdoObject();
 
 	//determine which HTTP method is being used
@@ -54,7 +54,7 @@ try {
 		}
 
 		//grab the profile from the database by the email provided
-		$profile = Profile::getProfileByProfileEmail($pdo, $profileEmail);
+		$profile = Profile::getProfileByEmail($pdo, $profileEmail);
 		if(empty($profile) === true) {
 			throw(new InvalidArgumentException("Invalid Email", 401));
 		}
@@ -76,7 +76,7 @@ try {
 		//create the Auth payload
 		$authObject = (object) [
 			"profileId" =>$profile->getProfileId(),
-			"profileAtHandle" => $profile->getProfileAtHandle()
+			"profileUserName" => $profile->getProfileUserName()
 		];
 
 		// create and set th JWT TOKEN
