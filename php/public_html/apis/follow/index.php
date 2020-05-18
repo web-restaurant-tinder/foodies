@@ -95,7 +95,7 @@ try {
             }
 
 
-            if(empty($_SESSION["profile"]) === true || $_SESSION["profile"]->getProfileId()->toString() !== $follow->getfollowFollowedProfileId()->toString()) {
+            if(empty($_SESSION["profile"]) === true || $_SESSION["profile"]->getProfileId()->toString() !== $follow->getFollowProfileId()->toString()) {
                throw (new \InvalidArgumentException("Your are not allowed to delete this follow", 403));
             }
 
