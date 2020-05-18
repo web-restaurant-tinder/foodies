@@ -5,7 +5,7 @@ require_once dirname(__DIR__,3) . "/lib/xsrf.php";
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
 
 
-use UssHopper\DataDesign\Profile;
+use WebRestaurantTinder\Foodies\Profile;
 /**
  * API to check profile activation status
  * @author Gkephart
@@ -21,7 +21,7 @@ $reply->data = null;
 try{
 	// grab the MySQL connection
 
-	$secrets = new \Secrets("/etc/apache2/capstone-mysql/ddctwitter.ini");
+	$secrets = new \Secrets("/etc/apache2/capstone-mysql/cohort28/foodies.ini");
 	$pdo = $secrets->getPdoObject();
 
 

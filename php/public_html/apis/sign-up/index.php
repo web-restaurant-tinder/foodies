@@ -4,14 +4,13 @@ require_once dirname(__DIR__, 3) . "/Classes/autoload.php";
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
 require_once dirname(__DIR__, 3) . "/lib/xsrf.php";
 require_once dirname(__DIR__, 3) . "/lib/uuid.php";
-require_once("/etc/apache2/capstone-mysql/Secrets.php");
 
-use UssHopper\DataDesign\Profile;
+use WebRestaurantTinder\Foodies\Profile;
 
 /**
- * api for signing up too DDC Twitter
+ * api for signing up too foodies
  *
- * @author Gkephart <GKephart@cnm.edu>
+ * @author Nkortiz92 <Nkortiz92@cnm.edu>
  **/
 
 //verify the session, start if not active
@@ -26,12 +25,11 @@ $reply->data = null;
 try {
 	//grab the mySQL connection
 
-	$secrets = new \Secrets("/etc/apache2/capstone-mysql/ddctwitter.ini");
+	$secrets = new \Secrets("/etc/apache2/capstone-mysql/cohort28/foodies.ini");
 	$pdo = $secrets->getPdoObject();
 	//determine which HTTP method was used
 
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
-
 	if($method === "POST") {
 
 
@@ -41,8 +39,8 @@ try {
 
 
 		//profile at handle is a required field
-		if(empty($requestObject->profileAtHandle) === true) {
-			throw(new \InvalidArgumentException ("No profile @handle", 405));
+		if(empty($requestObject->profileUserName) === true) {
+			throw(new \InvalidArgumentException ("No profile Username", 405));
 		}
 
 		//profile email is a required field
@@ -60,10 +58,16 @@ try {
 			throw(new \InvalidArgumentException ("Must input valid password", 405));
 		}
 
-		//if phone is empty set it too null
-		if(empty($requestObject->profilePhone) === true) {
-			$requestObject->profilePhone = null;
+		//profile first is a required field
+		if(empty($requestObject->profileFirstName) === true) {
+			throw(new \InvalidArgumentException ("Must input first name", 405));
 		}
+
+		//profile last is a required field
+		if(empty($requestObject->profileLastName) === true) {
+			throw(new \InvalidArgumentException ("Must input last name", 405));
+		}
+
 
 		//make sure the password and confirm password match
 		if ($requestObject->profilePassword !== $requestObject->profilePasswordConfirm) {
@@ -75,13 +79,14 @@ try {
 		$profileActivationToken = bin2hex(random_bytes(16));
 
 		//create the profile object and prepare to insert into the database
-		$profile = new Profile(generateUuidV4(), $profileActivationToken, $requestObject->profileAtHandle, "null", $requestObject->profileEmail, $hash, $requestObject->profilePhone);
+		$profile = new Profile(generateUuidV4()->toString(), $profileActivationToken, null, null,
+			$requestObject->profileEmail, $requestObject->profileFirstName, $hash, $requestObject->profileLastName, $requestObject->profileUserName);
 
 		//insert the profile into the database
 		$profile->insert($pdo);
 
 		//compose the email message to send with th activation token
-		$messageSubject = "One step closer to Sticky Head -- Account Activation";
+		$messageSubject = "Activate your foodies account now. Account Activation";
 
 		//building the activation link that can travel to another server and still work. This is the link that will be clicked to confirm the account.
 		//make sure URL is /public_html/api/activation/$activation
@@ -95,8 +100,8 @@ try {
 
 		//compose message to send with email
 		$message = <<< EOF
-<h2>Welcome to DDCTwitter.</h2>
-<p>In order to start posting tweets of cats you must confirm your account </p>
+<h2>Welcome to Foodies.</h2>
+<p>In order to start swiping, confirm your account </p>
 <p><a href="$confirmLink">$confirmLink</a></p>
 EOF;
 		//create swift email
@@ -104,7 +109,7 @@ EOF;
 
 		// attach the sender to the message
 		// this takes the form of an associative array where the email is the key to a real name
-		$swiftMessage->setFrom(["gkephart@cnm.edu" => "Gkephart"]);
+		$swiftMessage->setFrom(["nortiz41@cnm.edu" => "nortiz41"]);
 
 		/**
 		 * attach recipients to the message
@@ -145,7 +150,7 @@ EOF;
 		$mailer = new Swift_Mailer($smtp);
 
 		//send the message
-		$numSent = $mailer->send($swiftMessage, $failedRecipients);
+		$numSent = $mailer->send($swiftMessage, $recipients);
 
 		/**
 		 * the send method returns the number of recipients that accepted the Email
@@ -157,7 +162,7 @@ EOF;
 		}
 
 		// update reply
-		$reply->message = "Thank you for creating a profile with DDC-Twitter";
+		$reply->message = "Thank you for creating a profile with Foodies";
 	} else {
 		throw (new InvalidArgumentException("invalid http request"));
 	}
