@@ -7,6 +7,29 @@
  * @see http://php.net/manual/en/function.apache-request-headers.php apache_request_headers()
  **/
 if(function_exists("apache_request_headers") === false) {
+<<<<<<< HEAD
+    /**
+     * clones apache_request_headers()'s behavior
+     *
+     * @return array all HTTP request headers
+     **/
+    function apache_request_headers() {
+        $headers = array();
+        foreach($_SERVER as $header => $value) {
+            // divide the header name by the underbar
+            $headerNameArray = explode("_" , $header);
+            // request headers always are prefixed by HTTP_
+            if(array_shift($headerNameArray) === "HTTP") {
+                // convert HTTP_FOO_HEADER to Foo-Header
+                array_walk($headerNameArray, function(&$headerName) {
+                    $headerName = ucfirst(strtolower($headerName));
+                });
+                $headers[join("-", $headerNameArray)] = $value;
+            }
+        }
+        return($headers);
+    }
+=======
 	/**
 	 * clones apache_request_headers()'s behavior
 	 *
@@ -28,6 +51,7 @@ if(function_exists("apache_request_headers") === false) {
 		}
 		return($headers);
 	}
+>>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 }
 
 /**
@@ -37,6 +61,18 @@ if(function_exists("apache_request_headers") === false) {
  * @throws RuntimeException if the session is not active
  **/
 function setXsrfCookie($cookiePath = "/") {
+<<<<<<< HEAD
+    // enforce that the session is active
+    if(session_status() !== PHP_SESSION_ACTIVE) {
+        throw(new RuntimeException("session not active"));
+    }
+
+    // if the token does not exist, create one and send it in a cookie
+    if(empty($_SESSION["XSRF-TOKEN"]) === true) {
+        $_SESSION["XSRF-TOKEN"] = hash("sha512", session_id() . bin2hex(openssl_random_pseudo_bytes(16)));
+    }
+    setcookie("XSRF-TOKEN", $_SESSION["XSRF-TOKEN"], 0, $cookiePath);
+=======
 	// enforce that the session is active
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		throw(new RuntimeException("session not active"));
@@ -47,6 +83,7 @@ function setXsrfCookie($cookiePath = "/") {
 		$_SESSION["XSRF-TOKEN"] = hash("sha512", session_id() . bin2hex(openssl_random_pseudo_bytes(16)));
 	}
 	setcookie("XSRF-TOKEN", $_SESSION["XSRF-TOKEN"], 0, $cookiePath);
+>>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 }
 
 /**
@@ -58,6 +95,26 @@ function setXsrfCookie($cookiePath = "/") {
  * @throws RuntimeException if the session is not active
  **/
 function verifyXsrf() {
+<<<<<<< HEAD
+    // enforce that the session is active
+    if(session_status() !== PHP_SESSION_ACTIVE) {
+        throw(new RuntimeException("session not active"));
+    }
+
+
+    // grab the XSRF token sent by Angular, jQuery, or JavaScript in the header
+    $headers = array_change_key_case(apache_request_headers(), CASE_UPPER);
+    if(array_key_exists("X-XSRF-TOKEN", $headers) === false) {
+        throw(new InvalidArgumentException("invalid XSRF token", 401));
+    }
+    $angularHeader = $headers["X-XSRF-TOKEN"];
+
+    // compare the XSRF token from the header with the correct token in the session
+    $correctHeader = $_SESSION["XSRF-TOKEN"];
+    if($angularHeader !== $correctHeader) {
+        throw(new InvalidArgumentException("invalid XSRF token", 401));
+    }
+=======
 	// enforce that the session is active
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		throw(new RuntimeException("session not active"));
@@ -76,4 +133,5 @@ function verifyXsrf() {
 	if($angularHeader !== $correctHeader) {
 		throw(new InvalidArgumentException("invalid XSRF token", 401));
 	}
+>>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 }
