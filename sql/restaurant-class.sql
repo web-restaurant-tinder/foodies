@@ -1,6 +1,7 @@
 
 DROP TABLE IF EXISTS swipe;
-DROP TABLE IF EXISTS restaurant;
+DROP TABLE IF EXISTS restaurant;s
+
 
 CREATE TABLE IF NOT EXISTS restaurant(
 	restaurantId BINARY(16) not null,
