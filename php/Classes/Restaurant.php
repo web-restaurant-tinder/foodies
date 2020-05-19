@@ -482,7 +482,7 @@ FROM restaurant WHERE restaurantId = :restaurantId";
 		$statement = $pdo->prepare($query);
 
 		// bind the restaurant Food Type to the place holder in the template
-		$res = "%$restaurantFoodType%";
+		$restaurantFoodType = "%$restaurantFoodType%";
 		$parameters = ["restaurantFoodType" => $restaurantFoodType];
 		$statement->execute($parameters);
 
@@ -527,11 +527,12 @@ FROM restaurant WHERE restaurantId = :restaurantId";
 		$restaurantName = str_replace("_", "\\_", str_replace("%", "\\%", $restaurantName));
 
 		// create query template
-		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantName LIKE :restaurantName";
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, 
+       restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantName LIKE :restaurantName";
 		$statement = $pdo->prepare($query);
 
 		// bind the restaurant name to the place holder in the template
-		$res = "%$restaurantName%";
+		$restaurantName = "%$restaurantName%";
 		$parameters = ["restaurantName" => $restaurantName];
 		$statement->execute($parameters);
 

@@ -5,7 +5,7 @@ require_once dirname(__DIR__, 3) . "/vendor/autoload.php";
 require_once dirname(__DIR__, 3) . "/Classes/autoload.php";
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
 require_once dirname(__DIR__, 3) . "/lib/xsrf.php";
-require_once dirname(__DIR__, 3) . "/lib/jwt.php";
+require_once dirname(__DIR__,3) . "/lib/jwt.php";
 require_once dirname(__DIR__, 3) . "/lib/uuid.php";
 
 use WebRestaurantTinder\Foodies\Restaurant;
@@ -35,12 +35,12 @@ try {
 
 	//determine which HTTP method was used
 	$method = $_SERVER["HTTP_X_HTTP_METHOD"] ?? $_SERVER["REQUEST_METHOD"];
+//	$reply->message = $method;
 
 	// sanitize input
 	$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$restaurantName = filter_input(INPUT_GET, "restaurantName", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$restaurantFoodType = filter_input(INPUT_GET, "restaurantFoodType", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-
 
 	if($method === "GET") {
 		//set XSRF cookie
@@ -52,9 +52,7 @@ try {
 
 		} else if(empty($restaurantName) === false) {
 			$reply->data = Restaurant::getRestaurantByRestaurantName($pdo, $restaurantName);
-
 		} else if(empty($restaurantFoodType) === false) {
-
 			$reply->data = Restaurant::getRestaurantByRestaurantFoodType($pdo, $restaurantFoodType);
 		}
 
