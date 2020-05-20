@@ -70,7 +70,7 @@ try {
 
             verifyXsrf();
 
-            if (empty($_SESSION ["profile"]) === true) {
+            if (empty($_SESSION["profile"]) === true) {
                 throw(new \InvalidArgumentException("you must be logged in to swipe", 403));
             }
 
