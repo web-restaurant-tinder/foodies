@@ -1,20 +1,20 @@
 
 DROP TABLE IF EXISTS swipe;
-DROP TABLE IF EXISTS restaurant;
+DROP TABLE IF EXISTS restaurant;s
+
 
 CREATE TABLE IF NOT EXISTS restaurant(
 	restaurantId BINARY(16) not null,
-	restaurantAddress VARCHAR(100),
-	restaurantAvatar VARCHAR(32),
+	restaurantAddress VARCHAR(255),
+	restaurantAvatar VARCHAR(255),
 	restaurantFoodType VARCHAR(300) NOT NULL,
 	restaurantLat FLOAT(11, 8) NOT NULL,
 	restaurantLng FLOAT(11, 8) NOT NULL,
-	restaurantName VARCHAR(32) NOT NULL,
-	restaurantPhone VARCHAR(15) NOT NULL,
-	restaurantStarRating ENUM ('1','2','3','4','5'),
+	restaurantName VARCHAR(255) NOT NULL,
+	restaurantPhone VARCHAR(15),
+	restaurantStarRating FLOAT (6, 1),
 	restaurantUrl VARCHAR(1000),
 	PRIMARY KEY (restaurantId),
-	UNIQUE (restaurantPhone),
 	UNIQUE (restaurantUrl)
 );
 
@@ -56,3 +56,9 @@ BEGIN
 
 	RETURN distance;
 END;
+alter table restaurant modify column restaurantAddress varchar(255) NULL;
+alter table restaurant modify column restaurantAvatar varchar(255) NULL;
+alter table restaurant modify column restaurantStarRating FLOAT(6, 2) NULL;
+alter table restaurant modify column restaurantName varchar(255) NULL;
+
+
