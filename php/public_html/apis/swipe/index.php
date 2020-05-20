@@ -38,7 +38,7 @@ try {
 
 
         if ($swipeRestaurantId !== null && $swipeProfileId !== null) {
-            $swipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($pdo, $swipeRestaurantId, $swipeProfileId);
+            $swipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($pdo, $swipeProfileId, $swipeRestaurantId);
 
 
             if ($swipe !== null) {
@@ -54,42 +54,38 @@ try {
             throw new InvalidArgumentException("incorrect search parameters ", 404);
         }
 
-    } else if ($method === "POST" || $method === "PUT") {
+    } else if ($method === "POST" || $method === "DELETE") {
         $requestContent = file_get_contents("php://input");
         $requestObject = json_decode($requestContent);
 
         if (empty($requestObject->swipeRestaurantId) === true) {
-            throw (new \InvalidArgumentException("No Swipe Profile linked to the Swipe", 405));
+            throw (new \InvalidArgumentException("No Swipe Restaurant linked to the Swipe", 405));
         }
 
         if (empty($requestObject->swipeProfileId) === true) {
             throw (new \InvalidArgumentException("No Profile linked to the Swipe", 405));
         }
 
-        if (empty($requestObject->SwipeDate) === true) {
-            $requestObject->SwipeDate = date("y-m-d H:i:s");
-        }
-
         if ($method === "POST") {
 
             verifyXsrf();
 
-            if (empty($_SESSION ["swipe"]) === true) {
+            if (empty($_SESSION ["profile"]) === true) {
                 throw(new \InvalidArgumentException("you must be logged in to swipe", 403));
             }
 
 //            validateJwtHeader();
 
-            $swipe = new Swipe($_SESSION["swipe"]->getSwipeRestaurantId(), $requestObject->swipeProfileId);
+            $swipe = new Swipe($_SESSION["profile"]->getProfileId()->toString(), $requestObject->swipeRestaurantId, null, $requestObject->swipeRight);
             $swipe->insert($pdo);
             $reply->message = "swipe successful";
 
-        } else if ($method === "PUT") {
+        } else if ($method === "DELETE") {
             verifyXsrf();
 
             validateJwtHeader();
 
-            $swipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($pdo, $requestObject->swipeRestaurantId, $requestObject->swipeProfileId);
+            $swipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($pdo, $requestObject->swipeProfileId, $requestObject->swipeRestaurantId);
             if ($swipe === null) {
                 throw (new RuntimeException("swipe does not exist"));
             }
