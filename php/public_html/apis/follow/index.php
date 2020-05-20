@@ -17,7 +17,6 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
-
 try {
 
     $secrets = new \Secrets("/etc/apache2/capstone-mysql/cohort28/foodies.ini");
@@ -28,8 +27,8 @@ try {
 
 
     //sanitize the search parameters
-    $followFollowedProfileId = $id = filter_input(INPUT_GET, "followProfileId", FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
-    $followProfileId = $id = filter_input(INPUT_GET, "followFollowedProfileId", FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
+    $followFollowedProfileId = filter_input(INPUT_GET, "followFollowedProfileId", FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
+    $followProfileId = filter_input(INPUT_GET, "followProfileId", FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
 
 
     if($method === "GET") {
@@ -54,7 +53,7 @@ try {
             throw new InvalidArgumentException("incorrect search parameters ", 404);
         }
 
-    } else if ($method === "POST" || $method === "PUT") {
+    } else if ($method === "POST" || $method === "DELETE") {
         $requestContent = file_get_contents("php://input");
         $requestObject = json_decode($requestContent);
 
@@ -62,29 +61,21 @@ try {
             throw (new \InvalidArgumentException("No Followed Profile linked to the Follow", 405));
         }
 
-        if (empty($requestObject->followProfileId) === true) {
-            throw (new \InvalidArgumentException("No Profile linked to the Follow", 405));
-        }
-
-        if (empty($requestObject->followDate) === true) {
-            $requestObject->FollowDate = date("y-m-d H:i:s");
-        }
-
-        if ($method === "POST") {
+        if ($method === "POST"){
 
             verifyXsrf();
 
-            if (empty($_SESSION ["follow"]) === true) {
+            if (empty($_SESSION ["profile"]) === true) {
                 throw(new \InvalidArgumentException("you must be logged in to follow profiles", 403));
             }
 
 //            validateJwtHeader();
 
-            $follow = new Follow($_SESSION["follow"]->getFollowFollowedProfileId(), $requestObject->followProfileId);
+            $follow = new Follow($requestObject->followFollowedProfileId, $_SESSION ["profile"]->getProfileId()->toString());
             $follow->insert($pdo);
             $reply->message = "follow successful";
 
-        } else if ($method === "PUT") {
+        } else if ($method === "DELETE") {
             verifyXsrf();
 
             validateJwtHeader();

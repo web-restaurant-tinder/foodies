@@ -19,7 +19,7 @@ require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
  * parameters about the project so that table specific tests can share the parameters in on place. To use it:
  *
  * 1. Rename the class from DataDesignTest to a project specific name (e.g., ProjectNameTest)
- * 2. Rename the namespace to be the same as in (1) (e.g., Edu\Cnm\ProjectName\Test)
+ * 2. Rename the namespace to be the same as in (1) (e.g., Edu\Cnm\ProjectName\Jumbotron)
  * 3. Modify DataDesignTest::getDataSet() to include all the tables in your project.
  * 4. Modify DataDesignTest::getConnection() to include the correct mySQL properties file.
  * 5. Have all table specific tests include this class.
@@ -55,7 +55,7 @@ abstract class DataDesignTest extends TestCase {
 	}
 
 	/**
-	 * templates the setUp method that runs before each Test; this method expunges the database before each run
+	 * templates the setUp method that runs before each Jumbotron; this method expunges the database before each run
 	 *
 	 * @see https://phpunit.de/manual/current/en/fixtures.html#fixtures.more-setup-than-teardown PHPUnit Fixtures: setUp and tearDown
 	 * @see https://github.com/sebastianbergmann/dbunit/issues/37 TRUNCATE fails on tables which have foreign key constraints
@@ -69,7 +69,7 @@ abstract class DataDesignTest extends TestCase {
 	}
 
 	/**
-	 * templates the tearDown method that runs after each Test; this method expunges the database after each run
+	 * templates the tearDown method that runs after each Jumbotron; this method expunges the database after each run
 	 *
 	 * @return Operation delete command for the database
 	 **/
