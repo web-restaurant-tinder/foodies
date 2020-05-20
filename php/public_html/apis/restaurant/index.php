@@ -35,7 +35,6 @@ try {
 
 	//determine which HTTP method was used
 	$method = $_SERVER["HTTP_X_HTTP_METHOD"] ?? $_SERVER["REQUEST_METHOD"];
-//	$reply->message = $method;
 
 	// sanitize input
 	$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
