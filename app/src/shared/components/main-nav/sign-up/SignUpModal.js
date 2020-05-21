@@ -15,7 +15,6 @@ export const SignUpModal = () => {
 			<Button variant="primary" onClick={handleShow}>
 				Sign Up
 			</Button>
-
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title>Sign Up</Modal.Title>
@@ -24,12 +23,6 @@ export const SignUpModal = () => {
 					<SignUpForm/>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
-						Close
-					</Button>
-					<Button variant="primary" onClick={handleClose}>
-						Save Changes
-					</Button>
 				</Modal.Footer>
 			</Modal>
 		</>

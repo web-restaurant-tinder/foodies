@@ -4,24 +4,27 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faThumbsDown} from "@fortawesome/free-solid-svg-icons";
 
-export const Home= () => {
 
-	// use selector to set users to users stored in state
-	const users = useSelector(state => state.users);
 
-	// use dispatch from redux to dispatch actions
+export const UserPosts = ({match}) => {
+
 	const dispatch = useDispatch();
 
-	// get users
-	const effects = () => {
-		dispatch(getUsers())
+	const sideEffects = () => {
+		dispatch(getRestaurantByDistance(match.params.userId)); /*pass in lat long distance not match*/
+		dispatch(getUserByUserId(match.params.userId));
 	};
 
-	// set inputs to an empty array before update
-	const inputs = [];
+	const sideEffectInputs = [match.params.userId];
 
-	// do this effect on component update
-	useEffect(effects, inputs);
+	useEffect(sideEffects, sideEffectInputs);
+
+	const posts = useSelector(state => (
+		state.posts ? state.posts : []
+	));
+	const user = useSelector(state => (
+		state.users ? state.users[0] : null
+	));
 
 
 
