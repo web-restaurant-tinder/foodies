@@ -4,11 +4,7 @@ require_once dirname(__DIR__, 1) . "/vendor/autoload.php";
 require_once dirname(__DIR__) . "/lib/uuid.php";
 
 use Lcobucci\JWT\{
-<<<<<<< HEAD
-    Builder, Signer\Hmac\Sha512, Parser, ValidationData
-=======
 	Builder, Signer\Hmac\Sha512, Parser, ValidationData
->>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 };
 
 /**
@@ -23,35 +19,6 @@ use Lcobucci\JWT\{
 function setJwtAndAuthHeader(string $value, stdClass $content): void {
 
 //enforce that the session is active
-<<<<<<< HEAD
-    if(session_status() !== PHP_SESSION_ACTIVE) {
-        throw(new RuntimeException("session not active"));
-    }
-
-// create the signer object
-    $signer = new Sha512();
-
-//create a UUID to sign the JWT and then store it in the session
-    $signature = generateUuidV4();
-
-    //store the signature in string format
-    $_SESSION["signature"] = $signature->toString();
-
-    $token = (new Builder())
-        ->set($value, $content)
-        ->setIssuer("https://bootcamp-coders.cnm.edu")
-        ->setAudience("https://bootcamp-coders.cnm.edu")
-        ->setId(session_id())
-        ->setIssuedAt(time())
-        ->setExpiration(time() + 3600)
-        ->sign($signer, $signature->toString())
-        ->getToken();
-
-    $_SESSION["JWT-TOKEN"] = (string)$token;
-
-    // add the JWT to the header
-    header("X-JWT-TOKEN: $token");
-=======
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		throw(new RuntimeException("session not active"));
 	}
@@ -79,7 +46,6 @@ function setJwtAndAuthHeader(string $value, stdClass $content): void {
 
 	// add the JWT to the header
 	header("X-JWT-TOKEN: $token");
->>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 }
 
 /**
@@ -89,21 +55,12 @@ function setJwtAndAuthHeader(string $value, stdClass $content): void {
  */
 function validateVerifyJwt() {
 
-<<<<<<< HEAD
-    // retrieve the jwt from the header
-    $headerJwt = validateJwtHeader();
-
-
-    //enforce that the JWT is Valid and verified.
-    verifiedAndValidatedSignature($headerJwt);
-=======
 	// retrieve the jwt from the header
 	$headerJwt = validateJwtHeader();
 
 
 	//enforce that the JWT is Valid and verified.
 	verifiedAndValidatedSignature($headerJwt);
->>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 
 }
 
@@ -114,35 +71,6 @@ function validateVerifyJwt() {
  * @return \Lcobucci\JWT\Token the JWT token supplied by angular in the header
  */
 function validateJwtHeader () : \Lcobucci\JWT\Token   {
-<<<<<<< HEAD
-    //if  the JWT does not exist in the cookie jar throw an exception
-    $headers = array_change_key_case(apache_request_headers(), CASE_UPPER);
-
-    if(array_key_exists("X-JWT-TOKEN", $headers) === false) {
-        throw new InvalidArgumentException("invalid JWT token", 418);
-    }
-
-    //enforce the session has needed content
-    if(empty( $_SESSION["signature"]) === true ) {
-        throw new InvalidArgumentException("not logged in", 401);
-    }
-
-    //grab the string representation of the Token from the header then parse it into an object
-    $headerJwt = $headers["X-JWT-TOKEN"];
-
-
-    $headerJwt = (new Parser())->parse($headerJwt);
-
-
-    //enforce that the JWT payload in the session matches the payload from header
-    if ($_SESSION["JWT-TOKEN"] !== (string)$headerJwt) {
-        $_COOKIE = [];
-        $_SESSION = [];
-        throw (new InvalidArgumentException("please log in again", 400));
-    }
-
-    return $headerJwt;
-=======
 	//if  the JWT does not exist in the cookie jar throw an exception
 	$headers = array_change_key_case(apache_request_headers(), CASE_UPPER);
 
@@ -170,7 +98,6 @@ function validateJwtHeader () : \Lcobucci\JWT\Token   {
 	}
 
 	return $headerJwt;
->>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 }
 
 
@@ -182,21 +109,6 @@ function validateJwtHeader () : \Lcobucci\JWT\Token   {
 
 function verifiedAndValidatedSignature ( \Lcobucci\JWT\Token  $headerJwt) : void {
 
-<<<<<<< HEAD
-    //enforce the JWT is valid
-    $validator = new ValidationData();
-    $validator->setId(session_id());
-    if($headerJwt->validate($validator) !== true) {
-        throw (new InvalidArgumentException("not authorized to perform task", 402));
-    }
-
-    //verify that the JWT was signed by the server
-    $signer = new Sha512();
-
-    if($headerJwt->verify($signer, $_SESSION["signature"]) !== true) {
-        throw (new InvalidArgumentException("not authorized to perform task", 403));
-    }
-=======
 	//enforce the JWT is valid
 	$validator = new ValidationData();
 	$validator->setId(session_id());
@@ -210,5 +122,4 @@ function verifiedAndValidatedSignature ( \Lcobucci\JWT\Token  $headerJwt) : void
 	if($headerJwt->verify($signer, $_SESSION["signature"]) !== true) {
 		throw (new InvalidArgumentException("not authorized to perform task", 403));
 	}
->>>>>>> 93070dcf47fa88db955b3398d7261f496b39f599
 }

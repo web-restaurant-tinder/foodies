@@ -166,7 +166,7 @@ class Restaurant implements \JsonSerializable{
 		}
 
 		// verify the Todo Restaurant will fit in the database
-		if(strlen($newRestaurantAddress) > 25) {
+		if(strlen($newRestaurantAddress) > 255) {
 			throw(new \RangeException("Address is too large"));
 		}
 		$this->restaurantAddress = $newRestaurantAddress;
@@ -259,14 +259,14 @@ class Restaurant implements \JsonSerializable{
 	 * @param string $newRestaurantName
 	 */
 	public function setRestaurantName(string $newRestaurantName): void {
-		$newRestaurantPhone = trim($newRestaurantName);
-		$newRestaurantPhone = filter_var($newRestaurantName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newRestaurantName = trim($newRestaurantName);
+		$newRestaurantName = filter_var($newRestaurantName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newRestaurantName) === true) {
 			throw(new \InvalidArgumentException("Restaurant Name is empty or insecure"));
 		}
 
 		// verify the Todo Restaurant will fit in the database
-		if(strlen($newRestaurantPhone) > 25) {
+		if(strlen($newRestaurantName) > 255) {
 			throw(new \RangeException("Restaurant Name is too large"));
 		}
 		$this->restaurantName = $newRestaurantName;
@@ -289,9 +289,9 @@ class Restaurant implements \JsonSerializable{
 	public function setRestaurantPhone(string $newRestaurantPhone): void {
 		$newRestaurantPhone = trim($newRestaurantPhone);
 		$newRestaurantPhone = filter_var($newRestaurantPhone, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		if(empty($newRestaurantPhone) === true) {
-			throw(new \InvalidArgumentException("Restaurant Phone is empty or insecure"));
-		}
+//		if(empty($newRestaurantPhone) === true) {
+//			throw(new \InvalidArgumentException("Restaurant Phone is empty or insecure"));
+//		}
 		// verify the Todo Restaurant will fit in the database
 		if(strlen($newRestaurantPhone) > 14) {
 			throw(new \RangeException("Restaurant Phone Number is too large"));
@@ -482,7 +482,7 @@ FROM restaurant WHERE restaurantId = :restaurantId";
 		$statement = $pdo->prepare($query);
 
 		// bind the restaurant Food Type to the place holder in the template
-		$res = "%$restaurantFoodType%";
+		$restaurantFoodType = "%$restaurantFoodType%";
 		$parameters = ["restaurantFoodType" => $restaurantFoodType];
 		$statement->execute($parameters);
 
@@ -527,11 +527,12 @@ FROM restaurant WHERE restaurantId = :restaurantId";
 		$restaurantName = str_replace("_", "\\_", str_replace("%", "\\%", $restaurantName));
 
 		// create query template
-		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantName LIKE :restaurantName";
+		$query = "SELECT restaurantId, restaurantAddress, restaurantAvatar, restaurantFoodType, restaurantLat, restaurantLng, 
+       restaurantName, restaurantPhone, restaurantStarRating, restaurantUrl FROM restaurant WHERE restaurantName LIKE :restaurantName";
 		$statement = $pdo->prepare($query);
 
 		// bind the restaurant name to the place holder in the template
-		$res = "%$restaurantName%";
+		$restaurantName = "%$restaurantName%";
 		$parameters = ["restaurantName" => $restaurantName];
 		$statement->execute($parameters);
 

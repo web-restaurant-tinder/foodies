@@ -2,9 +2,9 @@
 namespace WebRestaurantTinder\Foodies\Test;
 
 
-//TODO remember to add this to my Test class!!!!
+//TODO remember to add this to my Jumbotron class!!!!
 //Hack!!! - added so this class could see DataDesignTest
-//require_once(dirname(__DIR__) . "/Test/DataDesignTest.php");
+//require_once(dirname(__DIR__) . "/Jumbotron/DataDesignTest.php");
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");

@@ -3,9 +3,9 @@ namespace WebRestaurantTinder\Foodies\Test;
 
 use WebRestaurantTinder\Foodies\Profile;
 
-//TODO remember to add this to my Test class!!!!
+//TODO remember to add this to my Jumbotron class!!!!
 //Hack!!! - added so this class could see DataDesignTest
-//require_once(dirname(__DIR__) . "/Test/DataDesignTest.php");
+//require_once(dirname(__DIR__) . "/Jumbotron/DataDesignTest.php");
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");
@@ -33,7 +33,7 @@ class ProfileTest extends DataDesignTest {
 	}
 
 	public function testInsertValidProfile() : void {
-		//get count of author records in db before we run the Test.
+		//get count of author records in db before we run the Jumbotron.
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		//insert an author record in the db
@@ -62,7 +62,7 @@ class ProfileTest extends DataDesignTest {
 	}
 
 	public function testUpdateValidProfile() : void {
-		//get count of author records in db before we run the Test.
+		//get count of author records in db before we run the Jumbotron.
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		//insert an author record in the db
@@ -93,7 +93,7 @@ class ProfileTest extends DataDesignTest {
 
 	public function testDeleteValidProfile() : void {
 
-		//get count of author records in db before we run the Test.
+		//get count of author records in db before we run the Jumbotron.
 		$numRows = $this->getConnection()->getRowCount("profile");
 		{
 
