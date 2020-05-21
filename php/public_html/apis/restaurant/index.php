@@ -40,6 +40,9 @@ try {
 	$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$restaurantName = filter_input(INPUT_GET, "restaurantName", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$restaurantFoodType = filter_input(INPUT_GET, "restaurantFoodType", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	$restaurantLat = filter_input(INPUT_GET, "restaurantLat", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$restaurantLng = filter_input(INPUT_GET, "restaurantLng", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+
 
 	if($method === "GET") {
 		//set XSRF cookie
@@ -48,13 +51,15 @@ try {
 		//gets a post by content
 		if(empty($id) === false) {
 			$reply->data = Restaurant::getRestaurantByRestaurantId($pdo, $id);
-
 		} else if(empty($restaurantName) === false) {
 			$reply->data = Restaurant::getRestaurantByRestaurantName($pdo, $restaurantName);
 		} else if(empty($restaurantFoodType) === false) {
 			$reply->data = Restaurant::getRestaurantByRestaurantFoodType($pdo, $restaurantFoodType);
+		} else if (empty($restaurantLat)===false && empty($restaurantLng)===false) {
+			$reply->data = Restaurant::getRestaurantByDistance($pdo, $restaurantLat, $restaurantLng, 15);
+		} else {
+			throw new InvalidArgumentException("Incorrect search parameters", 404);
 		}
-
 	} else {
 		throw (new InvalidArgumentException("Invalid HTTP request", 400));
 	}
