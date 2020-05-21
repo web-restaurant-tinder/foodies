@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/php/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/php/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/php/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/php/vendor/phpunit/dbunit" />
+      <path value="$PROJECT_DIR$/php/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/php/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/php/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/php/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/php/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/php/vendor/composer" />
+      <path value="$PROJECT_DIR$/php/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/php/vendor/fzaninotto/faker" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/php/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+</project>

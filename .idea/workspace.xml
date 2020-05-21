@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/php/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cap28_rtinder@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cap28_rtinder@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cap28_rtinder@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cap28_rtinder: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cap28_rtinder@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cap28_rtinder: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cap28_rtinder@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cap28_rtinder: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="profile: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ExecutionTargetDialog">
+    <checked>
+      <node key="2ad8127b-b31b-4e9a-b1d0-502a0f626969" />
+    </checked>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
+    <include_path>
+      <path value="$PROJECT_DIR$/php/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/php/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/php/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/php/vendor/phpunit/dbunit" />
+      <path value="$PROJECT_DIR$/php/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/php/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/php/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/php/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/php/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/php/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/php/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/php/vendor/composer" />
+      <path value="$PROJECT_DIR$/php/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/php/vendor/fzaninotto/faker" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1aApRomMTsiEtHywgiAdhNwDb7B" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/images" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="options.lastSelected" value="com.intellij.application.options.CodeStyleSchemesConfigurable" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\images" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\epic" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\shared\components\main-nav" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\pages" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\shared\components" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\epic\php\Classes" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.ProfileTest (1)">
+    <configuration name="ProfileTest (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="WebRestaurantTinder\Foodies\Test\ProfileTest" file="$PROJECT_DIR$/epic/php/Classes/Test/ProfileTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ProfileTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Nortizcode\foodies\Test\ProfileTest" file="$PROJECT_DIR$/epic/php/Classes/Test/ProfileTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.ProfileTest (1)" />
+        <item itemvalue="PHPUnit.ProfileTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:cap28_rtinder@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:cap28_rtinder@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@666d616f" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:cap28_rtinder@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@72f4e118" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\deepdive\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="" />
+      <created>1586188247007</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586188247007</updated>
+      <workItem from="1586188250136" duration="3421000" />
+      <workItem from="1586205003573" duration="169000" />
+      <workItem from="1586205237771" duration="857000" />
+      <workItem from="1586206602362" duration="113000" />
+      <workItem from="1586208647482" duration="905000" />
+      <workItem from="1586271246281" duration="57000" />
+      <workItem from="1586543443474" duration="1510000" />
+      <workItem from="1586787682289" duration="490000" />
+      <workItem from="1586792769265" duration="312000" />
+      <workItem from="1586793088384" duration="344000" />
+      <workItem from="1586793448385" duration="272000" />
+      <workItem from="1586793735694" duration="2941000" />
+      <workItem from="1586872630446" duration="1211000" />
+      <workItem from="1586907677864" duration="2000" />
+      <workItem from="1587048313334" duration="3000" />
+      <workItem from="1587136127826" duration="1461000" />
+      <workItem from="1587137594125" duration="1242000" />
+      <workItem from="1587250468289" duration="16000" />
+      <workItem from="1587419619569" duration="2326000" />
+      <workItem from="1587496518378" duration="4000" />
+      <workItem from="1587573704402" duration="1181000" />
+      <workItem from="1587574986217" duration="2214000" />
+      <workItem from="1587577207038" duration="8000" />
+      <workItem from="1587577227467" duration="162000" />
+      <workItem from="1587582731600" duration="5603000" />
+      <workItem from="1587595557839" duration="731000" />
+      <workItem from="1587652924623" duration="17000" />
+      <workItem from="1587652971443" duration="20000" />
+      <workItem from="1587653015754" duration="1265000" />
+      <workItem from="1587656422896" duration="632000" />
+      <workItem from="1587657101837" duration="60000" />
+      <workItem from="1587657168162" duration="2000" />
+      <workItem from="1587657193011" duration="2183000" />
+      <workItem from="1587668149898" duration="4000" />
+      <workItem from="1588019400579" duration="5148000" />
+      <workItem from="1588024573291" duration="6000" />
+      <workItem from="1588024609497" duration="434000" />
+      <workItem from="1588025315273" duration="1897000" />
+      <workItem from="1588036896788" duration="3090000" />
+      <workItem from="1588040779687" duration="67000" />
+      <workItem from="1588040858371" duration="9000" />
+      <workItem from="1588215329803" duration="52000" />
+      <workItem from="1588257761257" duration="1734000" />
+      <workItem from="1588279734114" duration="13000" />
+      <workItem from="1588279801310" duration="13000" />
+      <workItem from="1588286875030" duration="2231000" />
+      <workItem from="1588348034928" duration="3434000" />
+      <workItem from="1588351688902" duration="192000" />
+      <workItem from="1588689369967" duration="3861000" />
+      <workItem from="1588693407400" duration="885000" />
+      <workItem from="1588713997208" duration="105000" />
+      <workItem from="1588714742062" duration="6065000" />
+      <workItem from="1588811536052" duration="1519000" />
+      <workItem from="1588862973543" duration="17000" />
+      <workItem from="1588879630766" duration="1643000" />
+      <workItem from="1588881400171" duration="4692000" />
+      <workItem from="1589221415164" duration="2377000" />
+      <workItem from="1589227382921" duration="18105000" />
+      <workItem from="1589293972540" duration="7514000" />
+      <workItem from="1589320882273" duration="5367000" />
+      <workItem from="1589465989630" duration="2581000" />
+      <workItem from="1589469034770" duration="6644000" />
+      <workItem from="1589476516506" duration="599000" />
+      <workItem from="1589483405205" duration="8569000" />
+      <workItem from="1589505261695" duration="3992000" />
+      <workItem from="1589556406305" duration="6831000" />
+      <workItem from="1589648038119" duration="3367000" />
+      <workItem from="1589653114438" duration="8490000" />
+      <workItem from="1589812246884" duration="27000" />
+      <workItem from="1589821342997" duration="16142000" />
+      <workItem from="1589896715307" duration="7953000" />
+      <workItem from="1589915237414" duration="4617000" />
+      <workItem from="1589923720154" duration="4442000" />
+      <workItem from="1589928831836" duration="433000" />
+      <workItem from="1589929465283" duration="625000" />
+      <workItem from="1589941558044" duration="2000" />
+      <workItem from="1589941658346" duration="4000" />
+      <workItem from="1590002237987" duration="6254000" />
+      <workItem from="1590008868146" duration="2998000" />
+      <workItem from="1590015299585" duration="6915000" />
+      <workItem from="1590027555879" duration="109000" />
+      <workItem from="1590071344206" duration="2585000" />
+      <workItem from="1590075074550" duration="1974000" />
+      <workItem from="1590080815094" duration="2229000" />
+    </task>
+    <task id="LOCAL-00001" summary="persona for foodies">
+      <created>1586543607388</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586543607388</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added Interaction Flow">
+      <created>1586788106963</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586788106963</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added word">
+      <created>1586788146047</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586788146047</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed my interaction flow">
+      <created>1586798867445</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586798867445</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed my interaction flow">
+      <created>1586799027402</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586799027402</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed some of the words">
+      <created>1586873234435</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586873234435</updated>
+    </task>
+    <task id="LOCAL-00007" summary="worked on my class. added cloudinary">
+      <created>1587595493502</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1587595493502</updated>
+    </task>
+    <task id="LOCAL-00008" summary="made changes to wireframe">
+      <created>1587661209389</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587661209389</updated>
+    </task>
+    <task id="LOCAL-00009" summary="worked on class">
+      <created>1588040679735</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588040679735</updated>
+    </task>
+    <task id="LOCAL-00010" summary="worked on class">
+      <created>1588040792627</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1588040792627</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="persona for foodies" />
+    <MESSAGE value="added Interaction Flow" />
+    <MESSAGE value="added word" />
+    <MESSAGE value="fixed my interaction flow" />
+    <MESSAGE value="fixed some of the words" />
+    <MESSAGE value="worked on my class. added cloudinary" />
+    <MESSAGE value="made changes to wireframe" />
+    <MESSAGE value="worked on class" />
+    <MESSAGE value="made changes to class and added unit testing files" />
+    <MESSAGE value="made changes to profile and worked on unit test" />
+    <option name="LAST_COMMIT_MESSAGE" value="made changes to profile and worked on unit test" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="75" key="#Deployment" timestamp="1589821721892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="75" key="#Deployment/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589821721892" />
+    <state x="499" y="19" key="#PHP" timestamp="1588288780547">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="19" key="#PHP/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588288780547" />
+    <state x="465" y="70" width="672" height="684" key="#ProfileTest" timestamp="1588351238017">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="70" width="672" height="684" key="#ProfileTest/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588351238017" />
+    <state x="361" y="75" key="#SQL_Dialects" timestamp="1588258679876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="75" key="#SQL_Dialects/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588258679876" />
+    <state x="349" y="71" key="#Test_Frameworks" timestamp="1588694113453">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="71" key="#Test_Frameworks/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588694113453" />
+    <state x="602" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589925986963">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="602" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589925986963" />
+    <state x="517" y="223" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589837412178">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="517" y="223" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589837412178" />
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587574996875">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1587574996875" />
+    <state x="389" y="32" width="779" height="770" key="CommitChangelistDialog2" timestamp="1589238377086">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="406" y="12" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588692857174" />
+    <state x="389" y="32" width="779" height="770" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589238377086" />
+    <state x="553" y="333" key="ComposerInitDialogKey" timestamp="1587595812507">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="553" y="333" key="ComposerInitDialogKey/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1587595812507" />
+    <state x="569" y="119" key="ExecutionTargetDialog" timestamp="1589325388976">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="569" y="119" key="ExecutionTargetDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589325388976" />
+    <state x="569" y="119" key="ExecutionTargetDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589235495836" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1589236785360">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588019495220" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589236785360" />
+    <state width="1024" height="263" key="GridCell.Tab.0.bottom" timestamp="1590011473687">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590011473687" />
+    <state width="1024" height="263" key="GridCell.Tab.0.center" timestamp="1590011473687">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="263" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590011473687" />
+    <state width="1024" height="263" key="GridCell.Tab.0.left" timestamp="1590011473687">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="263" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590011473687" />
+    <state width="1024" height="263" key="GridCell.Tab.0.right" timestamp="1590011473687">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="263" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590011473687" />
+    <state x="279" y="58" key="SettingsEditor" timestamp="1588351455501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="279" y="58" key="SettingsEditor/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588351455501" />
+    <state x="361" y="138" key="Vcs.Push.Dialog.v2" timestamp="1588040794396">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="138" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588040794396" />
+    <state x="463" y="10" width="609" height="804" key="find.popup" timestamp="1589906946721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="10" width="609" height="804" key="find.popup/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589906946721" />
+    <state x="510" y="53" key="refactoring.ChangeSignatureDialog" timestamp="1589245833265">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="510" y="53" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588813682412" />
+    <state x="510" y="53" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589245833265" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1589904601301">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589904601301" />
+  </component>
+</project>
