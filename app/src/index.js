@@ -9,6 +9,7 @@ import {Home} from "./pages/Home";
 // import {Test2} from "./pages/Test2";
 import {Jumbo} from "./shared/components/Jumbo"
 import {Choices} from "./shared/components/Choices";
+import "./index.css"
 
 const Routing = () => (
 	<>
