@@ -2,3 +2,4 @@
 .DS_Store
 /vendor
 /php/lib/yelpconfigs.php
+/app/src/setupProxy.js

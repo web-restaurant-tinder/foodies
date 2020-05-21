@@ -3,35 +3,13 @@ import {Card, Button, Accordion,} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faThumbsDown} from "@fortawesome/free-solid-svg-icons";
-
-
-
-export const UserPosts = ({match}) => {
-
-	const dispatch = useDispatch();
-
-	const sideEffects = () => {
-		dispatch(getRestaurantByDistance(match.params.userId)); /*pass in lat long distance not match*/
-		dispatch(getUserByUserId(match.params.userId));
-	};
-
-	const sideEffectInputs = [match.params.userId];
-
-	useEffect(sideEffects, sideEffectInputs);
-
-	const posts = useSelector(state => (
-		state.posts ? state.posts : []
-	));
-	const user = useSelector(state => (
-		state.users ? state.users[0] : null
-	));
-
+import Container from "react-bootstrap/Container";
 
 
 export const Choices = () => {
 	return (
 		<>
-			<container style={{display: "block", margin: "auto", width: "62%"}}>
+			<Container style={{display: "block", margin: "auto", width: "62%"}}>
 				<Accordion>
 					<Card className="text-center" bg={"primary"} style={{width: '50rem', height: "48rem"}}>
 						<Card.Header>Frontier</Card.Header>
@@ -52,7 +30,7 @@ export const Choices = () => {
 						</button>
 					</Card>
 				</Accordion>
-			</container>
+			</Container>
 		</>
 	)
-};}
+};

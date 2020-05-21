@@ -1,29 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter} from "react-router-dom";
-import {Route, Switch} from "react-router";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {FourOhFour} from "./pages/FourOhFour";
 import {MainNav} from "./shared/components/main-nav/MainNav";
 import {Home} from "./pages/Home";
 // import {Test2} from "./pages/Test2";
-import {Jumbo} from "./shared/components/Jumbo"
-import {Choices} from "./shared/components/Choices";
 import "./index.css"
+import {applyMiddleware, createStore} from "redux";
+import thunk from "redux-thunk";
+import reducers from "./shared/reducers"
+import {Provider} from "react-redux";
 
-const Routing = () => (
+
+const store = createStore(reducers,applyMiddleware(thunk));
+
+const Routing = (store) => (
 	<>
+		<Provider store={store}>
 		<BrowserRouter>
 			<MainNav/>
-			<Jumbo/>
-			<Choices/>
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				{/*<Route exact path="/test2" component={Test2}/>*/}
 				<Route component={FourOhFour}/>
 			</Switch>
 		</BrowserRouter>
+		</Provider>
 
 	</>
 );
-ReactDOM.render(<Routing/>, document.querySelector('#root'));
+ReactDOM.render(Routing(store) , document.querySelector("#root"));
