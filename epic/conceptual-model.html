@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conceptual Model</title>
+</head>
+<body>
+    <h1>Restaurant Tinder Conceptual Model</h1>
+    <h2>Profile</h2>
+        <ul>
+            <li>profileId (PK)</li>
+            <li>profileActivationToken</li>
+            <li>profileAvatar</li>
+            <li>profileEmail</li>
+            <li>profileFirstName</li>
+            <li>profileHash</li>
+            <li>profileLastName</li>
+            <li>profileUsername</li>
+        </ul>
+    <h2>Follow</h2>
+        <ul>
+            <li>followFollowedProfileId (FK)</li>
+            <li>followProfileId (FK)</li>
+            <li>followDate</li>
+        </ul>
+    <h2>Restaurant</h2>
+        <ul>
+            <li>restaurantId (PK)</li>
+            <li>restaurantAddress</li>
+            <li>restaurantAvatar</li>
+            <li>restaurantFoodType</li>
+            <li>restaurantLat</li>
+            <li>restaurantLng</li>
+            <li>restaurantName</li>
+            <li>restaurantPhone</li>
+            <li>restaurantStarRating</li>
+            <li>restaurantUrl</li>
+        </ul>
+    <h2>Swipe</h2>
+        <ul>
+            <li>swipeProfileId (FK)</li>
+            <li>swipeRestaurantId (FK)</li>
+            <li>swipeDate</li>
+            <li>swipeRight</li>
+        </ul>
+    <h2>Relationship</h2>
+        <ul>
+            <li>A profile can follow many other profiles. (1/m)</li>
+            <li>A profile can have many swipes. (1/m)</li>
+            <li>A profile can swipe on many different restaurants. (1/m)</li>
+            <li>A swipe can happen on multiple restaurants. (1/m)</li>
+        </ul>
+
+    <img src="Restaurant-tinder-erd.jpg" alt="ERD" class="center">
+</body>
+</html>
