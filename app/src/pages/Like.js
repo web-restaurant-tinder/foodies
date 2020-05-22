@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 
 export const Home = () => {
 
-    const swipes = useSelector(state => state.tweets);
+    const swipes = useSelector(state => state.swipes);
     const dispatch = useDispatch();
 
     const effects = () => {
