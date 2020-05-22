@@ -1,9 +1,10 @@
 import React, {useEffect} from "react"
-import {Jumbo} from "../shared/components/Jumbo";
-import {Choices} from "../shared/components/Choices";
+import {Jumbo} from "../../shared/components/Jumbo";
+import {Choices} from "../../shared/components/Choices";
 import {BrowserRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getRestaurantsByDistance} from "../shared/actions/get-restaurants";
+import {getRestaurantsByDistance} from "../../shared/actions/get-restaurants";
+import {RestaurantList} from "./RestaurantList";
 
 export const Home = () => {
 
@@ -69,6 +70,7 @@ console.log(userLat, userLng)
 console.log(restaurants);
 
 
+
 	return (
 		<>
 			<Jumbo/>
@@ -78,4 +80,28 @@ console.log(restaurants);
 			</h1>
 		</>
 	)
+
+
+
+
+
+
+
+// 	return (
+// 		<main className="container">
+// 			<table className="table table-responsive table-hover table-dark">
+// 				<thead>
+// 				<tr>
+// 					<th><h4>Restaurant Id</h4></th>
+// 					<th><h4>Name</h4></th>
+// 					<th><h4>Star Rating</h4></th>
+// 					<th><h4>Phone</h4></th>
+// 					<th><h4>Address</h4></th>
+// 					<th><h4>Url</h4></th>
+// 				</tr>
+// 				</thead>
+// 				<RestaurantList restaurants={restaurants}/>
+// 			</table>
+// 		</main>
+// 	)
 };

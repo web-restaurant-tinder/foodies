@@ -22,8 +22,6 @@ export const SignUpModal = () => {
 				<Modal.Body>
 					<SignUpForm/>
 				</Modal.Body>
-				<Modal.Footer>
-				</Modal.Footer>
 			</Modal>
 		</>
 	);

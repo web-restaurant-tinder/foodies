@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {FourOhFour} from "./pages/FourOhFour";
+import {FourOhFour} from "./pages/FourOhFour/FourOhFour";
 import {MainNav} from "./shared/components/main-nav/MainNav";
-import {Home} from "./pages/Home";
+import {Home} from "./pages/Home/Home";
 // import {Test2} from "./pages/Test2";
 import "./index.css"
 import {applyMiddleware, createStore} from "redux";

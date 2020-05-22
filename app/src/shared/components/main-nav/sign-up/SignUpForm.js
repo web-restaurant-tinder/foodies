@@ -39,13 +39,22 @@ export const SignUpForm = () => {
 
 
 	const submitSignUp = (values, {resetForm, setStatus}) => {
-		httpConfig.post("/apis/sign-up/", values)
+		httpConfig.post("./apis/sign-up/", values)
 			.then(reply => {
 					let {message, type} = reply;
 
+					console.log(reply.data)
+
 					if(reply.status === 200) {
 						resetForm();
+
+						alert("You have successfully created your Foodies account!")
 					}
+
+					else {
+						alert("Please try again")
+					}
+
 					setStatus({message, type});
 				}
 			);

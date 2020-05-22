@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test">
-      <change afterPath="$PROJECT_DIR$/app/src/shared/actions/get-swipes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/shared/reducers/swipe-reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/pages/Home/RestaurantList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/setupProxy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/actions/get-restaurants-distance.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/actions/get-restaurants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/public_html/apis/restaurant/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/public_html/apis/restaurant/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/pages/FourOhFour.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/FourOhFour/FourOhFour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/pages/mystylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/CSS/mystylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpFormContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpFormContent.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +55,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="cap28_rtinder: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="cap28_rtinder@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="cap28_rtinder: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="profile: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -126,16 +119,16 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\pages\CSS" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\pages\Home" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\pages\FourOhFour" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\shared\components\main-nav" />
+      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\images" />
       <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\epic" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\shared\components\main-nav" />
-      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\pages" />
-      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies" />
-      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\app\src\shared\components" />
-      <recent name="C:\Users\sickk\OneDrive\Desktop\bootcamp\foodies\epic\php\Classes" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.ProfileTest (1)">
@@ -276,7 +269,9 @@
       <workItem from="1590075074550" duration="1974000" />
       <workItem from="1590080815094" duration="2964000" />
       <workItem from="1590090282694" duration="11662000" />
-      <workItem from="1590109564468" duration="6904000" />
+      <workItem from="1590109564468" duration="6980000" />
+      <workItem from="1590157525989" duration="5044000" />
+      <workItem from="1590164780064" duration="2314000" />
     </task>
     <task id="LOCAL-00001" summary="persona for foodies">
       <created>1586543607388</created>
@@ -388,10 +383,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="71" key="#Test_Frameworks/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588694113453" />
-    <state x="602" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589925986963">
+    <state x="291" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590166030162">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="602" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589925986963" />
+    <state x="291" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590166030162" />
     <state x="517" y="223" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589837412178">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -414,10 +409,10 @@
     </state>
     <state x="569" y="119" key="ExecutionTargetDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589325388976" />
     <state x="569" y="119" key="ExecutionTargetDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589235495836" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1589236785360">
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1590164694927">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588019495220" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590164694927" />
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589236785360" />
     <state width="1024" height="263" key="GridCell.Tab.0.bottom" timestamp="1590011473687">
       <screen x="0" y="0" width="1536" height="824" />
