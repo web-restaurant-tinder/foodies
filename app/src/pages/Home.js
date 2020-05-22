@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux";
-import {getSwipeBySwipeProifleId} from "/app/src/shared/actions/get-swipes";
+import {getSwipesByProfileId} from "/app/src/shared/actions/get-swipes";
 import Card from "react-bootstrap/Card";
 
 export const Home = () => {
@@ -9,7 +9,7 @@ export const Home = () => {
     const dispatch = useDispatch();
 
     const effects = () => {
-        dispatch(getSwipeBySwipeProifleId());
+        dispatch(getSwipesByProfileId());
     };
 
     const inputs = [];
