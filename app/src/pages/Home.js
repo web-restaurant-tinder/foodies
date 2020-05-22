@@ -1,16 +1,15 @@
 import React, {useEffect} from "react"
-import "../../stylesheet.css"
 import {useSelector, useDispatch} from "react-redux";
-import {getAllSwipes} from "../../shared/actions/swipe";
+import {getSwipeBySwipeProifleId} from "/app/src/shared/actions/get-swipes";
 import Card from "react-bootstrap/Card";
 
 export const Home = () => {
 
-    const swipes = useSelector(state => state.tweets);
+    const swipes = useSelector(state => state.swipe);
     const dispatch = useDispatch();
 
     const effects = () => {
-        dispatch(getAllSwipes());
+        dispatch(getSwipeBySwipeProifleId());
     };
 
     const inputs = [];
