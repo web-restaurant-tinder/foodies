@@ -9,11 +9,11 @@
 // 			{restaurants.map(restaurant => (
 // 				<tr key={restaurant.restaurantId} onClick={() => {history.push(`restaurant/${restaurant.restaurantId}`)}}>
 // 					<td>{restaurant.restaurantId}</td>
-// 					<td>{restaurant.name}</td>
-// 					<td>{restaurant.starRating}</td>
-// 					<td>{restaurant.phone}</td>
-// 					<td>{restaurant.address}</td>
-// 					<td>{restaurant.url}</td>
+// 					<td>{restaurant.restaurantName}</td>
+// 					<td>{restaurant.restaurantStarRating}</td>
+// 					<td>{restaurant.restaurantPhone}</td>
+// 					<td>{restaurant.restaurantAddress}</td>
+// 					<td>{restaurant.restaurantUrl}</td>
 // 				</tr>
 // 			))}
 // 			</tbody>
