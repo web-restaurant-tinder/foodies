@@ -1,12 +1,12 @@
 import React, {useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
-import {getSwipesByProfileId} from "../../src/shared/actions/get-swipes";
+import {getSwipesByProfileId} from "../../shared/actions/get-swipes";
 import Card from "react-bootstrap/Card";
 
-export const Likes = () => {
+export const Home = () => {
 
-    const swipes = useSelector(state => state.swipe);
+    const swipes = useSelector(state => state.swipes);
     const dispatch = useDispatch();
 
     const effects = () => {

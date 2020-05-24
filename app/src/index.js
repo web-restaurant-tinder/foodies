@@ -4,11 +4,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {FourOhFour} from "./pages/FourOhFour/FourOhFour";
 import {MainNav} from "./shared/components/main-nav/MainNav";
-import {Home} from "./pages/Home/Home";
-import "./index.css"
+import {Home} from "./pages/Home/Likes";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
-import reducers from "./shared/reducers"
+import reducers from "./shared/reducers/swipe-reducer"
 import {Provider} from "react-redux";
 
 

@@ -5,9 +5,7 @@ import {LinkContainer} from "react-router-bootstrap"
 import {SignUpModal} from "./sign-up/SignUpModal";
 import {SignInModal} from "./sign-in/SigninModal";
 
-
-
-export const MainNav = (props) => {
+export const Likes = (props) => {
     return(
         <Navbar bg="primary" variant="dark">
             <LinkContainer exact to="/" >
