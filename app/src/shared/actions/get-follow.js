@@ -5,7 +5,7 @@ export const getFollow = () => async dispatch => {
 	dispatch({type: "GET_ALL_FOLLOWS", payload: data })
 };
 
-export const getFollowByFollowProfileId = (id) => async dispatch => {
+export const getFollowByProfileId = (id) => async dispatch => {
 	const {data} = await httpConfig(`/apis/followers/${id}`);
 	dispatch({type: "GET_FOLLOW_BY_FOLLOW_ID", payload: data })
 };
