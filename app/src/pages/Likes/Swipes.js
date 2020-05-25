@@ -16,6 +16,8 @@ export const Swipes = () => {
                 </p>
             </Container>
         </Jumbotron>
+
     );
+
 
 }

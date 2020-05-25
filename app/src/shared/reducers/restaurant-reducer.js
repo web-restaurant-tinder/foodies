@@ -1,8 +1,6 @@
 export default (state = [], action) => {
     switch(action.type) {
-        case "GET_SWIPES_BY_PROFILE_ID":
-            return [...state, action.payload];
-        case "GET_ALL_SWIPES":
+        case "GET_RESTAURANTS_BY_DISTANCE":
             return action.payload;
         default:
             return state;

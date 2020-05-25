@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {getAllSwipes} from "../actions/get-swipes-profile";
 import {useDispatch, useSelector} from "react-redux";
 import Card from "react-bootstrap/Card";
 
