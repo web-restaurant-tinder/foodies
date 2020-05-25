@@ -2,10 +2,11 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {LinkContainer} from "react-router-bootstrap"
-import {SignUpModal} from "./sign-up/SignUpModal";
-import {SignInModal} from "./sign-in/SigninModal";
+import {Swipes} from "../../../pages/Likes/Likes";
+// import {SignUpModal} from "./sign-up/SignUpModal";
+// import {SignInModal} from "./sign-in/SigninModal";
 
-export const Likes = (props) => {
+export const MainNav = (props) => {
     return(
         <Navbar bg="primary" variant="dark">
             <LinkContainer exact to="/" >
@@ -18,8 +19,8 @@ export const Likes = (props) => {
                 <LinkContainer exact to="/likes"
                 ><Nav.Link>Likes</Nav.Link>
                 </LinkContainer>
-                <SignUpModal/>
-                <SignInModal/>
+                {/*<SignUpModal/>*/}
+                {/*<SignInModal/>*/}
             </Nav>
         </Navbar>
     )
