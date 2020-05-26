@@ -1,10 +1,10 @@
 import React, {useEffect} from "react"
-import {Jumbo} from "../../shared/components/Jumbo";
+// import {Jumbo} from "../../shared/components/Jumbo";
 import {BrowserRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getRestaurantsByDistance} from "../../shared/actions/get-restaurants";
+// import {getRestaurantsByDistance} from "../../shared/actions/get-restaurants";
 // import {RestaurantList} from "./RestaurantList";
-import {Restaurant} from "../../shared/components/Restaurant";
+// import {Restaurant} from "../../shared/components/Restaurant";
 import {getAllSwipes} from "../../shared/actions/get-swipes";
 
 export const Home = () => {
