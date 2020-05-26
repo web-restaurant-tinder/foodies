@@ -9,7 +9,7 @@ import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import reducers from "./shared/reducers/swipe-reducer"
 import {Provider} from "react-redux";
-import {Home} from "./pages/Home/Home";
+import {Likes} from "./pages/Home/Likes";
 
 const store = createStore(reducers,applyMiddleware(thunk));
 
@@ -19,7 +19,7 @@ const Routing = (store) => (
             <BrowserRouter>
                 <MainNav/>
                 <Switch>
-                    <Route exact path="/Home" component={Home}/>
+                    <Route exact path="/Likes" component={Likes}/>
                     <Route exact path="/Likes" component={Swipes} />
                     <Route component={FourOhFour}/>
                 </Switch>
