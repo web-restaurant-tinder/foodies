@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test">
-      <change afterPath="$PROJECT_DIR$/app/src/pages/Home/RestaurantList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/pages/FourOhFour.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/FourOhFour/FourOhFour.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/pages/mystylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/CSS/mystylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Jumbo.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Jumbo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/MainNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/MainNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SigninModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SigninModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpFormContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpFormContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-up/SignUpModal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,6 +274,7 @@
       <workItem from="1590109564468" duration="6980000" />
       <workItem from="1590157525989" duration="5044000" />
       <workItem from="1590164780064" duration="2314000" />
+      <workItem from="1590375821120" duration="7503000" />
     </task>
     <task id="LOCAL-00001" summary="persona for foodies">
       <created>1586543607388</created>

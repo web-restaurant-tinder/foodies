@@ -1,9 +1,7 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import {Jumbo} from "../../shared/components/Jumbo";
-import {BrowserRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getRestaurantsByDistance} from "../../shared/actions/get-restaurants";
-import {RestaurantList} from "./RestaurantList";
 import {Restaurant} from "../../shared/components/Restaurant";
 import {getAllSwipes} from "../../shared/actions/get-swipes";
 
@@ -17,10 +15,9 @@ export const Home = () => {
 	// use selector to set users to users stored in state
 	const restaurants = useSelector(state => state.restaurants ? state.restaurants : []);
 	const swipes = useSelector(state => state.swipes ? state.swipes : []);
-
 	// use dispatch from redux to dispatch actions
 	const dispatch = useDispatch();
-	// get users
+
 	const effects = () => {
 	dispatch(getAllSwipes())
 		navigator.geolocation.getCurrentPosition((data)=> {
@@ -37,7 +34,6 @@ export const Home = () => {
 
 	// do this effect on component update
 	useEffect(effects, inputs);
-
 
 	return (
 		<>

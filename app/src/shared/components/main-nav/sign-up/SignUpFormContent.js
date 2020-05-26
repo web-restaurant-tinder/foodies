@@ -1,6 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../FormDebugger";
 import React from "react";
+import {faAt, faEnvelope, faKey, faSignature} from "@fortawesome/free-solid-svg-icons";
 
 export const SignUpFormContent = (props) => {
 	const {
@@ -24,7 +25,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="envelope"/>
+								<FontAwesomeIcon icon={faEnvelope}/>
 							</div>
 						</div>
 						<input
@@ -53,7 +54,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon={faKey}/>
 							</div>
 						</div>
 						<input
@@ -75,7 +76,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon={faKey}/>
 							</div>
 						</div>
 						<input
@@ -100,7 +101,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="dove"/>
+								<FontAwesomeIcon icon={faAt}/>
 							</div>
 						</div>
 						<input
@@ -129,7 +130,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="signature"/>
+								<FontAwesomeIcon icon={faSignature}/>
 							</div>
 						</div>
 						<input
@@ -156,7 +157,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="signature"/>
+								<FontAwesomeIcon icon={faSignature}/>
 							</div>
 						</div>
 						<input

@@ -22,7 +22,8 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.27.0"
+    "yup": "^0.27.0",
+    "material-ui-pickers": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
