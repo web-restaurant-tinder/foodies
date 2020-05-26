@@ -1,9 +1,7 @@
 export default (state = [], action) => {
     switch(action.type) {
-        case "GET_SWIPES_BY_PROFILE_ID":
+        case "GET_SWIPES_BY_CURRENT_LOGGED_IN_USER":
             return [...state, action.payload];
-        case "GET_ALL_SWIPES":
-            return action.payload;
         default:
             return state;
     }
