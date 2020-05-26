@@ -1,40 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter} from "react-router-dom";
-import {Route, Switch} from "react-router";
-import {FourOhFour} from "./pages/FourOhFour";
-import {Home} from "./pages/Home";
-import {Followers} from "./pages/Followers";
-import Navbar from "react-bootstrap/Navbar";
-import {LinkContainer} from "react-router-bootstrap";
-import Nav from "react-bootstrap/Nav";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {FourOhFour} from "./pages/FourOhFour/FourOhFour";
+import {MainNav} from "./shared/components/MainNav";
+import {Follow} from "./pages/Follow/Follow";
+// import {Test2} from "./pages/Test2";
+import {applyMiddleware, createStore} from "redux";
+import thunk from "redux-thunk";
+import reducers from "./shared/reducers"
+import {Provider} from "react-redux";
+import {Jumbo} from "./shared/components/Jumbo";
 
 
-const Routing = () => (
+
+const store = createStore(applyMiddleware(thunk));
+const Routing = (store) => (
 	<>
-		<BrowserRouter>
-			<Navbar bg="primary" variant="dark">
-				<LinkContainer exact to="/" >
-					<Navbar.Brand>Home</Navbar.Brand>
-				</LinkContainer>
-				<Nav className="mr-auto">
-					<LinkContainer exact to="/followers">
-						<Nav.Link>Followers</Nav.Link>
-					</LinkContainer>
-					<LinkContainer exact to="/likes"
-					><Nav.Link>Likes</Nav.Link>
-					</LinkContainer>
-				</Nav>
-			</Navbar>
-			<Switch>
-				<Route exact path="/" component={Home}/>
-				<Route exact path="/followers/" component={Followers}/>
-				<Route component={FourOhFour}/>
-			</Switch>
-		</BrowserRouter>
+		<Provider store={store}>
+			<BrowserRouter>
+				<MainNav/>
+				<Jumbo/>
+				<Switch>
+					<Route exact path="/" component={Follow}/>
+					{/*<Route exact path="/test2" component={Test2}/>*/}
+					<Route component={FourOhFour}/>
+				</Switch>
+			</BrowserRouter>
+		</Provider>
 	</>
 );
-
-
-ReactDOM.render(<Routing/>, document.querySelector('#root'));
+ReactDOM.render(Routing(store) , document.querySelector("#root"));
