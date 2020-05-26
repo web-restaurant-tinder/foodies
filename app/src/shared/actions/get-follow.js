@@ -1,6 +1,6 @@
-import {httpConfig} from "/app/src/shared/utils/http-config";
+import {httpConfig} from "../utils/http-config";
 
-export const getFollowByProfileId = (id) => async dispatch => {
-	const {data} = await httpConfig(`/apis/follower/${id}`);
-	dispatch({type: "GET_FOLLOW_BY_PROFILE_ID", payload: data })
+export const getFollowByCurrentLoggedInUser = () => async dispatch => {
+	const {data} = await httpConfig.get(`/apis/follow/`);
+	dispatch({type: "GET_FOLLOW_BY_CURRENT_LOGGED_IN_USER", payload: data })
 };
