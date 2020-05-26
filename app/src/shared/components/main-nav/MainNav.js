@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {LinkContainer} from "react-router-bootstrap"
-import {SignUpModal} from "./sign-up/SignUpModal";
-import {SignInModal} from "./sign-in/SigninModal";
+// import {SignUpModal} from "./sign-up/SignUpModal";
+// import {SignInModal} from "./sign-in/SigninModal";
 import {Button} from "react-bootstrap";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
@@ -25,8 +25,8 @@ export const MainNav = (props) => {
                         Likes
                     </Button>
                 </LinkContainer>
-                <SignUpModal/>
-                <SignInModal/>
+                {/*<SignUpModal/>*/}
+                {/*<SignInModal/>*/}
                 <Row>
                     <Form inline id ='NavForm'>
                         <FormControl type="text" placeholder="Search"/>
