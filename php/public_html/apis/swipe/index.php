@@ -38,7 +38,7 @@ try {
 
 
         if ($swipeRestaurantId !== null && $swipeProfileId !== null) {
-            $swipe = Swipe::getSwipeBySwipeProfileIdAndSwipeRestaurantId($pdo, $swipeProfileId, $swipeRestaurantId);
+            $swipe = Swipe::getSwipeByCurrentLoggedInUser($pdo, $swipeProfileId, $swipeRestaurantId);
 
 
             if ($swipe !== null) {

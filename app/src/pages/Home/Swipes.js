@@ -6,8 +6,8 @@ import {getSwipesByCurrentLoggedInUser} from "../../shared/actions/get-swipes";
 
 export const Swipes = () => {
 
-    const swipes = useSelector(state => state.swipes);
-
+    const restaurants = useSelector(state => state.restaurants ? state.restaurants : []);
+    const swipes = useSelector(state => state.swipes ? state.swipes : []);    console.log(swipes)
     const dispatch = useDispatch();
 
     //get swipes
@@ -21,7 +21,7 @@ export const Swipes = () => {
 
     return (
         <>
-            <SwipeCard/>
+            <SwipeCard swipes = {swipes}/>
         </>
     );
 

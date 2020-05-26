@@ -1,8 +1,18 @@
 import React, {useEffect} from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import * as jwtDecode from "jwt-decode";
 
-export const SwipeCard = ({swipe}) => {
+export const SwipeCard = ({swipes, restaurants}) => {
+    console.log(swipes)
+    console.log(restaurants)
+
+    const currentUserId = (window.localStorage.getItem("jwt-token")) ? (jwtDecode(window.localStorage.getItem
+    ("jwt-token")).auth.profileId) : "";
+
+
+
+
 
     return (
         <Card style={{ width: '18rem' }}>
