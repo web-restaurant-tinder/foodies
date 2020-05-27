@@ -11,6 +11,7 @@ import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import reducers from "./shared/reducers"
 import {Provider} from "react-redux";
+import {Jumbo} from "./shared/components/Jumbo";
 
 
 const store = createStore(reducers,applyMiddleware(thunk));
@@ -20,6 +21,7 @@ const Routing = (store) => (
 		<Provider store={store}>
 		<BrowserRouter>
 			<MainNav/>
+			<Jumbo/>
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				{/*<Route exact path="/test2" component={Test2}/>*/}

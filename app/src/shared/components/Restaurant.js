@@ -7,9 +7,15 @@ import {httpConfig} from "../utils/http-config";
 import * as jwtDecode from "jwt-decode"
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {getAllSwipes} from "../actions/get-swipes";
+import {removeRestaurantByRestaurantId} from "../actions/get-restaurants";
+import {useDispatch} from "react-redux";
+
+
 
 
 export const Restaurant = ({restaurants, swipes}) => {
+	const dispatch = useDispatch()
 	const currentUserId = (window.localStorage.getItem("jwt-token")) ? (jwtDecode(window.localStorage.getItem("jwt-token")).auth.profileId) : "";
 	const filteredSwipes = swipes.filter(swipe => swipe.swipeProfileId = currentUserId);
 	let filteredRestaurants = [];
@@ -23,39 +29,32 @@ export const Restaurant = ({restaurants, swipes}) => {
 		}
 	});
 
-
 	let index = Math.round(Math.random() * filteredRestaurants.length - 1);
 	index = index < 0 ? 0 : index;
 	let restaurant = filteredRestaurants [index];
 
+	const handleSwipe = (swipeValue) => {
+		httpConfig.post("/apis/swipe/", {"swipeRestaurantId": restaurant.restaurantId, "swipeRight": swipeValue})
+			.then(reply => {
+				let {message, type} = reply;
+				if(reply.status === 200) {
+					dispatch(removeRestaurantByRestaurantId(restaurant.restaurantId))
+				}
+			})
+	}
 
 	const swipeRight = () => {
-		httpConfig.post("/apis/swipe/", {"swipeRestaurantId": restaurant.restaurantId, "swipeRight": 1})
-			.then(reply => {
-				let {message, type} = reply;
-				if(reply.status === 200 && reply.headers["x-jwt-token"]) {
-					window.localStorage.removeItem("jwt-token");
-					window.localStorage.setItem("jwt-token", reply.headers["x-jwt-token"]);
-				}
-			})
+		handleSwipe(1)
 	};
 
-
 	const swipeLeft = () => {
-		httpConfig.post("/apis/swipe/", {"swipeRestaurantId": restaurant.restaurantId, "swipeRight": 0})
-			.then(reply => {
-				let {message, type} = reply;
-				if(reply.status === 200 && reply.headers["x-jwt-token"]) {
-					window.localStorage.removeItem("jwt-token");
-					window.localStorage.setItem("jwt-token", reply.headers["x-jwt-token"]);
-				}
-			})
+		handleSwipe(0)
 	};
 
 
 	return (
 		<>
-			<Container style={{display: "block", margin: "auto", width: "62%"}}>
+			<Container style={{display: "center", margin: "auto", width: "62%"}}>
 
 				<Card className="text-center" bg={"dark"} text={'white'}>
 					<Card.Header>{restaurant.restaurantName}</Card.Header>
@@ -75,7 +74,7 @@ export const Restaurant = ({restaurants, swipes}) => {
 									</button>
 								</Col>
 							</Row>
-							<Card.Text>
+							<Card.Body>
 								<p>Address- {restaurant.restaurantAddress}</p>
 
 								<p>Phone- {restaurant.restaurantPhone}</p>
@@ -85,7 +84,7 @@ export const Restaurant = ({restaurants, swipes}) => {
 								<p><a href={restaurant.restaurantUrl}>Yelp- {restaurant.restaurantName}</a></p>
 
 								<p>Rating- {restaurant.restaurantStarRating}</p>
-							</Card.Text>
+							</Card.Body>
 						</>)}
 				</Card>
 

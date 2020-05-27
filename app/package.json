@@ -23,7 +23,10 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "yup": "^0.27.0",
-    "material-ui-pickers": "latest"
+    "material-ui-pickers": "latest",
+    "@material-ui/core": "latest",
+    "prop-types": "latest",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

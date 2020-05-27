@@ -5,3 +5,6 @@ export const getRestaurantsByDistance = (lat, lng, distance) => async dispatch =
 	dispatch({type: "GET_RESTAURANTS_BY_DISTANCE", payload: data})
 };
 
+export const removeRestaurantByRestaurantId = (restaurantId) => dispatch => {
+	dispatch({type: "REMOVE_RESTAURANT_BY_RESTAURANT_ID", payload: restaurantId})
+}

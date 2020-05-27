@@ -5,6 +5,9 @@ import {LinkContainer} from "react-router-bootstrap"
 import {SignUpModal} from "./sign-up/SignUpModal";
 import {SignInModal} from "./sign-in/SigninModal";
 import {Button} from "react-bootstrap";
+import FormControl from "react-bootstrap/FormControl";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 
 
 
@@ -27,6 +30,12 @@ export const MainNav = (props) => {
 				</LinkContainer>
 				<SignUpModal/>
 				<SignInModal/>
+				<Row>
+				<Form inline id ='NavForm'>
+					<FormControl type="text" placeholder="Search"/>
+					<Button variant="outline-warning">Search</Button>
+				</Form>
+				</Row>
 			</Nav>
 		</Navbar>
 	)

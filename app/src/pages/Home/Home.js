@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react"
-import {Jumbo} from "../../shared/components/Jumbo";
 import {useDispatch, useSelector} from "react-redux";
 import {getRestaurantsByDistance} from "../../shared/actions/get-restaurants";
 import {Restaurant} from "../../shared/components/Restaurant";
@@ -37,7 +36,6 @@ export const Home = () => {
 
 	return (
 		<>
-			<Jumbo/>
 			{restaurants.length && swipes.length ? <Restaurant restaurants={restaurants} swipes={swipes} effects = {effects}/> : ""}
 		</>
 	)
