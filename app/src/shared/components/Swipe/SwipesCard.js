@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import * as jwtDecode from "jwt-decode";
 
-export const SwipeCard = ({swipes, restaurant}) => {
+export const SwipeCard = ({restaurants}) => {
 
     // let swipe = swipes [Math.round (Math.random()*swipes.length-1)]
     // const submit = () => {
@@ -14,23 +14,24 @@ export const SwipeCard = ({swipes, restaurant}) => {
 
 
 
-
-
     return (
         <>
+            {restaurants.map( (restaurant, i)=>
+                (
+                    <Card style={{width: '50rem'}} key={i}>
+                        <Card.Title className="text-center bg-dark text-white">{restaurant.restaurantName}</Card.Title>
 
-            <h1 className="text-center bg-dark text-white">{restaurant.restaurantTitle}</h1>
-            <Card style={{width: '50rem'}}>
-                <Card.Img variant="top" src={restaurant.restaurantImageUrl} />
-                <Card.Body>
-                    <Card.Link href={restaurant.restaurantLink} target="_blank">Click For Restaurant Info</Card.Link>
-                    <Button variant="primary">
-                        Delete
-                    </Button>
-                </Card.Body>
-            </Card>
-
-        </>
-    )
+                        <Card.Img variant="top" src={restaurant.restaurantAvatar} />
+                    <Card.Body>
+                    <Card.Link href={restaurant.restaurantUrl} target="_blank">Click For Restaurant Info</Card.Link>
+                    {/*<Button variant="primary">*/}
+                    {/*Delete*/}
+                    {/*</Button>*/}
+                    </Card.Body>
+                    </Card>
+                )
+                ) }
+            </>
+            )
 
 };
