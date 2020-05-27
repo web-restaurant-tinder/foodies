@@ -22,7 +22,7 @@ export const Follow = () => {
 	useEffect(effects, inputs);
 	return (
 		<>
-			<Followers follows={follows}/>
+			{follows.length && <Followers follows={follows}/>}
 		</>
 	)
 }

@@ -2,8 +2,11 @@ import Card from "react-bootstrap/Card";
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-export const Followers = ({follow, profile}) => {
-	console.log(profile);
+export const Followers = ({follows}) => {
+	let follow = follows [Math.round (Math.random()*follows.length-1)]
+	const submit = () => {
+		window.location.reload()
+	}
 return (
 	<>
 <Card style={{ width: '18rem' }}>
