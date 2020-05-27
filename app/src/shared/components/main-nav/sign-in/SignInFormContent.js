@@ -1,6 +1,7 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope, faKey} from "@fortawesome/free-solid-svg-icons";
 import {FormDebugger} from "../../FormDebugger";
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const SignInFormContent = (props) => {
 	const {
@@ -24,7 +25,7 @@ export const SignInFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="envelope"/>
+								<FontAwesomeIcon icon={faEnvelope}/>
 							</div>
 						</div>
 						<input
@@ -53,7 +54,7 @@ export const SignInFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon={faKey}/>
 							</div>
 						</div>
 						<input
@@ -80,7 +81,7 @@ export const SignInFormContent = (props) => {
 					>Reset
 					</button>
 				</div>
-				<FormDebugger {...props} />
+				{/*<FormDebugger {...props} />*/}
 			</form>
 			{status && (<div className={status.type}>{status.message}</div>)}
 		</>

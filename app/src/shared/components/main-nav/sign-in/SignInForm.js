@@ -33,6 +33,7 @@ export const SignInForm = () => {
 					window.localStorage.setItem("jwt-token", reply.headers["x-jwt-token"]);
 					resetForm();
 				}
+				alert (message);
 			});
 	};
 

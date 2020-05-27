@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test" />
+    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test">
+      <change afterPath="$PROJECT_DIR$/app/src/shared/components/SearchForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/shared/reducers/profile-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/pages/CSS/mystylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/actions/get-profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/MainNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/MainNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SignInForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SignInForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SignInFormContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SignInFormContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SigninModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/sign-in/SigninModal.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -266,7 +275,7 @@
       <workItem from="1590375821120" duration="8447000" />
       <workItem from="1590501724414" duration="9293000" />
       <workItem from="1590521782452" duration="9081000" />
-      <workItem from="1590589740533" duration="3808000" />
+      <workItem from="1590589740533" duration="14880000" />
     </task>
     <task id="LOCAL-00001" summary="persona for foodies">
       <created>1586543607388</created>
@@ -446,5 +455,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589904601301" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1590605545929">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590605545929" />
   </component>
 </project>
