@@ -15,6 +15,7 @@ import {useDispatch} from "react-redux";
 
 
 export const Restaurant = ({restaurants, swipes}) => {
+
 	const dispatch = useDispatch()
 	const currentUserId = (window.localStorage.getItem("jwt-token")) ? (jwtDecode(window.localStorage.getItem("jwt-token")).auth.profileId) : "";
 	const filteredSwipes = swipes.filter(swipe => swipe.swipeProfileId = currentUserId);
@@ -28,6 +29,7 @@ export const Restaurant = ({restaurants, swipes}) => {
 			filteredRestaurants = [...filteredRestaurants, restaurant]
 		}
 	});
+	filteredRestaurants = (window.localStorage.getItem("jwt-token")) ? filteredRestaurants : restaurants
 
 	let index = Math.round(Math.random() * filteredRestaurants.length - 1);
 	index = index < 0 ? 0 : index;
@@ -50,7 +52,6 @@ export const Restaurant = ({restaurants, swipes}) => {
 	const swipeLeft = () => {
 		handleSwipe(0)
 	};
-
 
 	return (
 		<>
