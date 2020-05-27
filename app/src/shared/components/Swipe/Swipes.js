@@ -52,6 +52,4 @@ export const Swipes = (props) => {
             {filteredRestaurants.length ? <SwipeCard restaurants={filteredRestaurants}/>: ""}
         </>
     );
-console.log(swipes)
-    console.log(restaurants)
-}
+};

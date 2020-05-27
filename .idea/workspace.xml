@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Jumbo.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Jumbo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/main-nav/MainNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/main-nav/MainNav.js" afterDir="false" />
-    </list>
+    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,7 +266,7 @@
       <workItem from="1590375821120" duration="8447000" />
       <workItem from="1590501724414" duration="9293000" />
       <workItem from="1590521782452" duration="9081000" />
-      <workItem from="1590589740533" duration="21264000" />
+      <workItem from="1590589740533" duration="21554000" />
     </task>
     <task id="LOCAL-00001" summary="persona for foodies">
       <created>1586543607388</created>
