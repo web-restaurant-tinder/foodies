@@ -18,7 +18,7 @@ export const SwipeCard = ({restaurants}) => {
         <>
             {restaurants.map( (restaurant, i)=>
                 (
-                    <Card style={{display: "center", margin: "auto", width: "62%"}} key={i}>
+                    <Card style={{display: "center", margin: "auto", width: "40%"}} key={i}>
                         <Card.Title className="text-center bg-dark text-white">{restaurant.restaurantName}</Card.Title>
 
                         <Card.Img variant="top" src={restaurant.restaurantAvatar} />

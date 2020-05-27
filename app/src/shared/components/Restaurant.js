@@ -61,7 +61,8 @@ export const Restaurant = ({restaurants, swipes}) => {
 					<Card.Header className="head">{restaurant.restaurantName}</Card.Header>
 					{restaurant && (
 						<>
-							<Card.Img variant="top" src={restaurant.restaurantAvatar}/>
+						<Card.Body className="head-2">
+							<Card.Img className="picture" variant="top" src={restaurant.restaurantAvatar}/>
 							<Row>
 								<Col xs={6}>
 									<button type="button" onClick={swipeLeft} className="btn btn-warning btn-circle btn-xl">
@@ -75,7 +76,7 @@ export const Restaurant = ({restaurants, swipes}) => {
 									</button>
 								</Col>
 							</Row>
-							<Card.Body className="head-2">
+
 								<p>Address- {restaurant.restaurantAddress}</p>
 
 								<p>Phone- {restaurant.restaurantPhone}</p>
