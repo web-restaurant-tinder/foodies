@@ -12,6 +12,7 @@ import thunk from "redux-thunk";
 import reducers from "./shared/reducers"
 import {Provider} from "react-redux";
 import {Jumbo} from "./shared/components/Jumbo";
+import {Swipes} from "./shared/components/Swipe/Swipes";
 
 
 const store = createStore(reducers,applyMiddleware(thunk));
@@ -24,6 +25,7 @@ const Routing = (store) => (
 			<Jumbo/>
 			<Switch>
 				<Route exact path="/" component={Home}/>
+				<Route exact path="/likes" component={Swipes}/>
 				{/*<Route exact path="/test2" component={Test2}/>*/}
 				<Route component={FourOhFour}/>
 			</Switch>

@@ -17,3 +17,23 @@
 	line-height: 1.42857;
 }
 
+
+.banner-1{
+	color: black;
+	font-family: "Great Vibes", cursive;
+	font-size: 75px;
+	line-height: 70px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 5px 5px yellow;
+}
+
+.head{
+	font-family: "Comic Sans MS", fantasy;
+	font-size: 2em;
+}
+
+.head-2{
+	font-family: "Comic Sans MS", fantasy;
+	font-size: 1em;
+}
