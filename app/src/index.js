@@ -14,7 +14,7 @@ import {Jumbo} from "./shared/components/Jumbo";
 
 
 
-const store = createStore(applyMiddleware(thunk));
+const store = createStore(reducers,applyMiddleware(thunk));
 const Routing = (store) => (
 	<>
 		<Provider store={store}>
