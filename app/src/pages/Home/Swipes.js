@@ -21,7 +21,7 @@ export const Swipes = () => {
 
     return (
         <>
-            <SwipeCard swipes = {swipes}/>
+            {swipes.length && <SwipeCard swipes = {swipes}/>}
         </>
     );
 

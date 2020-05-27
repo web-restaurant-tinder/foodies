@@ -4,9 +4,11 @@ import Button from "react-bootstrap/Button";
 import * as jwtDecode from "jwt-decode";
 
 export const SwipeCard = ({swipes, restaurants}) => {
-    console.log(swipes)
-    console.log(restaurants)
 
+    let swipe = swipes [Math.round (Math.random()*swipes.length-1)]
+    const submit = () => {
+        window.location.reload()
+    }
     const currentUserId = (window.localStorage.getItem("jwt-token")) ? (jwtDecode(window.localStorage.getItem
     ("jwt-token")).auth.profileId) : "";
 
