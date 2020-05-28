@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test">
+      <change afterPath="$PROJECT_DIR$/app/src/pages/Home/Follow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Swipe/SwipesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Swipe/SwipesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/shared/components/FollowCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/FollowCard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +274,8 @@
       <workItem from="1590521782452" duration="9081000" />
       <workItem from="1590589740533" duration="21817000" />
       <workItem from="1590616658121" duration="21000" />
-      <workItem from="1590618993249" duration="804000" />
+      <workItem from="1590618993249" duration="1694000" />
+      <workItem from="1590674914964" duration="1847000" />
     </task>
     <task id="LOCAL-00001" summary="persona for foodies">
       <created>1586543607388</created>
@@ -448,10 +451,10 @@
     </state>
     <state x="510" y="53" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588813682412" />
     <state x="510" y="53" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589245833265" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1589904601301">
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1590675533716">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1589904601301" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1590675533716" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1590605545929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
