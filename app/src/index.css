@@ -1,0 +1,44 @@
+.btn-circle.btn-xl {
+	width: 70px;
+	height: 70px;
+	padding: 10px 16px;
+	border-radius: 35px;
+	font-size: 24px;
+	line-height: 1.33;
+}
+
+.btn-circle {
+	width: 30px;
+	height: 30px;
+	padding: 6px 0;
+	border-radius: 15px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 1.42857;
+}
+
+
+.banner-1{
+	color: black;
+	font-family: "Great Vibes", cursive;
+	font-size: 75px;
+	line-height: 70px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 5px 5px yellow;
+}
+
+.head{
+	font-family: "Comic Sans MS", fantasy;
+	font-size: 2em;
+}
+
+.head-2{
+	font-family: "Comic Sans MS", fantasy;
+	font-size: 1em;
+}
+
+.image{
+	height: 80%;
+	width: 100%;
+}

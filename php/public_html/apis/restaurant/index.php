@@ -42,6 +42,8 @@ try {
 	$restaurantFoodType = filter_input(INPUT_GET, "restaurantFoodType", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$restaurantLat = filter_input(INPUT_GET, "restaurantLat", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 	$restaurantLng = filter_input(INPUT_GET, "restaurantLng", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$distance = filter_input(INPUT_GET, "distance", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+
 
 
 	if($method === "GET") {
@@ -56,7 +58,8 @@ try {
 		} else if(empty($restaurantFoodType) === false) {
 			$reply->data = Restaurant::getRestaurantByRestaurantFoodType($pdo, $restaurantFoodType);
 		} else if (empty($restaurantLat)===false && empty($restaurantLng)===false) {
-			$reply->data = Restaurant::getRestaurantByDistance($pdo, $restaurantLat, $restaurantLng, 15);
+			$reply->data = Restaurant::getRestaurantByDistance($pdo, $restaurantLat, $restaurantLng, $distance);
+
 		} else {
 			throw new InvalidArgumentException("Incorrect search parameters", 404);
 		}
