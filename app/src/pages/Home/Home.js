@@ -9,7 +9,7 @@ export const Home = () => {
 	// find out where user is
 	let userLat = 35.087739;
 	let userLng = -106.664512;
-	let distance = 10;
+	let distance = 100;
 
 	// use selector to set users to users stored in state
 	const restaurants = useSelector(state => state.restaurants ? state.restaurants : []);
