@@ -10,7 +10,7 @@ export const Swipes = (props) => {
 
     let userLat = 35.087739;
     let userLng = -106.664512;
-    let distance = 1000;
+    let distance = 10;
 
     // use selector to set users to users stored in state
     const restaurants = useSelector(state => state.restaurants ? state.restaurants : []);
@@ -40,7 +40,7 @@ export const Swipes = (props) => {
         }
 
     });
-    // filteredRestaurants = (window.localStorage.getItem("jwt-token")) ? filteredRestaurants : restaurants
+    filteredRestaurants = (window.localStorage.getItem("jwt-token")) ? filteredRestaurants : restaurants
 
 // console.log(filteredRestaurants)
     const inputs = [];
