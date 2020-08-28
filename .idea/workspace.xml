@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="made changes to profile and worked on unit test">
+    <list default="true" id="3fdb387b-2c57-44db-b5fc-7f229b9109fd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/shared/components/Swipe/Swipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/shared/components/Swipe/Swipes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,6 +272,9 @@
       <workItem from="1590616658121" duration="21000" />
       <workItem from="1590618993249" duration="1694000" />
       <workItem from="1590674914964" duration="1847000" />
+      <workItem from="1593908126794" duration="60000" />
+      <workItem from="1594059532902" duration="31000" />
+      <workItem from="1594174774383" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="persona for foodies">
       <created>1586543607388</created>
@@ -344,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588040792627</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changed distance">
+      <created>1593908180413</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593908180413</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +370,8 @@
     <MESSAGE value="worked on class" />
     <MESSAGE value="made changes to class and added unit testing files" />
     <MESSAGE value="made changes to profile and worked on unit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="made changes to profile and worked on unit test" />
+    <MESSAGE value="changed distance" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed distance" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="75" key="#Deployment" timestamp="1590112322230">
@@ -396,12 +406,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1587574996875" />
-    <state x="389" y="32" width="779" height="770" key="CommitChangelistDialog2" timestamp="1593476675761">
+    <state x="389" y="16" width="779" height="770" key="CommitChangelistDialog2" timestamp="1593908179101">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="406" y="12" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588692857174" />
     <state x="389" y="32" width="779" height="770" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589238377086" />
-    <state x="389" y="32" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593476675761" />
+    <state x="389" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593908179101" />
     <state x="553" y="333" key="ComposerInitDialogKey" timestamp="1587595812507">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -436,10 +446,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="58" key="SettingsEditor/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588351455501" />
-    <state x="361" y="138" key="Vcs.Push.Dialog.v2" timestamp="1588040794396">
+    <state x="361" y="138" key="Vcs.Push.Dialog.v2" timestamp="1593908182206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="138" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1588040794396" />
+    <state x="361" y="138" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593908182206" />
     <state x="463" y="10" width="609" height="804" key="find.popup" timestamp="1589906946721">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
